@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Space Grotesk", "Manrope", sans-serif;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    @apply translate-y-8 opacity-0 transition duration-700 ease-out;
+  }
+
+  .reveal-visible {
+    @apply translate-y-0 opacity-100;
+  }
+}
