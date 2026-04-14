@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import foto1 from "../assets/foto-1.jpeg";
 import foto2 from "../assets/foto-2.jpeg";
 import foto3 from "../assets/foto-3.jpeg";
+import QA_foto from "../assets/QA_foto.png";
 
 const navLinks = [
   { href: "#about", label: "Tentang" },
@@ -72,13 +73,15 @@ const projects = [
     link: "https://michaelgarets.github.io/destinasi-wisata-smt2/",
   },
   {
-    title: "QA Testing Portfolio",
+    title: "QA testing",
     description:
       "Dokumentasi bug reporting, test case, dan functional testing pada modul LMS.",
     tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
     chip: "QA Documentation",
     palette:
       "from-slate-900 via-slate-700 to-blue-500 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
+    image: QA_foto,
+    imageAlt: "QA testing project screenshot with notes and dashboard overview",
   },
   {
     title: "Personal Web Repo",
@@ -936,13 +939,19 @@ function App() {
                 className="reveal group overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-white/5"
               >
                 <div
-                  className={`relative overflow-hidden rounded-[1.5rem] bg-gradient-to-br ${project.palette} p-6`}
+                  className={`relative overflow-hidden rounded-[1.5rem] p-6 ${project.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
+                  style={
+                    project.image
+                      ? { backgroundImage: `url(${project.image})` }
+                      : undefined
+                  }
                 >
+                  <div className="absolute inset-0 bg-slate-950/30" />
                   <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/20 blur-2xl" />
-                  <span className="relative inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
+                  <span className="relative z-10 inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
                     {project.chip}
                   </span>
-                  <div className="mt-16">
+                  <div className="mt-16 relative z-10">
                     <p className="max-w-[12rem] font-display text-2xl font-bold text-white">
                       {project.title}
                     </p>
