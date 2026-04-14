@@ -4,6 +4,7 @@ import foto2 from "../assets/foto-2.jpeg";
 import foto3 from "../assets/foto-3.jpeg";
 import QA_foto from "../assets/QA_foto.png";
 import Web_Destinasi from "../assets/Web_Destinasi.png";
+import PortoWeb_Michael from "../assets/PortoWeb_Michael.png";
 
 const navLinks = [
   { href: "#about", label: "Tentang" },
@@ -93,6 +94,8 @@ const projects = [
     chip: "Personal Branding",
     palette:
       "from-fuchsia-500 via-violet-500 to-indigo-500 dark:from-fuchsia-300 dark:via-violet-300 dark:to-indigo-300",
+    image: PortoWeb_Michael,
+    imageAlt: "Personal Web Repo project background image",
   },
 ];
 
