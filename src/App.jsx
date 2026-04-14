@@ -70,7 +70,6 @@ const projects = [
     chip: "Frontend Web",
     palette:
       "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
-    link: "https://michaelgarets.github.io/destinasi-wisata-smt2/",
   },
   {
     title: "QA testing",
@@ -972,23 +971,6 @@ function App() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6">
-                    {project.link ? (
-                      <a
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-700 transition group-hover:gap-3 dark:text-cyan-300"
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {content.projectLinkLabel}
-                        <span aria-hidden="true">-&gt;</span>
-                      </a>
-                    ) : (
-                      <span className="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white dark:bg-white dark:text-slate-950">
-                        Internal Case Study
-                      </span>
-                    )}
-                  </div>
                 </div>
               </article>
             ))}
