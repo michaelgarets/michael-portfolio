@@ -3,6 +3,7 @@ import foto1 from "../assets/foto-1.jpeg";
 import foto2 from "../assets/foto-2.jpeg";
 import foto3 from "../assets/foto-3.jpeg";
 import QA_foto from "../assets/QA_foto.png";
+import Web_Destinasi from "../assets/Web_Destinasi.png";
 
 const navLinks = [
   { href: "#about", label: "Tentang" },
@@ -70,6 +71,8 @@ const projects = [
     chip: "Frontend Web",
     palette:
       "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
+    image: Web_Destinasi,
+    imageAlt: "Background image for Web Destinasi Wisata project card",
   },
   {
     title: "QA testing",
