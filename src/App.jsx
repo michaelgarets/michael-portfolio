@@ -175,7 +175,7 @@ const translations = {
     topBadge: "Portfolio 2026 | React | Tailwind",
     hero: {
       heading:
-        "Membangun website yang terasa rapi, cepat, dan matang saat dipakai.",
+        "Michael Garets Kon | IT Quality Assurance & Web Development Portfolio",
       subheading:
         "Saya menggabungkan pendekatan frontend modern dan QA mindset untuk menciptakan pengalaman digital yang tidak hanya menarik, tetapi juga stabil, jelas, dan meyakinkan.",
       ctaProjects: "Lihat Proyek",
@@ -305,7 +305,8 @@ const translations = {
     ],
     topBadge: "Portfolio 2026 | React | Tailwind",
     hero: {
-      heading: "Building websites that feel clean, fast, and polished in use.",
+      heading:
+        "Michael Garets Kon | IT Quality Assurance & Web Development Portfolio",
       subheading:
         "I combine modern frontend approaches with a QA mindset to create digital experiences that are not only appealing, but also stable, clear, and confident.",
       ctaProjects: "View Projects",
@@ -735,10 +736,10 @@ function App() {
             </div>
 
             <div className="space-y-5">
-              <p className="font-display text-4xl leading-none font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-7xl dark:text-white">
+              <p className="font-display text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-7xl dark:text-white break-words">
                 {content.hero.heading}
               </p>
-              <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+              <p className="max-w-full lg:max-w-2xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
                 {content.hero.subheading}
               </p>
             </div>
@@ -747,14 +748,14 @@ function App() {
               <a
                 href="#projects"
                 onClick={(event) => handleNavClick(event, "#projects")}
-                className="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_50px_-20px_rgba(15,23,42,0.8)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                className="inline-flex w-full justify-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_50px_-20px_rgba(15,23,42,0.8)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:w-auto"
               >
                 {content.hero.ctaProjects}
               </a>
               <a
                 href="#contact"
                 onClick={(event) => handleNavClick(event, "#contact")}
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-400 hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                className="inline-flex w-full justify-center rounded-full border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-400 hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
               >
                 {content.hero.ctaContact}
               </a>
