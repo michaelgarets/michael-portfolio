@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import foto1 from "../assets/foto-1.jpeg";
 import foto2 from "../assets/foto-2.jpeg";
 import foto3 from "../assets/foto-3.jpeg";
@@ -1034,6 +1035,7 @@ function App() {
           {content.footer}
         </div>
       </footer>
+      <SpeedInsights />
     </div>
   );
 }
