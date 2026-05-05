@@ -172,14 +172,23 @@ const translations = {
       { href: "#projects", label: "Proyek" },
       { href: "#contact", label: "Kontak" },
     ],
-    topBadge: "Portfolio 2026 | React | Tailwind",
+    topBadge: "Portofolio 2026 | React | Tailwind",
+    navSubtitle: "Frontend Developer | Pola Pikir QA",
     hero: {
       heading:
-        "Michael Garets Kon | IT Quality Assurance & Web Development Portfolio",
+        "Michael Garets Kon | Portofolio IT Quality Assurance & Pengembangan Web",
       subheading:
         "Saya menggabungkan pendekatan frontend modern dan QA mindset untuk menciptakan pengalaman digital yang tidak hanya menarik, tetapi juga stabil, jelas, dan meyakinkan.",
       ctaProjects: "Lihat Proyek",
       ctaContact: "Hubungi Saya",
+    },
+    profileCard: {
+      label: "Branding Pribadi",
+      description:
+        "Mahasiswa IT yang fokus pada frontend dan kualitas produk.",
+      previous: "Sebelumnya",
+      next: "Berikutnya",
+      photoAria: "Tampilkan foto",
     },
     metrics: [
       {
@@ -304,6 +313,7 @@ const translations = {
       { href: "#contact", label: "Contact" },
     ],
     topBadge: "Portfolio 2026 | React | Tailwind",
+    navSubtitle: "Frontend Developer | QA Mindset",
     hero: {
       heading:
         "Michael Garets Kon | IT Quality Assurance & Web Development Portfolio",
@@ -311,6 +321,14 @@ const translations = {
         "I combine modern frontend approaches with a QA mindset to create digital experiences that are not only appealing, but also stable, clear, and confident.",
       ctaProjects: "View Projects",
       ctaContact: "Contact Me",
+    },
+    profileCard: {
+      label: "Personal Branding",
+      description:
+        "IT student focused on frontend and product quality.",
+      previous: "Prev",
+      next: "Next",
+      photoAria: "Show photo",
     },
     metrics: [
       {
@@ -685,7 +703,7 @@ function App() {
               Michael Garets Kon
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              Frontend Developer | QA Mindset
+              {content.navSubtitle}
             </p>
           </div>
 
@@ -787,7 +805,7 @@ function App() {
                 onMouseLeave={resetAutoSlide}
               >
                 <div className="absolute left-5 top-5 z-20 rounded-full bg-black/35 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
-                  Personal Branding
+                  {content.profileCard.label}
                 </div>
                 <div className="relative aspect-[4/5]">
                   {photos.map((photo, index) => (
@@ -815,7 +833,7 @@ function App() {
                     Michael Garets Kon
                   </p>
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Mahasiswa IT yang fokus pada frontend dan kualitas produk.
+                    {content.profileCard.description}
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -824,14 +842,14 @@ function App() {
                     className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     onClick={() => goToSlide(activeSlide - 1)}
                   >
-                    Prev
+                    {content.profileCard.previous}
                   </button>
                   <div className="flex items-center gap-2">
                     {photos.map((photo, index) => (
                       <button
                         type="button"
                         key={photo.alt}
-                        aria-label={`Tampilkan foto ${index + 1}`}
+                        aria-label={`${content.profileCard.photoAria} ${index + 1}`}
                         onClick={() => goToSlide(index)}
                         className={`h-2.5 rounded-full transition-all ${
                           index === activeSlide
@@ -846,7 +864,7 @@ function App() {
                     className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     onClick={() => goToSlide(activeSlide + 1)}
                   >
-                    Next
+                    {content.profileCard.next}
                   </button>
                 </div>
               </div>
