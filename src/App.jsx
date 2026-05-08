@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import foto1 from "../assets/foto-1.jpeg";
 import foto2 from "../assets/foto-2.jpeg";
@@ -16,15 +16,15 @@ const navLinks = [
 const metrics = [
   {
     value: "Frontend",
-    label: "Antarmuka yang fokus pada kejelasan, ritme, dan responsivitas.",
+    label: "Membuat antarmuka yang jelas, responsif, dan nyaman dilihat.",
   },
   {
     value: "QA Driven",
-    label: "Workflow yang teliti, terukur, dan nyaman dipakai user.",
+    label: "Mengecek alur, detail, dan fungsi agar pengalaman pengguna lebih aman.",
   },
   {
     value: "GitHub",
-    label: "Kolaborasi, dokumentasi, dan versioning yang lebih rapi.",
+    label: "Menjaga dokumentasi dan versioning supaya proses kerja lebih tertata.",
   },
 ];
 
@@ -48,19 +48,19 @@ const highlights = [
     number: "01",
     title: "Interface Clarity",
     description:
-      "Mendesain tampilan yang mudah dipahami tanpa membuat user berpikir dua kali.",
+      "Menyusun tampilan yang mudah dipahami tanpa membuat pengguna harus menebak-nebak.",
   },
   {
     number: "02",
     title: "Quality First",
     description:
-      "Lebih teliti pada detail UI, alur user, state, dan pengujian fungsi.",
+      "Lebih teliti pada detail UI, alur pengguna, state, dan pengujian fungsi.",
   },
   {
     number: "03",
     title: "Modern Workflow",
     description:
-      "Terus belajar tools baru untuk development yang lebih cepat dan terstruktur.",
+      "Terus belajar tools baru agar proses development lebih cepat, rapi, dan mudah dikembangkan.",
   },
 ];
 
@@ -68,7 +68,7 @@ const projects = [
   {
     title: "Web Destinasi Wisata",
     description:
-      "Pengembangan frontend untuk tugas kampus dengan fokus pada navigasi user, struktur halaman, dan pengalaman browsing yang nyaman.",
+      "Website destinasi wisata untuk tugas kampus. Saya menata halaman, navigasi, dan tampilan responsif agar informasinya mudah dicari dan nyaman dibaca.",
     tags: ["Responsive Layout", "Landing Page", "GitHub Pages"],
     chip: "Frontend Web",
     palette:
@@ -77,9 +77,9 @@ const projects = [
     imageAlt: "Background image for Web Destinasi Wisata project card",
   },
   {
-    title: "QA testing",
+    title: "QA Testing",
     description:
-      "Dokumentasi bug reporting, test case, dan functional testing pada modul LMS.",
+      "Dokumentasi pengujian untuk modul LMS, mulai dari test case, functional testing, sampai bug report yang rapi dan mudah ditindaklanjuti.",
     tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
     chip: "QA Documentation",
     palette:
@@ -90,7 +90,7 @@ const projects = [
   {
     title: "Personal Web Repo",
     description:
-      "Membangun ulang portofolio ini dengan React, Tailwind, dan dark mode untuk pengalaman yang lebih modern.",
+      "Portofolio pribadi yang saya bangun ulang dengan React, Tailwind, animasi ringan, dan dark mode supaya tampil lebih personal sekaligus tetap profesional.",
     tags: ["UI Refresh", "Component Based", "ReactJS"],
     chip: "Personal Branding",
     palette:
@@ -103,7 +103,7 @@ const projects = [
 const contacts = [
   {
     title: "Email",
-    text: "Jika ingin berdiskusi tentang proyek, kolaborasi, atau peluang kerja, hubungi saya melalui email berikut.",
+    text: "Kalau ingin membahas proyek, kolaborasi, atau peluang kerja, silakan hubungi saya lewat email.",
     href: "https://mail.google.com/mail/?view=cm&fs=1&to=michaellgareth321@gmail.com",
     label: "Kirim Email ke Michael",
     icon: (
@@ -132,7 +132,7 @@ const contacts = [
   },
   {
     title: "GitHub",
-    text: "Lihat repository dan perkembangan project saya secara langsung di GitHub.",
+    text: "Lihat repository dan perkembangan proyek saya secara langsung di GitHub.",
     href: "https://github.com/michaelgarets",
     label: "GitHub Michael",
     icon: (
@@ -148,19 +148,17 @@ const contacts = [
   },
   {
     title: "LinkedIn",
-    text: "Untuk koneksi profesional dan update pengalaman kerja, saya juga tersedia di LinkedIn.",
+    text: "Untuk koneksi profesional dan update pengalaman, saya juga bisa dihubungi lewat LinkedIn.",
     href: "https://www.linkedin.com/in/michael-garets",
     label: "LinkedIn Michael",
     icon: (
       <svg
         viewBox="0 0 24 24"
         fill="currentColor"
-        className="h-7 w-7"
+        className="h-7 w-7 translate-y-[1px] scale-110"
         aria-hidden="true"
       >
-        <path d="M4.5 8.25h3.75V19.5H4.5V8.25Z" />
-        <path d="M6.375 3a2.125 2.125 0 1 0 0 4.25 2.125 2.125 0 0 0 0-4.25Z" />
-        <path d="M9.75 8.25h3.375v1.645c.47-.864 1.602-1.645 3.106-1.645 3.325 0 3.937 2.188 3.937 5.034V19.5h-3.75v-4.688c0-1.118-.02-2.556-1.56-2.556-1.563 0-1.802 1.221-1.802 2.477V19.5H9.75V8.25Z" />
+        <path d="M4.983 8.855h3.473V20H4.983V8.855ZM6.72 3.5a2.015 2.015 0 1 1 0 4.03 2.015 2.015 0 0 1 0-4.03ZM10.628 8.855h3.33v1.523h.047c.464-.88 1.596-1.808 3.285-1.808 3.513 0 4.162 2.313 4.162 5.319V20h-3.47v-5.417c0-1.292-.023-2.954-1.8-2.954-1.802 0-2.078 1.408-2.078 2.86V20h-3.476V8.855Z" />
       </svg>
     ),
   },
@@ -177,9 +175,9 @@ const translations = {
     navSubtitle: "Frontend Developer | Pola Pikir QA",
     hero: {
       heading:
-        "Michael Garets Kon | Portofolio IT Quality Assurance & Pengembangan Web",
+        "Michael Garets Kon | Portofolio Frontend & Quality Assurance",
       subheading:
-        "Saya menggabungkan pendekatan frontend modern dan QA mindset untuk menciptakan pengalaman digital yang tidak hanya menarik, tetapi juga stabil, jelas, dan meyakinkan.",
+        "Saya membangun tampilan web yang rapi, responsif, dan mudah digunakan, sambil membawa cara berpikir QA agar setiap alur terasa lebih jelas dan siap dipakai.",
       ctaProjects: "Lihat Proyek",
       ctaContact: "Hubungi Saya",
     },
@@ -194,76 +192,76 @@ const translations = {
     metrics: [
       {
         value: "Frontend",
-        label: "Antarmuka yang fokus pada kejelasan, ritme, dan responsivitas.",
+        label: "Membuat antarmuka yang jelas, responsif, dan nyaman dilihat.",
       },
       {
         value: "QA Driven",
-        label: "Workflow yang teliti, terukur, dan nyaman dipakai user.",
+        label: "Mengecek alur, detail, dan fungsi agar pengalaman pengguna lebih aman.",
       },
       {
         value: "GitHub",
-        label: "Kolaborasi, dokumentasi, dan versioning yang lebih rapi.",
+        label: "Menjaga dokumentasi dan versioning supaya proses kerja lebih tertata.",
       },
     ],
     sectionHeadings: {
       about: {
         kicker: "Tentang Saya",
         title:
-          "Frontend yang bersih akan terasa lebih kuat saat ditopang detail kecil yang benar.",
+          "Saya suka membangun tampilan yang sederhana, jelas, dan terasa enak dipakai.",
         description:
-          "Saya suka menggabungkan visual yang terarah, struktur komponen yang rapi, dan kebiasaan QA untuk memastikan hasil akhirnya tidak cuma bagus dilihat, tapi juga enak dipakai.",
+          "Di portofolio ini, desainnya dibuat bersih dengan ruang yang lega, kartu transparan, foto sebagai fokus utama, dan aksen warna biru-ungu agar tampil modern tanpa terasa terlalu ramai.",
       },
       projects: {
         kicker: "Karya Pilihan",
         title:
-          "Project yang menunjukkan cara saya berpikir, mendesain, dan membangun alur.",
+          "Beberapa proyek yang menunjukkan cara saya merancang tampilan dan memastikan alurnya berjalan baik.",
         description:
-          "Saya tertarik pada project yang menuntut kombinasi antara presentasi visual yang jelas, struktur teknis yang bersih, dan perhatian pada pengalaman pengguna.",
+          "Setiap proyek saya pilih karena punya proses yang berbeda: ada yang fokus ke tampilan frontend, ada yang menonjolkan dokumentasi QA, dan ada juga yang memperkuat personal branding.",
       },
       contact: {
         kicker: "Kontak",
         title:
           "Kalau ada ide, kerja sama, atau peluang menarik, saya siap ngobrol.",
         description:
-          "Saya terbuka untuk diskusi project, eksplorasi role baru, atau sekadar bertukar insight seputar frontend dan quality assurance.",
+          "Saya terbuka untuk diskusi proyek, peluang kerja, atau sekadar bertukar cerita seputar frontend dan quality assurance.",
       },
     },
     about: {
       paragraphs: [
-        "Saya Michael, seorang mahasiswa IT yang tertarik membangun pengalaman web modern dengan fokus pada kejelasan interface, performa, dan kualitas perilaku aplikasi.",
-        "Pengalaman di area QA membuat saya lebih peka terhadap edge case, alur pengguna, dan detail yang sering luput saat development berjalan cepat.",
+        "Saya Michael, mahasiswa IT yang tertarik dengan pengembangan web, terutama bagaimana sebuah tampilan bisa terasa jelas, cepat dipahami, dan tetap nyaman digunakan.",
+        "Pengalaman di area QA membantu saya lebih peka terhadap alur pengguna, edge case, dan detail kecil yang sering terlewat saat proses development berjalan cepat.",
       ],
-      focusLabel: "Focus",
+      focusLabel: "Fokus",
       focusTitle: "React UI + QA Thinking",
-      workflowLabel: "Workflow",
+      workflowLabel: "Arah Desain",
       workflowText:
-        "Mulai dari struktur, interaksi, lalu validasi agar hasil lebih siap pakai.",
+        "Layout dibuat berbasis section yang rapi, dengan card ringan, kontras yang cukup, animasi halus, dan dark mode agar portofolio tetap nyaman dibaca di berbagai kondisi.",
     },
     highlights: [
       {
         number: "01",
         title: "Kejelasan Interface",
         description:
-          "Mendesain tampilan yang mudah dipahami tanpa membuat user berpikir dua kali.",
+          "Menyusun tampilan yang mudah dipahami tanpa membuat pengguna harus menebak-nebak.",
       },
       {
         number: "02",
         title: "Quality First",
         description:
-          "Lebih teliti pada detail UI, alur user, state, dan pengujian fungsi.",
+          "Lebih teliti pada detail UI, alur pengguna, state, dan pengujian fungsi.",
       },
       {
         number: "03",
         title: "Modern Workflow",
         description:
-          "Terus belajar tools baru untuk development yang lebih cepat dan terstruktur.",
+          "Terus belajar tools baru agar proses development lebih cepat, rapi, dan mudah dikembangkan.",
       },
     ],
     projects: [
       {
         title: "Web Destinasi Wisata",
         description:
-          "Pengembangan frontend untuk tugas kampus dengan fokus pada navigasi user, struktur halaman, dan pengalaman browsing yang nyaman.",
+          "Website destinasi wisata untuk tugas kampus. Saya menata halaman, navigasi, dan tampilan responsif agar informasinya mudah dicari dan nyaman dibaca.",
         tags: ["Responsive Layout", "Landing Page", "GitHub Pages"],
         chip: "Frontend Web",
         palette:
@@ -273,7 +271,7 @@ const translations = {
       {
         title: "QA Testing Portfolio",
         description:
-          "Dokumentasi bug reporting, test case, dan functional testing pada modul LMS.",
+          "Dokumentasi pengujian untuk modul LMS, mulai dari test case, functional testing, sampai bug report yang rapi dan mudah ditindaklanjuti.",
         tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
         chip: "QA Documentation",
         palette:
@@ -282,7 +280,7 @@ const translations = {
       {
         title: "Personal Web Repo",
         description:
-          "Membangun ulang portofolio ini dengan React, Tailwind, dan dark mode untuk pengalaman yang lebih modern.",
+          "Portofolio pribadi yang saya bangun ulang dengan React, Tailwind, animasi ringan, dan dark mode supaya tampil lebih personal sekaligus tetap profesional.",
         tags: ["UI Refresh", "Component Based", "ReactJS"],
         chip: "Personal Branding",
         palette:
@@ -291,21 +289,21 @@ const translations = {
     ],
     contacts: [
       {
-        text: "Jika ingin berdiskusi tentang proyek, kolaborasi, atau peluang kerja, hubungi saya melalui email berikut.",
+        text: "Kalau ingin membahas proyek, kolaborasi, atau peluang kerja, silakan hubungi saya lewat email.",
         label: "Kirim Email ke Michael",
       },
       {
-        text: "Lihat repository dan perkembangan project saya secara langsung di GitHub.",
+        text: "Lihat repository dan perkembangan proyek saya secara langsung di GitHub.",
         label: "GitHub Michael",
       },
       {
-        text: "Untuk koneksi profesional dan update pengalaman kerja, saya juga tersedia di LinkedIn.",
+        text: "Untuk koneksi profesional dan update pengalaman, saya juga bisa dihubungi lewat LinkedIn.",
         label: "LinkedIn Michael",
       },
     ],
     projectLinkLabel: "Lihat Project",
     footer:
-      "© 2026 Michael Garets Kon. Dibangun dengan React, Tailwind, dan sistem visual yang lebih tajam.",
+      "© 2026 Michael Garets Kon. Dibangun dengan React, Tailwind, dan desain visual yang bersih.",
   },
   en: {
     navLinks: [
@@ -317,9 +315,9 @@ const translations = {
     navSubtitle: "Frontend Developer | QA Mindset",
     hero: {
       heading:
-        "Michael Garets Kon | IT Quality Assurance & Web Development Portfolio",
+        "Michael Garets Kon | Frontend & Quality Assurance Portfolio",
       subheading:
-        "I combine modern frontend approaches with a QA mindset to create digital experiences that are not only appealing, but also stable, clear, and confident.",
+        "I build clean, responsive, and easy-to-use web interfaces, while bringing a QA mindset so every flow feels clearer and more ready for real users.",
       ctaProjects: "View Projects",
       ctaContact: "Contact Me",
     },
@@ -334,75 +332,75 @@ const translations = {
     metrics: [
       {
         value: "Frontend",
-        label: "Interfaces focused on clarity, rhythm, and responsiveness.",
+        label: "Creating interfaces that feel clear, responsive, and easy to read.",
       },
       {
         value: "QA Driven",
-        label: "A careful, measurable workflow built for user comfort.",
+        label: "Checking flows, details, and functions so the user experience feels safer.",
       },
       {
         value: "GitHub",
-        label: "Collaboration, documentation, and cleaner versioning.",
+        label: "Keeping documentation and versioning organized throughout the process.",
       },
     ],
     sectionHeadings: {
       about: {
         kicker: "About Me",
         title:
-          "Clean frontend feels stronger when supported by the right small details.",
+          "I enjoy building interfaces that are simple, clear, and comfortable to use.",
         description:
-          "I enjoy combining directed visuals, tidy component structure, and QA habits to ensure the final result is not only nice to look at, but also pleasant to use.",
+          "This portfolio uses a clean visual direction with generous spacing, soft transparent cards, photos as the main focus, and blue-purple accents to keep it modern without feeling too crowded.",
       },
       projects: {
         kicker: "Selected Work",
-        title: "Projects that show how I think, design, and build flows.",
+        title: "A few projects that show how I design interfaces and keep the flow working well.",
         description:
-          "I’m interested in projects that require a mix of clear presentation, clean technical structure, and attention to user experience.",
+          "I am interested in projects that combine clear visual presentation, clean technical structure, and attention to user experience.",
       },
       contact: {
         kicker: "Contact",
         title:
-          "If there’s an idea, collaboration, or interesting opportunity, I’m ready to chat.",
+          "If there is an idea, collaboration, or interesting opportunity, I am ready to chat.",
         description:
-          "I’m open to project discussions, new roles, or simply trading insights about frontend and quality assurance.",
+          "I am open to project discussions, new roles, or simply exchanging thoughts about frontend and quality assurance.",
       },
     },
     about: {
       paragraphs: [
-        "I’m Michael, an IT student who enjoys building modern web experiences with a focus on interface clarity, performance, and application quality.",
+        "I am Michael, an IT student who enjoys building modern web experiences with a focus on interface clarity, performance, and application quality.",
         "Experience in QA makes me more aware of edge cases, user flows, and details that are often overlooked during fast-paced development.",
       ],
       focusLabel: "Focus",
       focusTitle: "React UI + QA Thinking",
-      workflowLabel: "Workflow",
+      workflowLabel: "Design Direction",
       workflowText:
-        "Starting from structure, interaction, and validation so the result feels ready to use.",
+        "The layout is built around clear sections, light cards, enough contrast, subtle motion, and dark mode so the portfolio stays comfortable to read in different conditions.",
     },
     highlights: [
       {
         number: "01",
         title: "Interface Clarity",
         description:
-          "Designing interfaces that are easy to understand without making users think twice.",
+          "Arranging interfaces that are easy to understand without making users guess.",
       },
       {
         number: "02",
         title: "Quality First",
         description:
-          "Being more precise with UI details, user flow, state, and function testing.",
+          "Paying closer attention to UI details, user flows, states, and functional testing.",
       },
       {
         number: "03",
         title: "Modern Workflow",
         description:
-          "Continuously learning new tools for faster, more structured development.",
+          "Continuously learning new tools so development feels faster, cleaner, and easier to grow.",
       },
     ],
     projects: [
       {
         title: "Tourism Destination Website",
         description:
-          "Frontend development for a campus assignment with a focus on user navigation, page structure, and a comfortable browsing experience.",
+          "A tourism destination website for a campus assignment. I worked on the page structure, navigation, and responsive layout so the information is easier to find and read.",
         tags: ["Responsive Layout", "Landing Page", "GitHub Pages"],
         chip: "Frontend Web",
         palette:
@@ -412,7 +410,7 @@ const translations = {
       {
         title: "QA Testing Portfolio",
         description:
-          "Bug reporting documentation, test cases, and functional testing for an LMS module.",
+          "Testing documentation for an LMS module, covering test cases, functional testing, and bug reports that are clear enough to follow up.",
         tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
         chip: "QA Documentation",
         palette:
@@ -421,7 +419,7 @@ const translations = {
       {
         title: "Personal Web Repo",
         description:
-          "Rebuilding this portfolio with React, Tailwind, and dark mode for a more modern experience.",
+          "A personal portfolio rebuilt with React, Tailwind, light motion, and dark mode so it feels more personal while still looking professional.",
         tags: ["UI Refresh", "Component Based", "ReactJS"],
         chip: "Personal Branding",
         palette:
@@ -430,7 +428,7 @@ const translations = {
     ],
     contacts: [
       {
-        text: "If you’d like to discuss a project, collaboration, or job opportunity, reach out via email below.",
+        text: "If you would like to discuss a project, collaboration, or job opportunity, reach out via email.",
         label: "Send an Email to Michael",
       },
       {
@@ -438,13 +436,13 @@ const translations = {
         label: "GitHub Michael",
       },
       {
-        text: "For professional connections and experience updates, I’m also available on LinkedIn.",
+        text: "For professional connections and experience updates, I am also available on LinkedIn.",
         label: "LinkedIn Michael",
       },
     ],
     projectLinkLabel: "View Project",
     footer:
-      "© 2026 Michael Garets Kon. Built with React, Tailwind, and a sharper visual system.",
+      "© 2026 Michael Garets Kon. Built with React, Tailwind, and a clean visual direction.",
   },
 };
 
@@ -497,12 +495,10 @@ const contactItems = [
       <svg
         viewBox="0 0 24 24"
         fill="currentColor"
-        className="h-7 w-7"
+        className="h-7 w-7 translate-y-[1px] scale-110"
         aria-hidden="true"
       >
-        <path d="M4.5 8.25h3.75V19.5H4.5V8.25Z" />
-        <path d="M6.375 3a2.125 2.125 0 1 0 0 4.25 2.125 2.125 0 0 0 0-4.25Z" />
-        <path d="M9.75 8.25h3.375v1.645c.47-.864 1.602-1.645 3.106-1.645 3.325 0 3.937 2.188 3.937 5.034V19.5h-3.75v-4.688c0-1.118-.02-2.556-1.56-2.556-1.563 0-1.802 1.221-1.802 2.477V19.5H9.75V8.25Z" />
+        <path d="M4.983 8.855h3.473V20H4.983V8.855ZM6.72 3.5a2.015 2.015 0 1 1 0 4.03 2.015 2.015 0 0 1 0-4.03ZM10.628 8.855h3.33v1.523h.047c.464-.88 1.596-1.808 3.285-1.808 3.513 0 4.162 2.313 4.162 5.319V20h-3.47v-5.417c0-1.292-.023-2.954-1.8-2.954-1.802 0-2.078 1.408-2.078 2.86V20h-3.476V8.855Z" />
       </svg>
     ),
   },
@@ -957,49 +953,53 @@ function App() {
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {projects.map((project) => (
-              <article
-                key={project.title}
-                ref={revealRef}
-                className="reveal group overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-white/5"
-              >
-                <div
-                  className={`relative overflow-hidden rounded-[1.5rem] p-6 ${project.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
-                  style={
-                    project.image
-                      ? { backgroundImage: `url(${project.image})` }
-                      : undefined
-                  }
-                >
-                  <div className="absolute inset-0 bg-slate-950/30" />
-                  <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/20 blur-2xl" />
-                  <span className="relative z-10 inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
-                    {project.chip}
-                  </span>
-                  <div className="mt-16 relative z-10">
-                    <p className="max-w-[12rem] font-display text-2xl font-bold text-white">
-                      {project.title}
-                    </p>
-                  </div>
-                </div>
+            {content.projects.map((project, index) => {
+              const visual = projects[index] ?? {};
 
-                <div className="px-1 pt-6">
-                  <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
-                    {project.description}
-                  </p>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+              return (
+                <article
+                  key={project.title}
+                  ref={revealRef}
+                  className="reveal group overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-white/5"
+                >
+                  <div
+                    className={`relative overflow-hidden rounded-[1.5rem] p-6 ${visual.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
+                    style={
+                      visual.image
+                        ? { backgroundImage: `url(${visual.image})` }
+                        : undefined
+                    }
+                  >
+                    <div className="absolute inset-0 bg-slate-950/30" />
+                    <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/20 blur-2xl" />
+                    <span className="relative z-10 inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
+                      {project.chip}
+                    </span>
+                    <div className="mt-16 relative z-10">
+                      <p className="max-w-[12rem] font-display text-2xl font-bold text-white">
+                        {project.title}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="px-1 pt-6">
+                    <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+                      {project.description}
+                    </p>
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <li
+                          key={tag}
+                          className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -1022,7 +1022,7 @@ function App() {
                 <div
                   key={contact.title}
                   ref={revealRef}
-                  className="reveal rounded-[2rem] border border-white/60 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+                  className="reveal flex h-full flex-col items-center rounded-[2rem] border border-white/60 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
                 >
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
                     {contact.icon}
@@ -1030,7 +1030,7 @@ function App() {
                   <h3 className="mt-5 font-display text-2xl font-bold text-slate-950 dark:text-white">
                     {contact.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  <p className="mt-3 min-h-[5.25rem] text-sm leading-7 text-slate-600 dark:text-slate-300">
                     {contactText.text}
                   </p>
                   <a
