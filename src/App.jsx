@@ -1,4 +1,5 @@
 ﻿import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import foto1 from "../assets/foto-1.jpeg";
 import foto2 from "../assets/foto-2.jpeg";
@@ -43,6 +44,8 @@ const photos = [
   },
 ];
 
+const projectFilters = ["All", "Frontend", "Backend", "UI/UX", "Game"];
+
 const highlights = [
   {
     number: "01",
@@ -71,6 +74,7 @@ const projects = [
       "Website destinasi wisata untuk tugas kampus. Saya menata halaman, navigasi, dan tampilan responsif agar informasinya mudah dicari dan nyaman dibaca.",
     tags: ["Responsive Layout", "Landing Page", "GitHub Pages"],
     chip: "Frontend Web",
+    categories: ["Frontend"],
     palette:
       "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
     image: Web_Destinasi,
@@ -82,6 +86,7 @@ const projects = [
       "Dokumentasi pengujian untuk modul LMS, mulai dari test case, functional testing, sampai bug report yang rapi dan mudah ditindaklanjuti.",
     tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
     chip: "QA Documentation",
+    categories: ["UI/UX"],
     palette:
       "from-slate-900 via-slate-700 to-blue-500 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
     image: QA_foto,
@@ -93,6 +98,7 @@ const projects = [
       "Portofolio pribadi yang saya bangun ulang dengan React, Tailwind, animasi ringan, dan dark mode supaya tampil lebih personal sekaligus tetap profesional.",
     tags: ["UI Refresh", "Component Based", "ReactJS"],
     chip: "Personal Branding",
+    categories: ["Frontend", "UI/UX"],
     palette:
       "from-fuchsia-500 via-violet-500 to-indigo-500 dark:from-fuchsia-300 dark:via-violet-300 dark:to-indigo-300",
     image: PortoWeb_Michael,
@@ -264,6 +270,7 @@ const translations = {
           "Website destinasi wisata untuk tugas kampus. Saya menata halaman, navigasi, dan tampilan responsif agar informasinya mudah dicari dan nyaman dibaca.",
         tags: ["Responsive Layout", "Landing Page", "GitHub Pages"],
         chip: "Frontend Web",
+        categories: ["Frontend"],
         palette:
           "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
         link: "https://michaelgarets.github.io/destinasi-wisata-smt2/",
@@ -274,6 +281,7 @@ const translations = {
           "Dokumentasi pengujian untuk modul LMS, mulai dari test case, functional testing, sampai bug report yang rapi dan mudah ditindaklanjuti.",
         tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
         chip: "QA Documentation",
+        categories: ["UI/UX"],
         palette:
           "from-slate-900 via-slate-700 to-blue-500 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
       },
@@ -283,6 +291,7 @@ const translations = {
           "Portofolio pribadi yang saya bangun ulang dengan React, Tailwind, animasi ringan, dan dark mode supaya tampil lebih personal sekaligus tetap profesional.",
         tags: ["UI Refresh", "Component Based", "ReactJS"],
         chip: "Personal Branding",
+        categories: ["Frontend", "UI/UX"],
         palette:
           "from-fuchsia-500 via-violet-500 to-indigo-500 dark:from-fuchsia-300 dark:via-violet-300 dark:to-indigo-300",
       },
@@ -403,6 +412,7 @@ const translations = {
           "A tourism destination website for a campus assignment. I worked on the page structure, navigation, and responsive layout so the information is easier to find and read.",
         tags: ["Responsive Layout", "Landing Page", "GitHub Pages"],
         chip: "Frontend Web",
+        categories: ["Frontend"],
         palette:
           "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
         link: "https://michaelgarets.github.io/destinasi-wisata-smt2/",
@@ -413,6 +423,7 @@ const translations = {
           "Testing documentation for an LMS module, covering test cases, functional testing, and bug reports that are clear enough to follow up.",
         tags: ["Bug Reporting", "Functional Testing", "Testing Workflow"],
         chip: "QA Documentation",
+        categories: ["UI/UX"],
         palette:
           "from-slate-900 via-slate-700 to-blue-500 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
       },
@@ -422,6 +433,7 @@ const translations = {
           "A personal portfolio rebuilt with React, Tailwind, light motion, and dark mode so it feels more personal while still looking professional.",
         tags: ["UI Refresh", "Component Based", "ReactJS"],
         chip: "Personal Branding",
+        categories: ["Frontend", "UI/UX"],
         palette:
           "from-fuchsia-500 via-violet-500 to-indigo-500 dark:from-fuchsia-300 dark:via-violet-300 dark:to-indigo-300",
       },
@@ -529,33 +541,141 @@ const themeIcons = {
   ),
 };
 
-function useReveal() {
-  const elementsRef = useRef([]);
+const fadeUp = {
+  hidden: { opacity: 0, y: 34 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay,
+      duration: 0.78,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+const cardMotion = {
+  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay,
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+  exit: {
+    opacity: 0,
+    y: 14,
+    scale: 0.98,
+    transition: { duration: 0.24, ease: "easeOut" },
+  },
+};
+
+function Reveal({ children, className = "", delay = 0, as = motion.div }) {
+  const Component = as;
+
+  return (
+    <Component
+      className={className}
+      custom={delay}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.22 }}
+    >
+      {children}
+    </Component>
+  );
+}
+
+function CursorGlow() {
+  const [position, setPosition] = useState({ x: -100, y: -100 });
+  const [trail, setTrail] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("reveal-visible");
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
+    let frameId;
+    let target = { x: -100, y: -100 };
 
-    elementsRef.current.forEach((element) => {
-      if (element) observer.observe(element);
-    });
+    const move = (event) => {
+      target = { x: event.clientX, y: event.clientY };
+      setPosition(target);
+    };
 
-    return () => observer.disconnect();
+    const animate = () => {
+      setTrail((current) => ({
+        x: current.x + (target.x - current.x) * 0.16,
+        y: current.y + (target.y - current.y) * 0.16,
+      }));
+      frameId = window.requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("pointermove", move);
+    frameId = window.requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
-  return (element) => {
-    if (element && !elementsRef.current.includes(element)) {
-      elementsRef.current.push(element);
-    }
-  };
+  return (
+    <div className="pointer-events-none fixed inset-0 z-[60] hidden mix-blend-screen md:block">
+      <motion.div
+        className="absolute h-3 w-3 rounded-full bg-cyan-300/70 shadow-[0_0_24px_rgba(34,211,238,0.45)]"
+        animate={{ x: position.x - 6, y: position.y - 6 }}
+        transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.25 }}
+      />
+      <motion.div
+        className="absolute h-12 w-12 rounded-full border border-cyan-200/20 bg-cyan-300/10 blur-[1px]"
+        animate={{ x: trail.x - 24, y: trail.y - 24 }}
+        transition={{ duration: 0.08, ease: "linear" }}
+      />
+    </div>
+  );
+}
+
+function AmbientBackground() {
+  return (
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <motion.div
+        className="absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.18),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.16),_transparent_26%),linear-gradient(180deg,_rgba(255,255,255,0.94),_rgba(248,250,252,1))] dark:bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.12),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(192,132,252,0.15),_transparent_28%),linear-gradient(180deg,_rgba(2,6,23,1),_rgba(3,7,18,1))]"
+        animate={{ backgroundPosition: ["0% 0%", "55% 35%", "0% 0%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute left-[-8rem] top-28 h-72 w-72 rounded-full bg-cyan-400/18 blur-3xl dark:bg-cyan-500/10"
+        animate={{ x: [0, 26, -8, 0], y: [0, 18, 36, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute right-[-7rem] top-40 h-80 w-80 rounded-full bg-fuchsia-400/16 blur-3xl dark:bg-fuchsia-500/10"
+        animate={{ x: [0, -22, 8, 0], y: [0, 24, 8, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="absolute inset-0 opacity-[0.18] dark:opacity-[0.12]">
+        {Array.from({ length: 16 }).map((_, index) => (
+          <motion.span
+            key={index}
+            className="absolute h-1 w-1 rounded-full bg-slate-400/50 dark:bg-cyan-200/50"
+            style={{
+              left: `${8 + ((index * 19) % 86)}%`,
+              top: `${10 + ((index * 23) % 78)}%`,
+            }}
+            animate={{ y: [0, -12, 0], opacity: [0.25, 0.7, 0.25] }}
+            transition={{
+              duration: 5 + (index % 6),
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: index * 0.18,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function useTheme() {
@@ -588,12 +708,12 @@ function SectionHeading({
   title,
   description,
   align = "left",
-  revealRef,
+  delay = 0,
 }) {
   return (
-    <div
-      ref={revealRef}
-      className={`reveal max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}
+    <Reveal
+      className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}
+      delay={delay}
     >
       <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-600 dark:text-cyan-300">
         {kicker}
@@ -606,18 +726,28 @@ function SectionHeading({
           {description}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   );
 }
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeFilter, setActiveFilter] = useState("All");
   const [language, setLanguage] = useState("id");
   const content = translations[language];
-  const revealRef = useReveal();
   const intervalRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
+  const localizedProjects = content.projects.map((project, index) => ({
+    ...project,
+    visual: projects[index],
+  }));
+  const filteredProjects =
+    activeFilter === "All"
+      ? localizedProjects
+      : localizedProjects.filter((project) =>
+          project.categories?.includes(activeFilter),
+        );
 
   useEffect(() => {
     const onScroll = () => {
@@ -680,12 +810,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[40rem] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.18),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.16),_transparent_26%),linear-gradient(180deg,_rgba(255,255,255,0.9),_rgba(248,250,252,1))] dark:bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.12),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(192,132,252,0.18),_transparent_24%),linear-gradient(180deg,_rgba(2,6,23,1),_rgba(3,7,18,1))]" />
-        <div className="absolute left-[-8rem] top-28 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl dark:bg-cyan-500/10" />
-        <div className="absolute right-[-7rem] top-40 h-80 w-80 rounded-full bg-fuchsia-400/20 blur-3xl dark:bg-fuchsia-500/10" />
-      </div>
+    <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-100">
+      <AmbientBackground />
+      <CursorGlow />
 
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -733,10 +860,32 @@ function App() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+              className="group relative inline-flex h-11 w-[4.75rem] items-center rounded-full border border-slate-200/70 bg-white/80 px-1.5 text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
               aria-label={`Aktifkan mode ${theme === "dark" ? "terang" : "gelap"}`}
             >
-              {themeIcons[theme]}
+              <motion.span
+                className="absolute h-8 w-8 rounded-full bg-slate-950 shadow-[0_12px_28px_-16px_rgba(15,23,42,0.85)] dark:bg-white"
+                animate={{ x: theme === "dark" ? 32 : 0 }}
+                transition={{ type: "spring", stiffness: 420, damping: 34 }}
+              />
+              <span
+                className={`relative z-10 flex h-8 w-8 items-center justify-center transition-colors ${
+                  theme === "light"
+                    ? "text-white"
+                    : "text-slate-400 dark:text-slate-500"
+                }`}
+              >
+                {themeIcons.light}
+              </span>
+              <span
+                className={`relative z-10 flex h-8 w-8 items-center justify-center transition-colors ${
+                  theme === "dark"
+                    ? "text-slate-950"
+                    : "text-slate-400 dark:text-slate-300"
+                }`}
+              >
+                {themeIcons.dark}
+              </span>
             </button>
           </div>
         </div>
@@ -744,7 +893,7 @@ function App() {
 
       <main>
         <section className="mx-auto grid w-[min(92%,1200px)] gap-14 py-14 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
-          <div className="reveal space-y-8" ref={revealRef}>
+          <Reveal className="space-y-8" delay={0.02}>
             <div className="inline-flex items-center gap-3 rounded-full border border-cyan-200/70 bg-white/70 px-4 py-2 text-sm font-semibold text-cyan-700 shadow-sm backdrop-blur dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-200">
               <span className="h-2.5 w-2.5 rounded-full bg-cyan-500" />
               {content.topBadge}
@@ -777,9 +926,14 @@ function App() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
-              {content.metrics.map((metric) => (
-                <div
+              {content.metrics.map((metric, index) => (
+                <motion.div
                   key={metric.value}
+                  variants={cardMotion}
+                  custom={0.18 + index * 0.08}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
                   className="rounded-3xl border border-white/60 bg-white/75 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur dark:border-white/10 dark:bg-white/5"
                 >
                   <p className="font-display text-xl font-bold text-slate-950 dark:text-white">
@@ -788,12 +942,12 @@ function App() {
                   <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
                     {metric.label}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="reveal" ref={revealRef}>
+          <Reveal delay={0.16}>
             <div className="relative overflow-hidden rounded-[2rem] border border-white/50 bg-white/65 p-4 shadow-[0_30px_120px_-40px_rgba(14,165,233,0.45)] backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
               <div className="absolute inset-x-8 top-0 h-28 rounded-b-full bg-gradient-to-r from-cyan-400/30 via-sky-400/20 to-fuchsia-400/25 blur-3xl dark:from-cyan-500/20 dark:via-sky-500/10 dark:to-fuchsia-500/15" />
               <div
@@ -866,7 +1020,7 @@ function App() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <section
@@ -877,13 +1031,13 @@ function App() {
             kicker={content.sectionHeadings.about.kicker}
             title={content.sectionHeadings.about.title}
             description={content.sectionHeadings.about.description}
-            revealRef={revealRef}
+            delay={0.03}
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <div
-              ref={revealRef}
-              className="reveal rounded-[2rem] border border-white/60 bg-white/80 p-8 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+            <Reveal
+              className="rounded-[2rem] border border-white/60 bg-white/80 p-8 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+              delay={0.08}
             >
               <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
                 <div className="space-y-5">
@@ -913,14 +1067,18 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
             <div className="grid gap-5">
-              {content.highlights.map((item) => (
-                <div
+              {content.highlights.map((item, index) => (
+                <motion.div
                   key={item.number}
-                  ref={revealRef}
-                  className="reveal rounded-[1.75rem] border border-white/60 bg-gradient-to-br from-white to-slate-100/80 p-6 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)] dark:border-white/10 dark:from-white/10 dark:to-white/5"
+                  variants={cardMotion}
+                  custom={0.12 + index * 0.1}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="rounded-[1.75rem] border border-white/60 bg-gradient-to-br from-white to-slate-100/80 p-6 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)] dark:border-white/10 dark:from-white/10 dark:to-white/5"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
@@ -935,7 +1093,7 @@ function App() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -949,19 +1107,57 @@ function App() {
             kicker={content.sectionHeadings.projects.kicker}
             title={content.sectionHeadings.projects.title}
             description={content.sectionHeadings.projects.description}
-            revealRef={revealRef}
+            delay={0.05}
           />
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {content.projects.map((project, index) => {
-              const visual = projects[index] ?? {};
+          <Reveal
+            className="mt-8 flex flex-wrap gap-3 rounded-[1.5rem] border border-white/60 bg-white/65 p-2 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
+            delay={0.12}
+          >
+            {projectFilters.map((filter) => {
+              const isActive = activeFilter === filter;
 
               return (
-                <article
-                  key={project.title}
-                  ref={revealRef}
-                  className="reveal group overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-white/5"
+                <button
+                  type="button"
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`relative rounded-full px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${
+                    isActive
+                      ? "text-white dark:text-slate-950"
+                      : "text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+                  }`}
                 >
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-project-filter"
+                      className="absolute inset-0 rounded-full bg-slate-950 shadow-[0_16px_35px_-20px_rgba(15,23,42,0.85)] dark:bg-white"
+                      transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                    />
+                  )}
+                  <span className="relative z-10">{filter}</span>
+                </button>
+              );
+            })}
+          </Reveal>
+
+          <motion.div layout className="mt-8 grid gap-6 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => {
+                const visual = project.visual ?? {};
+
+                return (
+                  <motion.article
+                    layout
+                    key={`${activeFilter}-${project.title}`}
+                    variants={cardMotion}
+                    custom={index * 0.08}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    whileHover={{ y: -6 }}
+                    className="group overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
+                  >
                   <div
                     className={`relative overflow-hidden rounded-[1.5rem] p-6 ${visual.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
                     style={
@@ -996,11 +1192,36 @@ function App() {
                         </li>
                       ))}
                     </ul>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                      >
+                        {content.projectLinkLabel}
+                      </a>
+                    )}
                   </div>
-                </article>
+                </motion.article>
               );
             })}
-          </div>
+            </AnimatePresence>
+          </motion.div>
+
+          <AnimatePresence>
+            {filteredProjects.length === 0 && (
+              <motion.div
+                className="mt-8 rounded-[1.5rem] border border-dashed border-slate-300 bg-white/55 p-8 text-center text-sm leading-7 text-slate-500 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-slate-400"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.32 }}
+              >
+                Belum ada project untuk kategori {activeFilter}. Nanti bisa ditambahkan saat project baru sudah siap.
+              </motion.div>
+            )}
+          </AnimatePresence>
         </section>
 
         <section
@@ -1012,17 +1233,22 @@ function App() {
             title={content.sectionHeadings.contact.title}
             description={content.sectionHeadings.contact.description}
             align="center"
-            revealRef={revealRef}
+            delay={0.06}
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {content.contacts.map((contactText, index) => {
               const contact = contactItems[index];
               return (
-                <div
+                <motion.div
                   key={contact.title}
-                  ref={revealRef}
-                  className="reveal flex h-full flex-col items-center rounded-[2rem] border border-white/60 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+                  variants={cardMotion}
+                  custom={0.1 + index * 0.09}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  whileHover={{ y: -5 }}
+                  className="flex h-full flex-col items-center rounded-[2rem] border border-white/60 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
                 >
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
                     {contact.icon}
@@ -1041,7 +1267,7 @@ function App() {
                   >
                     {contactText.label}
                   </a>
-                </div>
+                </motion.div>
               );
             })}
           </div>

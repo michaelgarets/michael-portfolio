@@ -13,6 +13,37 @@
 
   body {
     @apply font-sans antialiased;
+    transition:
+      background-color 500ms ease,
+      color 500ms ease;
+  }
+
+  ::selection {
+    @apply bg-cyan-300/40 text-slate-950;
+  }
+
+  .dark ::selection {
+    @apply bg-cyan-300/25 text-white;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
