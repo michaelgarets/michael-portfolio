@@ -21,11 +21,13 @@ const metrics = [
   },
   {
     value: "QA Driven",
-    label: "Mengecek alur, detail, dan fungsi agar pengalaman pengguna lebih aman.",
+    label:
+      "Mengecek alur, detail, dan fungsi agar pengalaman pengguna lebih aman.",
   },
   {
     value: "GitHub",
-    label: "Menjaga dokumentasi dan versioning supaya proses kerja lebih tertata.",
+    label:
+      "Menjaga dokumentasi dan versioning supaya proses kerja lebih tertata.",
   },
 ];
 
@@ -180,8 +182,7 @@ const translations = {
     topBadge: "Portofolio 2026 | React | Tailwind",
     navSubtitle: "Frontend Developer | Pola Pikir QA",
     hero: {
-      heading:
-        "Michael Garets Kon | Portofolio Frontend & Quality Assurance",
+      heading: "Michael Garets Kon | Portofolio Frontend & Quality Assurance",
       subheading:
         "Saya membangun tampilan web yang rapi, responsif, dan mudah digunakan, sambil membawa cara berpikir QA agar setiap alur terasa lebih jelas dan siap dipakai.",
       ctaProjects: "Lihat Proyek",
@@ -189,8 +190,7 @@ const translations = {
     },
     profileCard: {
       label: "Branding Pribadi",
-      description:
-        "Mahasiswa IT yang fokus pada frontend dan kualitas produk.",
+      description: "Mahasiswa IT yang fokus pada frontend dan kualitas produk.",
       previous: "Sebelumnya",
       next: "Berikutnya",
       photoAria: "Tampilkan foto",
@@ -202,11 +202,13 @@ const translations = {
       },
       {
         value: "QA Driven",
-        label: "Mengecek alur, detail, dan fungsi agar pengalaman pengguna lebih aman.",
+        label:
+          "Mengecek alur, detail, dan fungsi agar pengalaman pengguna lebih aman.",
       },
       {
         value: "GitHub",
-        label: "Menjaga dokumentasi dan versioning supaya proses kerja lebih tertata.",
+        label:
+          "Menjaga dokumentasi dan versioning supaya proses kerja lebih tertata.",
       },
     ],
     sectionHeadings: {
@@ -273,7 +275,7 @@ const translations = {
         categories: ["Frontend"],
         palette:
           "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
-        link: "https://michaelgarets.github.io/destinasi-wisata-smt2/",
+        link: "https://web-destinasi.vercel.app/index.html",
       },
       {
         title: "QA Testing Portfolio",
@@ -323,8 +325,7 @@ const translations = {
     topBadge: "Portfolio 2026 | React | Tailwind",
     navSubtitle: "Frontend Developer | QA Mindset",
     hero: {
-      heading:
-        "Michael Garets Kon | Frontend & Quality Assurance Portfolio",
+      heading: "Michael Garets Kon | Frontend & Quality Assurance Portfolio",
       subheading:
         "I build clean, responsive, and easy-to-use web interfaces, while bringing a QA mindset so every flow feels clearer and more ready for real users.",
       ctaProjects: "View Projects",
@@ -332,8 +333,7 @@ const translations = {
     },
     profileCard: {
       label: "Personal Branding",
-      description:
-        "IT student focused on frontend and product quality.",
+      description: "IT student focused on frontend and product quality.",
       previous: "Prev",
       next: "Next",
       photoAria: "Show photo",
@@ -341,15 +341,18 @@ const translations = {
     metrics: [
       {
         value: "Frontend",
-        label: "Creating interfaces that feel clear, responsive, and easy to read.",
+        label:
+          "Creating interfaces that feel clear, responsive, and easy to read.",
       },
       {
         value: "QA Driven",
-        label: "Checking flows, details, and functions so the user experience feels safer.",
+        label:
+          "Checking flows, details, and functions so the user experience feels safer.",
       },
       {
         value: "GitHub",
-        label: "Keeping documentation and versioning organized throughout the process.",
+        label:
+          "Keeping documentation and versioning organized throughout the process.",
       },
     ],
     sectionHeadings: {
@@ -362,7 +365,8 @@ const translations = {
       },
       projects: {
         kicker: "Selected Work",
-        title: "A few projects that show how I design interfaces and keep the flow working well.",
+        title:
+          "A few projects that show how I design interfaces and keep the flow working well.",
         description:
           "I am interested in projects that combine clear visual presentation, clean technical structure, and attention to user experience.",
       },
@@ -415,7 +419,7 @@ const translations = {
         categories: ["Frontend"],
         palette:
           "from-sky-500 via-cyan-500 to-emerald-400 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
-        link: "https://michaelgarets.github.io/destinasi-wisata-smt2/",
+        link: "https://web-destinasi.vercel.app/index.html",
       },
       {
         title: "QA Testing Portfolio",
@@ -593,45 +597,32 @@ function Reveal({ children, className = "", delay = 0, as = motion.div }) {
 
 function CursorGlow() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
-  const [trail, setTrail] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
-    let frameId;
-    let target = { x: -100, y: -100 };
-
     const move = (event) => {
-      target = { x: event.clientX, y: event.clientY };
-      setPosition(target);
-    };
-
-    const animate = () => {
-      setTrail((current) => ({
-        x: current.x + (target.x - current.x) * 0.16,
-        y: current.y + (target.y - current.y) * 0.16,
-      }));
-      frameId = window.requestAnimationFrame(animate);
+      setPosition({ x: event.clientX, y: event.clientY });
     };
 
     window.addEventListener("pointermove", move);
-    frameId = window.requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("pointermove", move);
-      window.cancelAnimationFrame(frameId);
     };
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[60] hidden mix-blend-screen md:block">
-      <motion.div
-        className="absolute h-3 w-3 rounded-full bg-cyan-300/70 shadow-[0_0_24px_rgba(34,211,238,0.45)]"
-        animate={{ x: position.x - 6, y: position.y - 6 }}
-        transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.25 }}
+    <div className="pointer-events-none fixed inset-0 z-[60] hidden md:block">
+      <div
+        className="absolute h-3.5 w-3.5 rounded-full bg-slate-950 shadow-[0_0_22px_rgba(14,165,233,0.3)] dark:bg-white dark:shadow-[0_0_26px_rgba(34,211,238,0.4)]"
+        style={{
+          transform: `translate3d(${position.x - 7}px, ${position.y - 7}px, 0)`,
+        }}
       />
-      <motion.div
-        className="absolute h-12 w-12 rounded-full border border-cyan-200/20 bg-cyan-300/10 blur-[1px]"
-        animate={{ x: trail.x - 24, y: trail.y - 24 }}
-        transition={{ duration: 0.08, ease: "linear" }}
+      <div
+        className="absolute h-8 w-8 rounded-full border border-cyan-300/25 bg-cyan-300/10"
+        style={{
+          transform: `translate3d(${position.x - 16}px, ${position.y - 16}px, 0)`,
+        }}
       />
     </div>
   );
@@ -810,14 +801,14 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-100">
+    <div className="portfolio-shell min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-100 pt-24">
       <AmbientBackground />
       <CursorGlow />
 
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-white/40 bg-white/70 shadow-[0_18px_60px_-28px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70"
+            ? "border-b border-slate-300 bg-white/70 shadow-[0_18px_60px_-28px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70"
             : "bg-transparent"
         }`}
       >
@@ -832,7 +823,7 @@ function App() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <ul className="flex flex-wrap items-center gap-2 rounded-full border border-slate-200/70 bg-white/75 p-1 shadow-sm backdrop-blur md:bg-white/65 dark:border-white/10 dark:bg-white/5">
+            <ul className="flex flex-wrap items-center gap-2 rounded-full border border-slate-300 bg-white/75 p-1 shadow-sm backdrop-blur md:bg-white/65 dark:border-white/10 dark:bg-white/5">
               {content.navLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -851,7 +842,7 @@ function App() {
               onClick={() =>
                 setLanguage((current) => (current === "id" ? "en" : "id"))
               }
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white/80 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
               aria-label={`Switch language to ${language === "id" ? "English" : "Bahasa Indonesia"}`}
             >
               {language === "id" ? "EN" : "ID"}
@@ -860,7 +851,7 @@ function App() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="group relative inline-flex h-11 w-[4.75rem] items-center rounded-full border border-slate-200/70 bg-white/80 px-1.5 text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+              className="group relative inline-flex h-11 w-[4.75rem] items-center rounded-full border border-slate-300 bg-white/80 px-1.5 text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
               aria-label={`Aktifkan mode ${theme === "dark" ? "terang" : "gelap"}`}
             >
               <motion.span
@@ -934,7 +925,7 @@ function App() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
-                  className="rounded-3xl border border-white/60 bg-white/75 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+                  className="rounded-3xl border border-slate-300 bg-white/75 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur dark:border-white/10 dark:bg-white/5"
                 >
                   <p className="font-display text-xl font-bold text-slate-950 dark:text-white">
                     {metric.value}
@@ -948,7 +939,7 @@ function App() {
           </Reveal>
 
           <Reveal delay={0.16}>
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/50 bg-white/65 p-4 shadow-[0_30px_120px_-40px_rgba(14,165,233,0.45)] backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
+            <div className="relative overflow-hidden rounded-[2rem] border border-slate-300 bg-white/65 p-4 shadow-[0_30px_120px_-40px_rgba(14,165,233,0.45)] backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
               <div className="absolute inset-x-8 top-0 h-28 rounded-b-full bg-gradient-to-r from-cyan-400/30 via-sky-400/20 to-fuchsia-400/25 blur-3xl dark:from-cyan-500/20 dark:via-sky-500/10 dark:to-fuchsia-500/15" />
               <div
                 className="relative overflow-hidden rounded-[1.5rem] bg-slate-200 dark:bg-slate-900"
@@ -978,7 +969,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="relative mt-4 flex flex-col gap-4 rounded-[1.5rem] border border-slate-200/70 bg-white/80 p-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:bg-slate-900/70">
+              <div className="relative mt-4 flex flex-col gap-4 rounded-[1.5rem] border border-slate-300 bg-white/80 p-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:bg-slate-900/70">
                 <div>
                   <p className="font-display text-lg font-bold text-slate-950 dark:text-white">
                     Michael Garets Kon
@@ -1036,7 +1027,7 @@ function App() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
             <Reveal
-              className="rounded-[2rem] border border-white/60 bg-white/80 p-8 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+              className="rounded-[2rem] border border-slate-300 bg-white/80 p-8 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
               delay={0.08}
             >
               <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
@@ -1057,7 +1048,7 @@ function App() {
                       {content.about.focusTitle}
                     </p>
                   </div>
-                  <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 dark:border-white/10 dark:bg-slate-900/70">
+                  <div className="rounded-3xl border border-slate-300 bg-slate-50 p-6 dark:border-white/10 dark:bg-slate-900/70">
                     <p className="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
                       {content.about.workflowLabel}
                     </p>
@@ -1078,7 +1069,7 @@ function App() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
-                  className="rounded-[1.75rem] border border-white/60 bg-gradient-to-br from-white to-slate-100/80 p-6 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)] dark:border-white/10 dark:from-white/10 dark:to-white/5"
+                  className="rounded-[1.75rem] border border-slate-300 bg-gradient-to-br from-white to-slate-100/80 p-6 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)] dark:border-white/10 dark:from-white/10 dark:to-white/5"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
@@ -1111,7 +1102,7 @@ function App() {
           />
 
           <Reveal
-            className="mt-8 flex flex-wrap gap-3 rounded-[1.5rem] border border-white/60 bg-white/65 p-2 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
+            className="mt-8 flex flex-wrap gap-3 rounded-[1.5rem] border border-slate-300 bg-white/65 p-2 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
             delay={0.12}
           >
             {projectFilters.map((filter) => {
@@ -1132,7 +1123,11 @@ function App() {
                     <motion.span
                       layoutId="active-project-filter"
                       className="absolute inset-0 rounded-full bg-slate-950 shadow-[0_16px_35px_-20px_rgba(15,23,42,0.85)] dark:bg-white"
-                      transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 34,
+                      }}
                     />
                   )}
                   <span className="relative z-10">{filter}</span>
@@ -1156,56 +1151,56 @@ function App() {
                     animate="visible"
                     exit="exit"
                     whileHover={{ y: -6 }}
-                    className="group overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
+                    className="group overflow-hidden rounded-[2rem] border border-slate-300 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
                   >
-                  <div
-                    className={`relative overflow-hidden rounded-[1.5rem] p-6 ${visual.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
-                    style={
-                      visual.image
-                        ? { backgroundImage: `url(${visual.image})` }
-                        : undefined
-                    }
-                  >
-                    <div className="absolute inset-0 bg-slate-950/30" />
-                    <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/20 blur-2xl" />
-                    <span className="relative z-10 inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
-                      {project.chip}
-                    </span>
-                    <div className="mt-16 relative z-10">
-                      <p className="max-w-[12rem] font-display text-2xl font-bold text-white">
-                        {project.title}
-                      </p>
+                    <div
+                      className={`relative overflow-hidden rounded-[1.5rem] p-6 ${visual.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
+                      style={
+                        visual.image
+                          ? { backgroundImage: `url(${visual.image})` }
+                          : undefined
+                      }
+                    >
+                      <div className="absolute inset-0 bg-slate-950/30" />
+                      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/20 blur-2xl" />
+                      <span className="relative z-10 inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
+                        {project.chip}
+                      </span>
+                      <div className="mt-16 relative z-10">
+                        <p className="max-w-[12rem] font-display text-2xl font-bold text-white">
+                          {project.title}
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="px-1 pt-6">
-                    <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
-                      {project.description}
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <li
-                          key={tag}
-                          className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                    <div className="px-1 pt-6">
+                      <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+                        {project.description}
+                      </p>
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <li
+                            key={tag}
+                            className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                          >
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
                         >
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
-                      >
-                        {content.projectLinkLabel}
-                      </a>
-                    )}
-                  </div>
-                </motion.article>
-              );
-            })}
+                          {content.projectLinkLabel}
+                        </a>
+                      )}
+                    </div>
+                  </motion.article>
+                );
+              })}
             </AnimatePresence>
           </motion.div>
 
@@ -1218,7 +1213,8 @@ function App() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.32 }}
               >
-                Belum ada project untuk kategori {activeFilter}. Nanti bisa ditambahkan saat project baru sudah siap.
+                Belum ada project untuk kategori {activeFilter}. Nanti bisa
+                ditambahkan saat project baru sudah siap.
               </motion.div>
             )}
           </AnimatePresence>
@@ -1248,7 +1244,7 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   whileHover={{ y: -5 }}
-                  className="flex h-full flex-col items-center rounded-[2rem] border border-white/60 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
+                  className="flex h-full flex-col items-center rounded-[2rem] border border-slate-300 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
                 >
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
                     {contact.icon}
@@ -1275,7 +1271,7 @@ function App() {
       </main>
 
       <footer className="mx-auto w-[min(92%,1200px)] py-10">
-        <div className="rounded-[2rem] border border-white/60 bg-white/75 px-6 py-5 text-center text-sm text-slate-500 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
+        <div className="rounded-[2rem] border border-slate-300 bg-white/75 px-6 py-5 text-center text-sm text-slate-500 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
           {content.footer}
         </div>
       </footer>

@@ -31,6 +31,13 @@
     scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    .portfolio-shell,
+    .portfolio-shell * {
+      cursor: none;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
