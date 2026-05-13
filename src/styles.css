@@ -32,10 +32,10 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .portfolio-shell,
+    /* .portfolio-shell,
     .portfolio-shell * {
       cursor: none;
-    }
+    } */
   }
 
   @media (prefers-reduced-motion: reduce) {

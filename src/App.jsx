@@ -595,39 +595,6 @@ function Reveal({ children, className = "", delay = 0, as = motion.div }) {
   );
 }
 
-function CursorGlow() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
-
-  useEffect(() => {
-    const move = (event) => {
-      setPosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener("pointermove", move);
-
-    return () => {
-      window.removeEventListener("pointermove", move);
-    };
-  }, []);
-
-  return (
-    <div className="pointer-events-none fixed inset-0 z-[60] hidden md:block">
-      <div
-        className="absolute h-3.5 w-3.5 rounded-full bg-slate-950 shadow-[0_0_22px_rgba(14,165,233,0.3)] dark:bg-white dark:shadow-[0_0_26px_rgba(34,211,238,0.4)]"
-        style={{
-          transform: `translate3d(${position.x - 7}px, ${position.y - 7}px, 0)`,
-        }}
-      />
-      <div
-        className="absolute h-8 w-8 rounded-full border border-cyan-300/25 bg-cyan-300/10"
-        style={{
-          transform: `translate3d(${position.x - 16}px, ${position.y - 16}px, 0)`,
-        }}
-      />
-    </div>
-  );
-}
-
 function AmbientBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -803,7 +770,6 @@ function App() {
   return (
     <div className="portfolio-shell min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-100 pt-24">
       <AmbientBackground />
-      <CursorGlow />
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
