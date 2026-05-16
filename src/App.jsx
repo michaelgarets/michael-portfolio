@@ -7,6 +7,7 @@ import foto3 from "../assets/foto-3.jpeg";
 import QA_foto from "../assets/QA_foto.png";
 import Web_Destinasi from "../assets/Web_Destinasi.png";
 import PortoWeb_Michael from "../assets/PortoWeb_Michael.png";
+import cvFile from "../assets/Michael_Garets_Kon_CV.pdf";
 
 const navLinks = [
   { href: "#about", label: "Tentang" },
@@ -181,12 +182,14 @@ const translations = {
     ],
     topBadge: "Portofolio 2026 | React | Tailwind",
     navSubtitle: "Frontend Developer | Pola Pikir QA",
+    navCv: "CV",
     hero: {
       heading: "Michael Garets Kon | Portofolio Frontend & Quality Assurance",
       subheading:
         "Saya membangun tampilan web yang rapi, responsif, dan mudah digunakan, sambil membawa cara berpikir QA agar setiap alur terasa lebih jelas dan siap dipakai.",
       ctaProjects: "Lihat Proyek",
       ctaContact: "Hubungi Saya",
+      ctaDownload: "Download CV",
     },
     profileCard: {
       label: "Branding Pribadi",
@@ -324,12 +327,14 @@ const translations = {
     ],
     topBadge: "Portfolio 2026 | React | Tailwind",
     navSubtitle: "Frontend Developer | QA Mindset",
+    navCv: "CV",
     hero: {
       heading: "Michael Garets Kon | Frontend & Quality Assurance Portfolio",
       subheading:
         "I build clean, responsive, and easy-to-use web interfaces, while bringing a QA mindset so every flow feels clearer and more ready for real users.",
       ctaProjects: "View Projects",
       ctaContact: "Contact Me",
+      ctaDownload: "Download CV",
     },
     profileCard: {
       label: "Personal Branding",
@@ -803,6 +808,28 @@ function App() {
               ))}
             </ul>
 
+            <a
+              href={cvFile}
+              download="Michael_Garets_Kon_CV.pdf"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v1.5A2.5 2.5 0 0 0 7.5 21h9A2.5 2.5 0 0 0 19 18.5V17"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {content.navCv}
+            </a>
+
             <button
               type="button"
               onClick={() =>
@@ -879,6 +906,27 @@ function App() {
                 className="inline-flex w-full justify-center rounded-full border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-400 hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
               >
                 {content.hero.ctaContact}
+              </a>
+              <a
+                href={cvFile}
+                download="Michael_Garets_Kon_CV.pdf"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-300 bg-cyan-50/80 px-6 py-3.5 text-sm font-semibold text-cyan-800 backdrop-blur transition hover:-translate-y-0.5 hover:border-cyan-400 hover:bg-cyan-100 dark:border-cyan-300/20 dark:bg-cyan-300/10 dark:text-cyan-100 dark:hover:bg-cyan-300/15 sm:w-auto"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v1.5A2.5 2.5 0 0 0 7.5 21h9A2.5 2.5 0 0 0 19 18.5V17"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {content.hero.ctaDownload}
               </a>
             </div>
 
