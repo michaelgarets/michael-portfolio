@@ -7,7 +7,7 @@ import foto3 from "../assets/foto-3.jpeg";
 import QA_foto from "../assets/QA_foto.png";
 import Web_Destinasi from "../assets/Web_Destinasi.png";
 import PortoWeb_Michael from "../assets/PortoWeb_Michael.png";
-import cvFile from "../assets/Michael_Garets_Kon_CV.pdf";
+import cvFile from "../assets/CV-MichaelGaretsKon.pdf";
 
 const navLinks = [
   { href: "#about", label: "Tentang" },
@@ -810,7 +810,7 @@ function App() {
 
             <a
               href={cvFile}
-              download="Michael_Garets_Kon_CV.pdf"
+              download="CV-MichaelGaretsKon.pdf"
               className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
             >
               <svg
@@ -909,7 +909,7 @@ function App() {
               </a>
               <a
                 href={cvFile}
-                download="Michael_Garets_Kon_CV.pdf"
+                download="CV-MichaelGaretsKon.pdf"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-300 bg-cyan-50/80 px-6 py-3.5 text-sm font-semibold text-cyan-800 backdrop-blur transition hover:-translate-y-0.5 hover:border-cyan-400 hover:bg-cyan-100 dark:border-cyan-300/20 dark:bg-cyan-300/10 dark:text-cyan-100 dark:hover:bg-cyan-300/15 sm:w-auto"
               >
                 <svg
