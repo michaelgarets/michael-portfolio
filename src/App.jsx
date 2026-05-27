@@ -7,6 +7,7 @@ import foto3 from "../assets/foto-3.jpeg";
 import QA_foto from "../assets/QA_foto.png";
 import Web_Destinasi from "../assets/Web_Destinasi.png";
 import PortoWeb_Michael from "../assets/PortoWeb_Michael.png";
+import backgroundImage from "../assets/background.jpg";
 import cvFile from "../assets/CV-MichaelGaretsKon.pdf";
 
 const navLinks = [
@@ -604,39 +605,14 @@ function AmbientBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <motion.div
-        className="absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.18),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.16),_transparent_26%),linear-gradient(180deg,_rgba(255,255,255,0.94),_rgba(248,250,252,1))] dark:bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.12),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(192,132,252,0.15),_transparent_28%),linear-gradient(180deg,_rgba(2,6,23,1),_rgba(3,7,18,1))]"
+        className="absolute inset-0 scale-105 bg-cover bg-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
         animate={{ backgroundPosition: ["0% 0%", "55% 35%", "0% 0%"] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="absolute left-[-8rem] top-28 h-72 w-72 rounded-full bg-cyan-400/18 blur-3xl dark:bg-cyan-500/10"
-        animate={{ x: [0, 26, -8, 0], y: [0, 18, 36, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute right-[-7rem] top-40 h-80 w-80 rounded-full bg-fuchsia-400/16 blur-3xl dark:bg-fuchsia-500/10"
-        animate={{ x: [0, -22, 8, 0], y: [0, 24, 8, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <div className="absolute inset-0 opacity-[0.18] dark:opacity-[0.12]">
-        {Array.from({ length: 16 }).map((_, index) => (
-          <motion.span
-            key={index}
-            className="absolute h-1 w-1 rounded-full bg-slate-400/50 dark:bg-cyan-200/50"
-            style={{
-              left: `${8 + ((index * 19) % 86)}%`,
-              top: `${10 + ((index * 23) % 78)}%`,
-            }}
-            animate={{ y: [0, -12, 0], opacity: [0.25, 0.7, 0.25] }}
-            transition={{
-              duration: 5 + (index % 6),
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.18,
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 bg-white/72 dark:bg-slate-950/78" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.045)_1px,_transparent_1px),linear-gradient(90deg,_rgba(15,23,42,0.04)_1px,_transparent_1px)] bg-[size:72px_72px] opacity-50 [mask-image:linear-gradient(to_bottom,_black,_transparent_82%)] dark:bg-[linear-gradient(rgba(226,232,240,0.045)_1px,_transparent_1px),linear-gradient(90deg,_rgba(226,232,240,0.04)_1px,_transparent_1px)] dark:opacity-35" />
+      <div className="absolute inset-x-0 top-0 h-64 bg-[linear-gradient(90deg,_rgba(14,165,233,0.08),_rgba(16,185,129,0.08),_rgba(244,114,182,0.06))] blur-2xl dark:bg-[linear-gradient(90deg,_rgba(56,189,248,0.08),_rgba(45,212,191,0.07),_rgba(244,114,182,0.06))]" />
     </div>
   );
 }
@@ -678,7 +654,7 @@ function SectionHeading({
       className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}
       delay={delay}
     >
-      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-600 dark:text-cyan-300">
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-emerald-700 dark:text-emerald-300">
         {kicker}
       </p>
       <h2 className="font-display text-3xl leading-tight font-bold text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
@@ -773,13 +749,13 @@ function App() {
   };
 
   return (
-    <div className="portfolio-shell min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-100 pt-24">
+    <div className="portfolio-shell min-h-screen overflow-x-hidden bg-transparent text-slate-800 transition-colors duration-500 dark:text-slate-100 pt-24">
       <AmbientBackground />
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-slate-300 bg-white/70 shadow-[0_18px_60px_-28px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70"
+            ? "border-b border-slate-200/80 bg-white/[0.82] shadow-[0_18px_60px_-34px_rgba(15,23,42,0.3)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/[0.78]"
             : "bg-transparent"
         }`}
       >
@@ -794,13 +770,13 @@ function App() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <ul className="flex flex-wrap items-center gap-2 rounded-full border border-slate-300 bg-white/75 p-1 shadow-sm backdrop-blur md:bg-white/65 dark:border-white/10 dark:bg-white/5">
+            <ul className="flex flex-wrap items-center gap-2 rounded-full border border-slate-200 bg-white/[0.78] p-1 shadow-sm backdrop-blur md:bg-white/[0.68] dark:border-white/10 dark:bg-white/5">
               {content.navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={(event) => handleNavClick(event, link.href)}
-                    className="inline-flex rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-900 hover:text-white dark:text-slate-300 dark:hover:bg-white dark:hover:text-slate-950"
+                    className="inline-flex rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-emerald-950 hover:text-white dark:text-slate-300 dark:hover:bg-white dark:hover:text-slate-950"
                   >
                     {link.label}
                   </a>
@@ -811,7 +787,7 @@ function App() {
             <a
               href={cvFile}
               download="CV-MichaelGaretsKon.pdf"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/80 px-4 text-sm font-semibold text-emerald-800 shadow-sm transition hover:-translate-y-0.5 hover:bg-emerald-100 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-100 dark:hover:bg-emerald-300/15"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -835,7 +811,7 @@ function App() {
               onClick={() =>
                 setLanguage((current) => (current === "id" ? "en" : "id"))
               }
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white/80 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
               aria-label={`Switch language to ${language === "id" ? "English" : "Bahasa Indonesia"}`}
             >
               {language === "id" ? "EN" : "ID"}
@@ -844,11 +820,11 @@ function App() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="group relative inline-flex h-11 w-[4.75rem] items-center rounded-full border border-slate-300 bg-white/80 px-1.5 text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+              className="group relative inline-flex h-11 w-[4.75rem] items-center rounded-full border border-slate-200 bg-white/80 px-1.5 text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
               aria-label={`Aktifkan mode ${theme === "dark" ? "terang" : "gelap"}`}
             >
               <motion.span
-                className="absolute h-8 w-8 rounded-full bg-slate-950 shadow-[0_12px_28px_-16px_rgba(15,23,42,0.85)] dark:bg-white"
+                className="absolute h-8 w-8 rounded-full bg-emerald-950 shadow-[0_12px_28px_-16px_rgba(15,23,42,0.85)] dark:bg-white"
                 animate={{ x: theme === "dark" ? 32 : 0 }}
                 transition={{ type: "spring", stiffness: 420, damping: 34 }}
               />
@@ -876,15 +852,15 @@ function App() {
       </nav>
 
       <main>
-        <section className="mx-auto grid w-[min(92%,1200px)] gap-14 py-14 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
+        <section className="mx-auto grid w-[min(92%,1200px)] items-start gap-12 py-12 md:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:py-20">
           <Reveal className="space-y-8" delay={0.02}>
-            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-200/70 bg-white/70 px-4 py-2 text-sm font-semibold text-cyan-700 shadow-sm backdrop-blur dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-200">
-              <span className="h-2.5 w-2.5 rounded-full bg-cyan-500" />
+            <div className="inline-flex items-center gap-3 rounded-full border border-emerald-200/80 bg-white/75 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm backdrop-blur dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-100">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
               {content.topBadge}
             </div>
 
             <div className="space-y-5">
-              <p className="font-display text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-7xl dark:text-white break-words">
+              <p className="font-display text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white break-words">
                 {content.hero.heading}
               </p>
               <p className="max-w-full lg:max-w-2xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
@@ -896,21 +872,21 @@ function App() {
               <a
                 href="#projects"
                 onClick={(event) => handleNavClick(event, "#projects")}
-                className="inline-flex w-full justify-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_50px_-20px_rgba(15,23,42,0.8)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:w-auto"
+                className="inline-flex w-full justify-center rounded-full bg-emerald-950 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_50px_-22px_rgba(6,78,59,0.85)] transition hover:-translate-y-0.5 hover:bg-emerald-900 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:w-auto"
               >
                 {content.hero.ctaProjects}
               </a>
               <a
                 href="#contact"
                 onClick={(event) => handleNavClick(event, "#contact")}
-                className="inline-flex w-full justify-center rounded-full border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-400 hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
+                className="inline-flex w-full justify-center rounded-full border border-slate-200 bg-white/[0.82] px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
               >
                 {content.hero.ctaContact}
               </a>
               <a
                 href={cvFile}
                 download="CV-MichaelGaretsKon.pdf"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-300 bg-cyan-50/80 px-6 py-3.5 text-sm font-semibold text-cyan-800 backdrop-blur transition hover:-translate-y-0.5 hover:border-cyan-400 hover:bg-cyan-100 dark:border-cyan-300/20 dark:bg-cyan-300/10 dark:text-cyan-100 dark:hover:bg-cyan-300/15 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-sky-200 bg-sky-50/[0.85] px-6 py-3.5 text-sm font-semibold text-sky-800 backdrop-blur transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-100 dark:border-sky-300/20 dark:bg-sky-300/10 dark:text-sky-100 dark:hover:bg-sky-300/15 sm:w-auto"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -939,7 +915,7 @@ function App() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
-                  className="rounded-3xl border border-slate-300 bg-white/75 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+                  className="rounded-lg border border-slate-200 bg-white/[0.78] p-5 shadow-[0_20px_45px_-34px_rgba(15,23,42,0.45)] backdrop-blur dark:border-white/10 dark:bg-white/5"
                 >
                   <p className="font-display text-xl font-bold text-slate-950 dark:text-white">
                     {metric.value}
@@ -953,14 +929,13 @@ function App() {
           </Reveal>
 
           <Reveal delay={0.16}>
-            <div className="relative overflow-hidden rounded-[2rem] border border-slate-300 bg-white/65 p-4 shadow-[0_30px_120px_-40px_rgba(14,165,233,0.45)] backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
-              <div className="absolute inset-x-8 top-0 h-28 rounded-b-full bg-gradient-to-r from-cyan-400/30 via-sky-400/20 to-fuchsia-400/25 blur-3xl dark:from-cyan-500/20 dark:via-sky-500/10 dark:to-fuchsia-500/15" />
+            <div className="relative overflow-hidden rounded-lg border border-white/80 bg-white/[0.72] p-3 shadow-[0_34px_110px_-54px_rgba(15,23,42,0.55)] backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
               <div
-                className="relative overflow-hidden rounded-[1.5rem] bg-slate-200 dark:bg-slate-900"
+                className="relative overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-900"
                 onMouseEnter={stopAutoSlide}
                 onMouseLeave={resetAutoSlide}
               >
-                <div className="absolute left-5 top-5 z-20 rounded-full bg-black/35 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
+                <div className="absolute left-4 top-4 z-20 rounded-full bg-slate-950/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
                   {content.profileCard.label}
                 </div>
                 <div className="relative aspect-[4/5]">
@@ -983,7 +958,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="relative mt-4 flex flex-col gap-4 rounded-[1.5rem] border border-slate-300 bg-white/80 p-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:bg-slate-900/70">
+              <div className="relative mt-3 flex flex-col gap-4 rounded-lg border border-slate-200 bg-white/[0.84] p-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:bg-slate-900/[0.72]">
                 <div>
                   <p className="font-display text-lg font-bold text-slate-950 dark:text-white">
                     Michael Garets Kon
@@ -995,7 +970,7 @@ function App() {
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-emerald-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     onClick={() => goToSlide(activeSlide - 1)}
                   >
                     {content.profileCard.previous}
@@ -1009,7 +984,7 @@ function App() {
                         onClick={() => goToSlide(index)}
                         className={`h-2.5 rounded-full transition-all ${
                           index === activeSlide
-                            ? "w-8 bg-slate-900 dark:bg-white"
+                            ? "w-8 bg-emerald-800 dark:bg-emerald-200"
                             : "w-2.5 bg-slate-300 hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-slate-500"
                         }`}
                       />
@@ -1017,7 +992,7 @@ function App() {
                   </div>
                   <button
                     type="button"
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-emerald-50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     onClick={() => goToSlide(activeSlide + 1)}
                   >
                     {content.profileCard.next}
@@ -1041,7 +1016,7 @@ function App() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
             <Reveal
-              className="rounded-[2rem] border border-slate-300 bg-white/80 p-8 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5"
+              className="rounded-lg border border-slate-200 bg-white/[0.78] p-6 shadow-[0_28px_75px_-50px_rgba(15,23,42,0.5)] backdrop-blur dark:border-white/10 dark:bg-white/5 sm:p-8"
               delay={0.08}
             >
               <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
@@ -1054,16 +1029,16 @@ function App() {
                   </p>
                 </div>
                 <div className="grid gap-4">
-                  <div className="rounded-3xl bg-slate-950 p-6 text-white dark:bg-white dark:text-slate-950">
-                    <p className="text-sm uppercase tracking-[0.3em] text-white/70 dark:text-slate-500">
+                  <div className="rounded-lg bg-emerald-950 p-6 text-white dark:bg-white dark:text-slate-950">
+                    <p className="text-sm uppercase tracking-[0.24em] text-emerald-100/75 dark:text-slate-500">
                       {content.about.focusLabel}
                     </p>
                     <p className="mt-3 font-display text-2xl font-bold">
                       {content.about.focusTitle}
                     </p>
                   </div>
-                  <div className="rounded-3xl border border-slate-300 bg-slate-50 p-6 dark:border-white/10 dark:bg-slate-900/70">
-                    <p className="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                  <div className="rounded-lg border border-slate-200 bg-slate-50/80 p-6 dark:border-white/10 dark:bg-slate-900/70">
+                    <p className="text-sm uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
                       {content.about.workflowLabel}
                     </p>
                     <p className="mt-3 text-base leading-7 text-slate-700 dark:text-slate-300">
@@ -1083,10 +1058,10 @@ function App() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
-                  className="rounded-[1.75rem] border border-slate-300 bg-gradient-to-br from-white to-slate-100/80 p-6 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)] dark:border-white/10 dark:from-white/10 dark:to-white/5"
+                  className="rounded-lg border border-slate-200 bg-gradient-to-br from-white/[0.86] to-emerald-50/70 p-6 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.42)] dark:border-white/10 dark:from-white/10 dark:to-emerald-300/5"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-sm font-bold text-emerald-900 dark:bg-emerald-300/15 dark:text-emerald-100">
                       {item.number}
                     </div>
                     <div>
@@ -1116,7 +1091,7 @@ function App() {
           />
 
           <Reveal
-            className="mt-8 flex flex-wrap gap-3 rounded-[1.5rem] border border-slate-300 bg-white/65 p-2 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
+            className="mt-8 flex flex-wrap gap-3 rounded-lg border border-slate-200 bg-white/70 p-2 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
             delay={0.12}
           >
             {projectFilters.map((filter) => {
@@ -1130,13 +1105,13 @@ function App() {
                   className={`relative rounded-full px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${
                     isActive
                       ? "text-white dark:text-slate-950"
-                      : "text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+                      : "text-slate-600 hover:text-emerald-950 dark:text-slate-300 dark:hover:text-white"
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="active-project-filter"
-                      className="absolute inset-0 rounded-full bg-slate-950 shadow-[0_16px_35px_-20px_rgba(15,23,42,0.85)] dark:bg-white"
+                      className="absolute inset-0 rounded-full bg-emerald-950 shadow-[0_16px_35px_-20px_rgba(6,78,59,0.85)] dark:bg-white"
                       transition={{
                         type: "spring",
                         stiffness: 380,
@@ -1165,23 +1140,22 @@ function App() {
                     animate="visible"
                     exit="exit"
                     whileHover={{ y: -6 }}
-                    className="group overflow-hidden rounded-[2rem] border border-slate-300 bg-white/80 p-5 shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
+                    className="group overflow-hidden rounded-lg border border-slate-200 bg-white/80 p-4 shadow-[0_30px_80px_-50px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
                   >
                     <div
-                      className={`relative overflow-hidden rounded-[1.5rem] p-6 ${visual.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
+                      className={`relative min-h-[16rem] overflow-hidden rounded-lg p-6 ${visual.image ? "bg-cover bg-center bg-slate-900" : `bg-gradient-to-br ${project.palette}`}`}
                       style={
                         visual.image
                           ? { backgroundImage: `url(${visual.image})` }
                           : undefined
                       }
                     >
-                      <div className="absolute inset-0 bg-slate-950/30" />
-                      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/20 blur-2xl" />
-                      <span className="relative z-10 inline-flex rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur">
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/[0.76] via-slate-950/[0.24] to-slate-950/[0.06]" />
+                      <span className="relative z-10 inline-flex rounded-full bg-white/[0.16] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur">
                         {project.chip}
                       </span>
-                      <div className="mt-16 relative z-10">
-                        <p className="max-w-[12rem] font-display text-2xl font-bold text-white">
+                      <div className="relative z-10 mt-24">
+                        <p className="max-w-[14rem] font-display text-2xl font-bold text-white">
                           {project.title}
                         </p>
                       </div>
@@ -1195,7 +1169,7 @@ function App() {
                         {project.tags.map((tag) => (
                           <li
                             key={tag}
-                            className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                            className="rounded-full border border-emerald-100 bg-emerald-50/70 px-3 py-1.5 text-xs font-semibold tracking-wide text-emerald-800 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
                           >
                             {tag}
                           </li>
@@ -1206,7 +1180,7 @@ function App() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                          className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-900 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
                         >
                           {content.projectLinkLabel}
                         </a>
@@ -1221,7 +1195,7 @@ function App() {
           <AnimatePresence>
             {filteredProjects.length === 0 && (
               <motion.div
-                className="mt-8 rounded-[1.5rem] border border-dashed border-slate-300 bg-white/55 p-8 text-center text-sm leading-7 text-slate-500 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-slate-400"
+                className="mt-8 rounded-lg border border-dashed border-slate-300 bg-white/55 p-8 text-center text-sm leading-7 text-slate-500 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-slate-400"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
@@ -1258,9 +1232,9 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   whileHover={{ y: -5 }}
-                  className="flex h-full flex-col items-center rounded-[2rem] border border-slate-300 bg-white/80 p-7 text-center shadow-[0_30px_80px_-45px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
+                  className="flex h-full flex-col items-center rounded-lg border border-slate-200 bg-white/80 p-7 text-center shadow-[0_30px_80px_-50px_rgba(15,23,42,0.5)] backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
                 >
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-900 to-sky-900 text-sm font-bold text-white dark:from-emerald-200 dark:to-sky-200 dark:text-slate-950">
                     {contact.icon}
                   </div>
                   <h3 className="mt-5 font-display text-2xl font-bold text-slate-950 dark:text-white">
@@ -1270,7 +1244,7 @@ function App() {
                     {contactText.text}
                   </p>
                   <a
-                    className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                    className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-900 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
                     href={contact.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1285,7 +1259,7 @@ function App() {
       </main>
 
       <footer className="mx-auto w-[min(92%,1200px)] py-10">
-        <div className="rounded-[2rem] border border-slate-300 bg-white/75 px-6 py-5 text-center text-sm text-slate-500 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
+        <div className="rounded-lg border border-slate-200 bg-white/75 px-6 py-5 text-center text-sm text-slate-500 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
           {content.footer}
         </div>
       </footer>

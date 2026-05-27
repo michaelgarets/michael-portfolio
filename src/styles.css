@@ -13,17 +13,21 @@
 
   body {
     @apply font-sans antialiased;
+    background:
+      linear-gradient(135deg, rgba(240, 249, 255, 0.86), transparent 34%),
+      linear-gradient(215deg, rgba(240, 253, 244, 0.8), transparent 32%),
+      #f8fafc;
     transition:
       background-color 500ms ease,
       color 500ms ease;
   }
 
   ::selection {
-    @apply bg-cyan-300/40 text-slate-950;
+    @apply bg-emerald-200/70 text-slate-950;
   }
 
   .dark ::selection {
-    @apply bg-cyan-300/25 text-white;
+    @apply bg-sky-300/25 text-white;
   }
 
   * {
