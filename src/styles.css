@@ -13,17 +13,29 @@
 
   body {
     @apply font-sans antialiased;
-    background:
-      linear-gradient(135deg, rgba(240, 249, 255, 0.86), transparent 34%),
-      linear-gradient(215deg, rgba(240, 253, 244, 0.8), transparent 32%),
-      #f8fafc;
+    background-color: #78a6e3;
+    background-image:
+      radial-gradient(circle at 10% 8%, rgba(85, 144, 239, 0.13), transparent 30%),
+      radial-gradient(circle at 88% 12%, rgba(26, 65, 151, 0.1), transparent 28%),
+      linear-gradient(180deg, #c6d9f2 0%, #eef4ff 48%, #f4f7fb 100%);
+    color: #0f172a;
     transition:
       background-color 500ms ease,
       color 500ms ease;
   }
 
+  html.dark body {
+    background-color: #030712;
+    background-image:
+      radial-gradient(circle at 10% 6%, rgba(14, 116, 144, 0.2), transparent 28%),
+      radial-gradient(circle at 86% 16%, rgba(16, 185, 129, 0.12), transparent 26%),
+      radial-gradient(circle at 52% 88%, rgba(99, 102, 241, 0.13), transparent 34%),
+      linear-gradient(180deg, #030712 0%, #07111f 48%, #0b1220 100%);
+    color: #e5eefb;
+  }
+
   ::selection {
-    @apply bg-emerald-200/70 text-slate-950;
+    @apply bg-blue-200/70 text-slate-900;
   }
 
   .dark ::selection {
