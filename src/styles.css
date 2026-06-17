@@ -13,11 +13,15 @@
 
   body {
     @apply font-sans antialiased;
-    background-color: #89a5ca;
+    background-color: #f7f8f4;
     background-image:
-      radial-gradient(circle at 10% 8%, rgba(85, 144, 239, 0.13), transparent 30%),
-      radial-gradient(circle at 88% 12%, rgba(26, 65, 151, 0.1), transparent 28%),
-      linear-gradient(180deg, #789fd1 0%, #adc7f7 48%, #f4f7fb 100%);
+      linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+      linear-gradient(180deg, #e8f1ee 0%, #dbe7fb 46%, #f8f4ed 100%);
+    background-size:
+      44px 44px,
+      44px 44px,
+      auto;
     color: #253458;
     transition:
       background-color 500ms ease,
@@ -25,17 +29,41 @@
   }
 
   html.dark body {
-    background-color: #050b1a;
+    background-color: #08111d;
     background-image:
-      radial-gradient(circle at 10% 6%, rgba(26, 192, 238, 0.2), transparent 28%),
-      radial-gradient(circle at 86% 16%, rgba(9, 242, 165, 0.12), transparent 26%),
-      radial-gradient(circle at 52% 88%, rgba(67, 70, 105, 0.13), transparent 34%),
-      linear-gradient(180deg, #061030 0%, #020e1e 48%, #0b1220 100%);
+      linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(180deg, #07111a 0%, #10281f 48%, #172235 100%);
+    background-size:
+      44px 44px,
+      44px 44px,
+      auto;
     color: #ffffff;
   }
 
+  .portfolio-shell {
+    position: relative;
+  }
+
+  .portfolio-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.72), transparent 16%, transparent 84%, rgba(255, 255, 255, 0.78)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.6));
+    z-index: -1;
+  }
+
+  .dark .portfolio-shell::before {
+    background:
+      linear-gradient(90deg, rgba(8, 17, 29, 0.84), transparent 18%, transparent 82%, rgba(8, 17, 29, 0.88)),
+      linear-gradient(180deg, rgba(8, 17, 29, 0.1), rgba(8, 17, 29, 0.72));
+  }
+
   ::selection {
-    @apply bg-blue-200/70 text-slate-900;
+    @apply bg-blue-200 text-slate-900;
   }
 
   .dark ::selection {
