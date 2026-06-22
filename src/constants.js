@@ -77,6 +77,7 @@ export const EXTERNAL_LINKS = {
     "https://mail.google.com/mail/?view=cm&fs=1&to=michaellgareth321@gmail.com",
   github: "https://github.com/michaelgarets",
   linkedin: "https://www.linkedin.com/in/michael-garets",
+  sourceCode: "https://github.com/michaelgarets/michael-portfolio",
 };
 
 // Project Links

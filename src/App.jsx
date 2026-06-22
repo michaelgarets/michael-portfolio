@@ -37,7 +37,13 @@ const photos = [
   },
 ];
 
-const projectFilters = ["All", "Frontend", "Backend", "UI/UX", "QA"];
+const projectFilters = [
+  { value: "All", label: "All" },
+  { value: "Frontend", label: "Frontend" },
+  { value: "Backend", label: "Backend" },
+  { value: "UI/UX", label: "UI-UX" },
+  { value: "QA", label: "QA" },
+];
 
 const projectVisuals = [
   {
@@ -62,108 +68,134 @@ const translations = {
   id: {
     navLinks: [
       { href: "#about", label: "Tentang" },
-      { href: "#projects", label: "Proyek" },
+      { href: "#projects", label: "Karya Pilihan" },
+      { href: "#ecosystem", label: "Skills" },
+      { href: "#timeline", label: "Timeline" },
       { href: "#contact", label: "Kontak" },
     ],
-    topBadge: "Mahasiswa CS | React frontend | Kebiasaan QA",
-    navSubtitle: "Mendesain alur web yang rapi dan bisa dicek",
+    topBadge: "CS Student -> Frontend Engineer | Product thinker | AI curious",
+    navSubtitle: "React interfaces, product flow, AI experiments",
     navCv: "CV",
     hero: {
-      heading: "Saya Michael, mahasiswa Computer Science yang membangun web kecil dengan perhatian besar pada alur pengguna.",
+      name: "Michael Garets Kon",
+      heading: "Frontend engineer muda yang membangun flow produk yang bisa diklik.",
+      positioning:
+        "Saya Michael, mahasiswa Computer Science yang bergerak di frontend, product thinking, dan eksperimen AI yang praktis.",
       subheading:
-        "Saya bukan hanya mengejar tampilan yang bagus. Saya suka mencari titik ketika pengguna bisa bingung: form yang tidak jelas, navigasi yang terlalu ramai, atau bug yang susah dijelaskan. Dari situ saya membangun UI React yang lebih tenang, mudah dibaca, dan bisa dites.",
-      ctaProjects: "Baca Studi Kasus",
+        "Saya mencari magang atau project kecil di mana React, UX flow, validasi, data, dan detail interface harus bekerja sebagai satu pengalaman.",
+      ctaProjects: "Lihat Karya Pilihan",
       ctaContact: "Hubungi Saya",
       ctaDownload: "Download CV",
+      snapshot: [
+        { label: "Saya", value: "CS student di UMN" },
+        { label: "Membangun", value: "React apps dan flow produk" },
+        { label: "Mencari", value: "Frontend internship dan small builds" },
+        { label: "Showcase", value: "Birthday Invitation dengan RSVP Firebase" },
+      ],
     },
     profileCard: {
       label: "Tentang Michael",
-      description: "Pembelajar frontend yang nyaman bolak-balik antara desain layar, kode, dan catatan bug.",
+      description: "CS student yang mengubah ide produk menjadi interface React yang jelas, ringan, dan bisa diuji.",
       previous: "Sebelumnya",
       next: "Berikutnya",
       photoAria: "Tampilkan foto",
-      traits: ["UI rapi", "Flow jelas", "Testing"],
+      traits: ["Product sense", "React craft", "QA habits"],
     },
     metrics: [
       {
-        value: "Clear Flow",
-        label: "Saya menata halaman dari tindakan utama pengguna, bukan dari dekorasi dulu.",
+        value: "Product sense",
+        label: "Saya mulai dari jalur pengguna, lalu membentuk interface di sekitar keputusan yang paling penting.",
       },
       {
-        value: "React UI",
+        value: "Interface craft",
         label:
-          "Saya memecah kebutuhan menjadi komponen, state, validasi, dan tampilan mobile.",
+          "Saya membangun layar React dengan struktur bersih, responsif, dan state yang disengaja.",
       },
       {
-        value: "QA Mindset",
+        value: "AI curiosity",
         label:
-          "Saya terbiasa menulis langkah uji dan bug report supaya masalah tidak berhenti di 'ini error'.",
+          "Saya mengeksplorasi bagaimana AI bisa membantu workflow tanpa membuat produk terasa ramai.",
       },
     ],
     sectionHeadings: {
       about: {
         kicker: "Tentang Saya",
         title:
-          "Saya tertarik pada bagian kecil yang membuat software terasa bisa dipercaya.",
+          "Saya belajar software lewat layar yang benar-benar dipakai.",
         description:
-          "Di kelas, proyek pribadi, dan latihan testing, saya belajar bahwa UI bukan hanya soal tampilan. Ada struktur data, state, validasi, routing, dan keputusan kecil yang menentukan apakah sebuah fitur terasa jelas atau bikin ragu.",
+          "Arah saya sederhana: menjadi frontend engineer yang punya rasa produk. Saya ingin bisa melihat flow, memilih informasi penting, lalu membangun interface yang terasa siap dipakai.",
       },
       projects: {
         kicker: "Karya Pilihan",
         title:
-          "Karya yang memperlihatkan cara saya berpikir, bukan hanya hasil akhirnya.",
+          "Mulai dari showcase utama, lalu bukti pendukung.",
         description:
-          "Saya menulis setiap kartu seperti mini case study: masalahnya apa, bagian mana yang saya pegang, dan bukti apa yang bisa dilihat recruiter dengan cepat.",
+          "Birthday Invitation menjadi project paling penting karena menggabungkan React, Firebase, RSVP, mobile flow, dan pengalaman nyata untuk tamu.",
+      },
+      ecosystem: {
+        kicker: "Skills",
+        titlePrefix: "Skills yang",
+        titleAccent: "mendukung karya",
+        description:
+          "Skills di sini bukan koleksi logo. Ini alat yang saya pakai untuk membuat project lebih jelas, lebih responsif, dan lebih bisa dipercaya.",
+      },
+      timeline: {
+        kicker: "Timeline",
+        title: "Jalur belajar yang masih bergerak.",
+        description:
+          "Timeline dibuat ringkas karena karya adalah pusatnya. Bagian ini memberi konteks pendidikan dan arah pertumbuhan.",
       },
       contact: {
         kicker: "Kontak",
         title:
-          "Saya terbuka untuk magang, proyek kecil, dan diskusi seputar frontend.",
+          "Terbuka untuk magang, project kecil, dan diskusi produk web.",
         description:
-          "Email cocok untuk menghubungi langsung, GitHub untuk melihat kode, dan LinkedIn untuk melihat konteks profesional saya.",
+          "Email paling tepat untuk pesan langsung. GitHub menunjukkan cara saya membangun. LinkedIn memberi konteks profesional singkat.",
       },
     },
     about: {
       paragraphs: [
-        "Saya Michael. Saya suka bagian ketika desain mulai bertemu kode: saat sebuah layout harus punya urutan, sebuah form harus memberi rasa aman, dan sebuah bug harus dijelaskan dengan langkah yang bisa diulang.",
-        "Cara kerja saya cukup sederhana. Saya membaca kebutuhannya dulu, menandai bagian yang mungkin membingungkan, lalu membangun versi yang bisa dipakai dan dicek. Saya ingin dikenal sebagai frontend developer junior yang rapi, jujur dengan proses, dan tidak malas menguji hasil sendiri.",
+        "Saya sedang menempuh Computer Science di Universitas Multimedia Nusantara dan memakai project web sebagai laboratorium produk kecil.",
+        "Saya tertarik pada momen ketika struktur data, copy, state, dan layout bertemu menjadi pengalaman yang mudah dimengerti.",
       ],
       focusLabel: "Fokus",
-      focusTitle: "Frontend yang terasa jelas",
-      workflowLabel: "Cara Saya Bekerja",
+      focusTitle: "Frontend craft, product flow, AI curiosity",
+      workflowLabel: "Cara Kerja",
       workflowText:
-        "Saya menyusun struktur halaman, membangun komponen, lalu mengecek link, responsif, form, state, dan pesan di layar. Kalau ada masalah, saya tulis langkahnya supaya orang lain bisa memahami dan memperbaikinya.",
+        "Saya mulai dari keputusan yang harus dibuat pengguna, lalu menyusun informasi, komponen, state, validasi, dan QA dasar di sekitar keputusan itu.",
     },
     highlights: [
       {
         number: "01",
-        title: "Mulai dari masalah",
+        title: "Membaca arah produk",
         description:
-          "Saya mencari tahu tujuan halaman, urutan informasi, dan tindakan utama pengguna sebelum masuk ke detail visual.",
+          "Saya mencari apa yang sebenarnya perlu dilakukan pengguna, lalu menjaga layar tetap fokus pada tindakan itu.",
       },
       {
         number: "02",
-        title: "Membangun dengan struktur",
+        title: "Membangun interface yang jelas",
         description:
-          "Saya menulis komponen, data, dan state dengan rapi supaya proyek tidak terasa asing saat dibuka lagi beberapa minggu kemudian.",
+          "Saya memecah kebutuhan menjadi komponen, state, validasi, dan pola responsif yang mudah dirawat.",
       },
       {
         number: "03",
-        title: "Mengecek hasil sendiri",
+        title: "Menguji sebelum percaya",
         description:
-          "Saya mencoba ulang flow, mencatat bug, dan mengecek detail seperti link, form, copy, dan tampilan mobile.",
+          "Saya menjalankan ulang flow penting dan menulis temuan dengan langkah yang jelas, bukan hanya menyebut ada error.",
       },
     ],
     projects: [
       {
         title: "Web Destinasi Wisata",
         description:
-          "Tugas kampus ini awalnya berisi banyak informasi destinasi. Saya mengubahnya menjadi halaman yang lebih mudah dipindai: pengunjung bisa melihat tempat, gambar, dan arah navigasi tanpa merasa membaca brosur panjang.",
-        role: "Membagi konten menjadi hero, daftar destinasi, detail singkat, dan navigasi yang tetap sederhana di mobile.",
-        proof: "Versi live memperlihatkan struktur halaman, urutan informasi, dan responsifnya.",
-        tags: ["Content Hierarchy", "Responsive Layout", "Live Site"],
-        chip: "Campus case study",
+          "Situs destinasi responsif yang mengubah informasi wisata yang tersebar menjadi flow browsing yang sederhana.",
+        role: "Saya menyusun struktur halaman, memprioritaskan gambar dan arah navigasi, lalu menyesuaikan layout untuk layar kecil.",
+        proof: "Live site memperlihatkan hierarchy informasi, navigasi, dan perilaku responsif.",
+        outcome: "Informasi wisata terasa lebih mudah dipindai dan dibuka dari layar kecil.",
+        tags: ["Information Flow", "Responsive UI", "Live Site"],
+        chip: "Project kampus",
         categories: ["Frontend"],
+        visualIndex: 0,
         palette:
           "from-blue-900 via-blue-600 to-blue-500 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
         link: PROJECT_LINKS.webDestinasi,
@@ -171,36 +203,43 @@ const translations = {
       {
         title: "QA Testing Portfolio",
         description:
-          "Di proyek ini saya belajar melihat produk dari sisi pengguna yang menemukan masalah. Modul LMS saya pecah menjadi skenario uji, lalu setiap temuan ditulis agar developer bisa mengikuti langkahnya.",
-        role: "Menulis test case, menjalankan functional testing, dan menyusun bug report yang tidak berhenti di screenshot.",
+          "Portfolio testing untuk flow LMS. Isinya mencatat apa yang diuji, di mana flow gagal, dan cara mengulang masalahnya.",
+        role: "Saya menulis test case, menjalankan functional testing, dan membuat bug report yang bisa diikuti orang lain.",
         proof: "Catatan berisi kondisi uji, langkah reproduksi, expected result, dan actual result.",
-        tags: ["Test Case", "Bug Report", "LMS Testing"],
-        chip: "QA case study",
+        outcome: "Temuan QA menjadi lebih mudah direproduksi oleh developer atau evaluator.",
+        tags: ["Test Cases", "Bug Reports", "LMS Flow"],
+        chip: "Catatan QA",
         categories: ["QA", "UI/UX"],
+        visualIndex: 1,
         palette:
           "from-slate-900 via-blue-900 to-blue-600 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
       },
       {
         title: "Personal Web Repo",
         description:
-          "Website ini adalah tempat saya memperbaiki cara bercerita tentang pekerjaan saya. Tantangannya bukan hanya membuat portfolio terlihat bagus, tetapi membuat recruiter cepat paham pola pikir saya.",
-        role: "Mengubah konten menjadi data bilingual, membangun komponen React, dark mode, filter proyek, dan kartu case study.",
-        proof: "Halaman yang sedang dibaca ini menjadi bukti langsung cara saya merapikan UI, copy, dan struktur proyek.",
-        tags: ["ReactJS", "Bilingual Content", "Content Design"],
-        chip: "Personal website",
+          "Portfolio ini dibangun sebagai permukaan produk, bukan profil statis. Tujuannya menjelaskan posisi, karya, skills, dan kontak dalam satu flow.",
+        role: "Saya membangun konten bilingual, theme switching, project filters, active navigation, dan kartu case study yang mudah dipindai.",
+        proof: "Halaman ini menjadi bukti iterasi pada copy, hierarchy, React state, dan responsive UI.",
+        outcome: "Recruiter bisa membaca posisi, karya utama, skills, dan kontak dalam satu jalur scroll.",
+        tags: ["React", "Bilingual UI", "Navigation UX"],
+        chip: "Website pribadi",
         categories: ["Frontend", "UI/UX"],
+        visualIndex: 2,
         palette:
           "from-blue-950 via-blue-900 to-blue-600 dark:from-fuchsia-300 dark:via-violet-300 dark:to-indigo-300",
       },
       {
         title: "Birthday Party Invitation",
         description:
-          "Undangan ini melatih saya membuat pengalaman kecil yang terasa personal. Pengunjung perlu memahami acara, mengisi RSVP, dan meninggalkan ucapan tanpa proses yang terasa berat.",
-        role: "Membangun flow RSVP, ucapan tamu, validasi form, dan koneksi data Firebase.",
-        proof: "Pengguna bisa membaca undangan, mengirim RSVP, dan melihat data tersimpan secara real-time.",
-        tags: ["ReactJS", "Firebase", "RSVP Flow"],
-        chip: "Product flow",
+          "Aplikasi undangan yang benar-benar dipakai untuk membaca detail acara, mengirim RSVP, dan meninggalkan ucapan tanpa form yang berat.",
+        role: "Saya merancang flow dari landing ke RSVP, menulis validasi, menyimpan data dengan Firebase, dan menjaga pengalaman tetap ringan di mobile.",
+        proof: "Live project memiliki RSVP, ucapan tamu, dan penyimpanan real-time yang bisa diuji langsung.",
+        outcome: "Tamu mendapat jalur singkat dari undangan ke respons; host mendapat data RSVP yang tersimpan.",
+        tags: ["Featured", "React", "Firebase", "RSVP Flow"],
+        chip: "Showcase utama",
         categories: ["Frontend", "Backend", "UI/UX"],
+        featured: true,
+        visualIndex: 3,
         palette:
           "from-rose-500 via-pink-500 to-amber-300 dark:from-rose-300 dark:via-fuchsia-300 dark:to-amber-200",
         link: PROJECT_LINKS.birthdayInvitation,
@@ -208,135 +247,209 @@ const translations = {
     ],
     contacts: [
       {
-        text: "Untuk peluang magang, proyek kecil, atau pesan yang perlu saya balas langsung.",
+        text: "Untuk peluang magang, brief project kecil, atau pesan yang perlu respons langsung.",
         label: "Email Michael",
       },
       {
-        text: "Tempat melihat kode, latihan, dan cara saya memperbaiki proyek dari waktu ke waktu.",
+        text: "Tempat melihat code, latihan, dan proses merapikan project dari waktu ke waktu.",
         label: "Buka GitHub",
       },
       {
-        text: "Untuk terhubung secara profesional dan melihat ringkasan pengalaman saya.",
+        text: "Konteks profesional singkat dan cara mudah untuk terhubung.",
         label: "Buka LinkedIn",
       },
     ],
-    projectMetaLabels: {
-      problem: "Masalah",
-      role: "Keputusan saya",
-      proof: "Bukti yang bisa dicek",
+    contactCta: {
+      headingPrefix: "Mulai dengan",
+      headingAccent: "pesan yang jelas.",
+      subheading:
+        "Kirim peluang magang, brief project kecil, atau ide produk web. Saya akan membalas dengan konteks, langkah berikutnya, atau kecocokan yang jujur.",
     },
-    projectLinkLabel: "Buka Proyek",
+    projectMetaLabels: {
+      problem: "Tantangan",
+      role: "Yang saya bangun",
+      proof: "Bukti",
+      outcome: "Hasil",
+    },
+    featuredProjectLabel: "Showcase utama",
+    supportingProjectLabel: "Karya lainnya",
+    projectLinkLabel: "Buka Live Project",
     emptyProjectMessage:
-      "Belum ada project untuk kategori ini. Saya akan menambahkannya saat sudah ada karya yang layak ditampilkan.",
-    footer:
-      "© 2026 Michael Garets Kon. Dibangun dengan React sebagai catatan perjalanan saya di frontend dan software development.",
+      "Belum ada karya di kategori ini. Saya akan menambahkannya saat hasilnya sudah layak dibuka.",
+    ecosystem: [
+      {
+        title: "Interface Engineering",
+        tools: ["React", "Vite", "JavaScript", "HTML", "CSS", "Responsive UI"],
+      },
+      {
+        title: "Product Experience",
+        tools: ["Information Flow", "UI Writing", "Interaction States", "Wireframing", "Accessibility Basics"],
+      },
+      {
+        title: "Build, Data, Quality",
+        tools: ["Firebase", "Git", "GitHub", "Vercel", "Functional Testing", "Bug Reports"],
+      },
+    ],
+    timeline: [
+      {
+        date: "2023",
+        title: "Masuk Computer Science di UMN",
+        description:
+          "Saya mulai membangun dasar pemrograman, struktur data, dan cara berpikir yang lebih sistematis.",
+      },
+      {
+        date: "2024",
+        title: "Menemukan web sebagai medium utama",
+        description:
+          "Project kampus membuat saya tertarik pada layout, konten, responsif, dan flow yang mudah diikuti.",
+      },
+      {
+        date: "2025",
+        title: "Mengubah portfolio menjadi produk",
+        description:
+          "Saya membangun ulang website ini dengan React, konten bilingual, theme switching, filter, dan navigasi aktif.",
+      },
+      {
+        date: "2027",
+        title: "Expected graduation",
+        description:
+          "Target lulus dari program Computer Science di Universitas Multimedia Nusantara.",
+      },
+    ],
+    footer: "Designed and built by Michael Garets Kon. 2026.",
   },
   en: {
     navLinks: [
       { href: "#about", label: "About" },
-      { href: "#projects", label: "Projects" },
+      { href: "#projects", label: "Selected Work" },
+      { href: "#ecosystem", label: "Skills" },
+      { href: "#timeline", label: "Timeline" },
       { href: "#contact", label: "Contact" },
     ],
-    topBadge: "CS student | React frontend | QA habits",
-    navSubtitle: "Designing web flows that are clear and testable",
+    topBadge: "CS Student -> Frontend Engineer | Product thinker | AI curious",
+    navSubtitle: "React interfaces, product flow, AI experiments",
     navCv: "CV",
     hero: {
-      heading: "I am Michael, a Computer Science student building small web products with careful attention to user flow.",
+      name: "Michael Garets Kon",
+      heading: "A junior frontend engineer shaping product flows people can click through.",
+      positioning:
+        "I am Michael, a Computer Science student growing across frontend engineering, product thinking, and practical AI experiments.",
       subheading:
-        "I am not only chasing a good-looking screen. I like finding the moments where people might get confused: an unclear form, crowded navigation, or a bug that is hard to explain. From there I build React interfaces that feel calmer, easier to read, and easier to test.",
-      ctaProjects: "Read Case Studies",
+        "I am looking for frontend internships or small builds where React, UX flow, validation, data, and interface detail need to work as one experience.",
+      ctaProjects: "View Selected Work",
       ctaContact: "Contact Me",
       ctaDownload: "Download CV",
+      snapshot: [
+        { label: "Who", value: "CS student at UMN" },
+        { label: "Builds", value: "React apps and product flows" },
+        { label: "Looking for", value: "Frontend internship and small builds" },
+        { label: "Main proof", value: "Birthday Invitation with Firebase RSVP" },
+      ],
     },
     profileCard: {
       label: "About Michael",
-      description: "Frontend learner who moves comfortably between screen design, code, and bug notes.",
+      description: "CS student turning product ideas into React interfaces that are clear, lightweight, and testable.",
       previous: "Prev",
       next: "Next",
       photoAria: "Show photo",
-      traits: ["Tidy UI", "Clear flow", "Testing"],
+      traits: ["Product sense", "React craft", "QA habits"],
     },
     metrics: [
       {
-        value: "Clear Flow",
+        value: "Product sense",
         label:
-          "I organize a page around the user's main action before decorating it.",
+          "I start with the user path, then shape the interface around the decision that matters.",
       },
       {
-        value: "React UI",
+        value: "Interface craft",
         label:
-          "I translate requirements into components, state, validation, and mobile layouts.",
+          "I build React screens with clean structure, responsive behavior, and deliberate states.",
       },
       {
-        value: "QA Mindset",
+        value: "AI curiosity",
         label:
-          "I write test steps and bug reports so a problem does not stop at 'it is broken'.",
+          "I explore how AI can support useful workflows without making the product feel noisy.",
       },
     ],
     sectionHeadings: {
       about: {
         kicker: "About Me",
         title:
-          "I care about the small details that make software feel reliable.",
+          "I learn software through screens people actually use.",
         description:
-          "Through classes, personal projects, and testing practice, I have learned that UI is not only visual. Data structure, state, validation, routing, and small decisions all affect whether a feature feels clear or uncertain.",
+          "My direction is simple: become a frontend engineer with product taste. I want to read a flow, choose what matters, then build the interface until it feels ready to use.",
       },
       projects: {
         kicker: "Selected Work",
         title:
-          "Work that shows how I think, not only what I shipped.",
+          "Start with the main showcase, then the supporting proof.",
         description:
-          "Each card is written like a mini case study: what the problem was, what I handled, and what a recruiter can review quickly.",
+          "Birthday Invitation is the strongest project because it combines React, Firebase, RSVP, mobile flow, and a real guest experience.",
+      },
+      ecosystem: {
+        kicker: "Skills",
+        titlePrefix: "Skills that",
+        titleAccent: "support the work",
+        description:
+          "This is not a logo shelf. These are the tools I use to make projects clearer, more responsive, and easier to trust.",
+      },
+      timeline: {
+        kicker: "Timeline",
+        title: "A learning path that is still moving.",
+        description:
+          "The timeline stays secondary because the work is the center. This section gives education context and growth direction.",
       },
       contact: {
         kicker: "Contact",
         title:
-          "I am open to internships, small projects, and frontend discussions.",
+          "Open to internships, small builds, and web product conversations.",
         description:
-          "Email works best for direct messages, GitHub shows the code, and LinkedIn gives a short view of my professional background.",
+          "Email is best for direct messages. GitHub shows how I build. LinkedIn gives the short professional context.",
       },
     },
     about: {
       paragraphs: [
-        "I am Michael. I like the moment where design starts meeting code: when a layout needs order, a form needs to feel safe, and a bug needs steps that someone else can repeat.",
-        "My process is simple. I read the requirement first, mark the parts that may confuse people, then build a version that can be used and checked. I want to be remembered as a junior frontend developer who is tidy, honest about process, and willing to test his own work.",
+        "I study Computer Science at Universitas Multimedia Nusantara and use web projects as small product laboratories.",
+        "I am drawn to the point where data structure, copy, state, and layout become an experience someone can understand quickly.",
       ],
       focusLabel: "Focus",
-      focusTitle: "Frontend that feels clear",
-      workflowLabel: "How I Work",
+      focusTitle: "Frontend craft, product flow, AI curiosity",
+      workflowLabel: "Working Method",
       workflowText:
-        "I plan the page structure, build the components, then check links, responsive behavior, forms, state, and screen messages. If something breaks, I write the steps so someone else can understand and fix it.",
+        "I start from the decision a user needs to make, then arrange information, components, state, validation, and basic QA around that decision.",
     },
     highlights: [
       {
         number: "01",
-        title: "Start from the problem",
+        title: "Read the product intent",
         description:
-          "I look for the page goal, information order, and the user's main action before getting into visual details.",
+          "I look for what the user actually needs to do, then keep the screen focused on that action.",
       },
       {
         number: "02",
-        title: "Build with structure",
+        title: "Build the interface clearly",
         description:
-          "I keep components, data, and state readable so the project does not feel unfamiliar a few weeks later.",
+          "I turn requirements into components, state, validation, and responsive patterns that can be maintained.",
       },
       {
         number: "03",
-        title: "Check my own work",
+        title: "Test before trusting it",
         description:
-          "I repeat the flow, note bugs, and check details such as links, forms, copy, and mobile layouts.",
+          "I rerun important flows and write findings with clear steps, not just a note that something failed.",
       },
     ],
     projects: [
       {
         title: "Tourism Destination Website",
         description:
-          "This campus assignment started with a lot of destination information. I turned it into a page that is easier to scan: visitors can see places, images, and navigation without feeling like they are reading a long brochure.",
-        role: "Split the content into a hero, destination list, short details, and navigation that stays simple on mobile.",
-        proof: "The live version shows the page structure, information order, and responsive behavior.",
-        tags: ["Content Hierarchy", "Responsive Layout", "Live Site"],
-        chip: "Campus case study",
+          "A responsive destination site that turns scattered travel information into a simple browsing flow.",
+        role: "I structured the pages, prioritized imagery and route clarity, and tuned the layout for smaller screens.",
+        proof: "The live site shows the information hierarchy, navigation, and responsive behavior.",
+        outcome: "Travel information becomes easier to scan and open from smaller screens.",
+        tags: ["Information Flow", "Responsive UI", "Live Site"],
+        chip: "Campus project",
         categories: ["Frontend"],
+        visualIndex: 0,
         palette:
           "from-blue-900 via-blue-600 to-blue-500 dark:from-sky-400 dark:via-cyan-400 dark:to-emerald-300",
         link: PROJECT_LINKS.webDestinasi,
@@ -344,36 +457,43 @@ const translations = {
       {
         title: "QA Testing Portfolio",
         description:
-          "This project taught me to look at a product from the side of a user who finds problems. I broke an LMS module into test scenarios, then wrote each finding so a developer could follow the steps.",
-        role: "Wrote test cases, ran functional testing, and created bug reports that go beyond screenshots.",
+          "A testing portfolio built around an LMS workflow. It documents what was tested, where the flow failed, and how to reproduce it.",
+        role: "I wrote test cases, ran functional testing, and shaped bug reports another person could follow.",
         proof: "The notes include test conditions, reproduction steps, expected result, and actual result.",
-        tags: ["Test Case", "Bug Report", "LMS Testing"],
-        chip: "QA case study",
+        outcome: "QA findings become easier for a developer or evaluator to reproduce.",
+        tags: ["Test Cases", "Bug Reports", "LMS Flow"],
+        chip: "QA notes",
         categories: ["QA", "UI/UX"],
+        visualIndex: 1,
         palette:
           "from-slate-900 via-blue-900 to-blue-600 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
       },
       {
         title: "Personal Web Repo",
         description:
-          "This website is where I improve how I talk about my work. The challenge was not only making a portfolio look good, but helping recruiters understand my way of thinking quickly.",
-        role: "Turned content into bilingual data, built React components, dark mode, project filtering, and case-study cards.",
-        proof: "The page you are reading is a direct example of how I refine UI, copy, and project structure.",
-        tags: ["ReactJS", "Bilingual Content", "Content Design"],
+          "The portfolio you are viewing, rebuilt as a product surface rather than a static profile.",
+        role: "I built bilingual content, theme switching, project filters, active navigation, and scannable case-study cards.",
+        proof: "This page is the proof: copy, hierarchy, React state, and responsive UI working together.",
+        outcome: "Recruiters can read positioning, main work, skills, and contact in one scroll path.",
+        tags: ["React", "Bilingual UI", "Navigation UX"],
         chip: "Personal website",
         categories: ["Frontend", "UI/UX"],
+        visualIndex: 2,
         palette:
           "from-blue-950 via-blue-900 to-blue-600 dark:from-fuchsia-300 dark:via-violet-300 dark:to-indigo-300",
       },
       {
         title: "Birthday Party Invitation",
         description:
-          "This invitation helped me practice a small experience that feels personal. Guests need to understand the event, submit an RSVP, and leave a message without the flow feeling heavy.",
-        role: "Built the RSVP flow, guest wishes, form validation, and Firebase data connection.",
-        proof: "Users can read the invitation, send an RSVP, and see data stored in real time.",
-        tags: ["ReactJS", "Firebase", "RSVP Flow"],
-        chip: "Product flow",
+          "A real-use invitation app for reading event details, sending RSVP responses, and leaving wishes without a heavy form experience.",
+        role: "I designed the flow from landing to RSVP, wrote validation, saved data with Firebase, and kept the mobile experience light.",
+        proof: "The live project includes RSVP, guest wishes, and real-time storage that can be tested directly.",
+        outcome: "Guests get a focused path from invitation to response; the host gets RSVP data saved in Firebase.",
+        tags: ["Featured", "React", "Firebase", "RSVP Flow"],
+        chip: "Primary showcase",
         categories: ["Frontend", "Backend", "UI/UX"],
+        featured: true,
+        visualIndex: 3,
         palette:
           "from-rose-500 via-pink-500 to-amber-300 dark:from-rose-300 dark:via-fuchsia-300 dark:to-amber-200",
         link: PROJECT_LINKS.birthdayInvitation,
@@ -381,28 +501,76 @@ const translations = {
     ],
     contacts: [
       {
-        text: "For internships, small projects, or messages I should reply to directly.",
+        text: "For internship notes, small project briefs, or messages that need a direct reply.",
         label: "Email Michael",
       },
       {
-        text: "Where you can review code, practice work, and how I improve projects over time.",
+        text: "Where you can review code, practice work, and how I refine projects over time.",
         label: "Open GitHub",
       },
       {
-        text: "Connect professionally and see a short summary of my experience.",
+        text: "Short professional context and a simple way to connect.",
         label: "Open LinkedIn",
       },
     ],
-    projectMetaLabels: {
-      problem: "Problem",
-      role: "My decision",
-      proof: "Proof to review",
+    contactCta: {
+      headingPrefix: "Start with a",
+      headingAccent: "clear message.",
+      subheading:
+        "Send an internship note, a small project brief, or a web product idea. I will reply with context, next steps, or honest fit.",
     },
-    projectLinkLabel: "View Project",
+    projectMetaLabels: {
+      problem: "Challenge",
+      role: "What I built",
+      proof: "Evidence",
+      outcome: "Outcome",
+    },
+    featuredProjectLabel: "Primary showcase",
+    supportingProjectLabel: "More work",
+    projectLinkLabel: "Open Live Project",
     emptyProjectMessage:
-      "No project is available in this category yet. I will add one when there is work worth showing.",
-    footer:
-      "© 2026 Michael Garets Kon. Built with React as a record of my progress in frontend and software development.",
+      "No work is available in this category yet. I will add it when the result is worth opening.",
+    ecosystem: [
+      {
+        title: "Interface Engineering",
+        tools: ["React", "Vite", "JavaScript", "HTML", "CSS", "Responsive UI"],
+      },
+      {
+        title: "Product Experience",
+        tools: ["Information Flow", "UI Writing", "Interaction States", "Wireframing", "Accessibility Basics"],
+      },
+      {
+        title: "Build, Data, Quality",
+        tools: ["Firebase", "Git", "GitHub", "Vercel", "Functional Testing", "Bug Reports"],
+      },
+    ],
+    timeline: [
+      {
+        date: "2023",
+        title: "Entered Computer Science at UMN",
+        description:
+          "I started building the foundation: programming fundamentals, data structures, and a more systematic way to think.",
+      },
+      {
+        date: "2024",
+        title: "Found web as my main medium",
+        description:
+          "Campus projects pulled me toward layout, content, responsive behavior, and flows people can follow.",
+      },
+      {
+        date: "2025",
+        title: "Turned the portfolio into a product",
+        description:
+          "I rebuilt this site with React, bilingual content, theme switching, filters, and active navigation.",
+      },
+      {
+        date: "2027",
+        title: "Expected graduation",
+        description:
+          "Expected graduation from the Computer Science program at Universitas Multimedia Nusantara.",
+      },
+    ],
+    footer: "Designed and built by Michael Garets Kon. 2026.",
   },
 };
 
@@ -440,11 +608,17 @@ const contactItems = [
     icon: (
       <svg
         viewBox="0 0 24 24"
-        fill="currentColor"
+        fill="none"
         className="h-7 w-7"
         aria-hidden="true"
       >
-        <path d="M12 2.25C6.108 2.25 1.5 6.858 1.5 12.75c0 4.476 2.91 8.278 6.94 9.62.507.093.69-.22.69-.487 0-.24-.009-.876-.014-1.718-2.821.613-3.414-1.36-3.414-1.36-.462-1.17-1.128-1.482-1.128-1.482-.922-.63.07-.617.07-.617 1.02.072 1.557 1.047 1.557 1.047.907 1.555 2.381 1.106 2.96.846.092-.66.356-1.107.647-1.363-2.252-.255-4.62-1.126-4.62-5.01 0-1.106.395-2.01 1.043-2.718-.105-.256-.452-1.287.099-2.684 0 0 .85-.272 2.785 1.039a9.74 9.74 0 0 1 2.538-.342c.861.004 1.728.117 2.538.342 1.934-1.311 2.783-1.039 2.783-1.039.553 1.397.206 2.428.1 2.684.65.708 1.043 1.612 1.043 2.718 0 3.893-2.372 4.752-4.634 5.003.366.316.692.942.692 1.898 0 1.371-.013 2.476-.013 2.813 0 .27.18.586.697.486A10.502 10.502 0 0 0 12 2.25Z" />
+        <path
+          d="M9.5 6.75 4.25 12l5.25 5.25M14.5 6.75 19.75 12l-5.25 5.25"
+          stroke="currentColor"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -454,14 +628,57 @@ const contactItems = [
     icon: (
       <svg
         viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-7 w-7 translate-y-[1px] scale-110"
+        fill="none"
+        className="h-7 w-7"
         aria-hidden="true"
       >
-        <path d="M4.983 8.855h3.473V20H4.983V8.855ZM6.72 3.5a2.015 2.015 0 1 1 0 4.03 2.015 2.015 0 0 1 0-4.03ZM10.628 8.855h3.33v1.523h.047c.464-.88 1.596-1.808 3.285-1.808 3.513 0 4.162 2.313 4.162 5.319V20h-3.47v-5.417c0-1.292-.023-2.954-1.8-2.954-1.802 0-2.078 1.408-2.078 2.86V20h-3.476V8.855Z" />
+        <path
+          d="M15.75 8.25a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM5.25 20.25a6.75 6.75 0 0 1 13.5 0"
+          stroke="currentColor"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
+];
+
+const footerLinks = [
+  { label: "Email", href: EXTERNAL_LINKS.email },
+  { label: "GitHub", href: EXTERNAL_LINKS.github },
+  { label: "LinkedIn", href: EXTERNAL_LINKS.linkedin },
+  { label: "Source Code", href: EXTERNAL_LINKS.sourceCode },
+];
+
+const ecosystemIcons = [
+  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+    <path
+      d="M4.75 6.75h14.5v10.5H4.75V6.75ZM8 20.25h8M12 17.25v3"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>,
+  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+    <path
+      d="M6.75 7.5c0-2.071 2.35-3.75 5.25-3.75s5.25 1.679 5.25 3.75-2.35 3.75-5.25 3.75-5.25-1.679-5.25-3.75ZM6.75 7.5v4.5c0 2.071 2.35 3.75 5.25 3.75s5.25-1.679 5.25-3.75V7.5M6.75 12v4.5c0 2.071 2.35 3.75 5.25 3.75s5.25-1.679 5.25-3.75V12"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>,
+  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+    <path
+      d="M12 3.75 4.5 7.5 12 11.25l7.5-3.75L12 3.75ZM4.5 12 12 15.75 19.5 12M4.5 16.5 12 20.25l7.5-3.75"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>,
 ];
 
 const themeIcons = {
@@ -574,29 +791,29 @@ function SectionHeading({
 }) {
   return (
     <Reveal
-      className={`border-t border-slate-300/80 pt-6 dark:border-slate-700/70 ${
+      className={`relative ${
         align === "center"
-          ? "mx-auto max-w-3xl text-center"
-          : "grid gap-6 md:grid-cols-[0.28fr_0.72fr]"
+          ? "mx-auto max-w-4xl text-center"
+          : "grid gap-7 md:grid-cols-[0.24fr_0.76fr] lg:gap-10"
       }`}
       delay={delay}
     >
-      <div className={align === "center" ? "mb-5" : ""}>
+      <div className={align === "center" ? "mb-6" : "relative pt-1"}>
         {index ? (
-          <p className="font-display text-5xl font-bold leading-none text-slate-300 dark:text-slate-700">
+          <p className="theme-section-index pointer-events-none absolute -top-12 left-0 font-display text-7xl font-extrabold leading-none tracking-normal sm:text-8xl">
             {index}
           </p>
         ) : null}
-        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.28em] text-blue-700 dark:text-sky-300">
-          {kicker}
+        <p className="type-label relative">
+          {index ? `${index} - ${kicker}` : kicker}
         </p>
       </div>
       <div>
-        <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl dark:text-slate-50">
+        <h2 className="type-section-title">
           {title}
         </h2>
         {description ? (
-          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+          <p className="type-section-copy mt-6">
             {description}
           </p>
         ) : null}
@@ -605,13 +822,140 @@ function SectionHeading({
   );
 }
 
+function HighlightPhrase({ text, phrase }) {
+  if (!text.includes(phrase)) return text;
+
+  const [before, after] = text.split(phrase);
+  return (
+    <>
+      {before}
+      <span className="theme-accent">{phrase}</span>
+      {after}
+    </>
+  );
+}
+
+function TechnicalEcosystemSection({ content }) {
+  return (
+    <section className="kinetic-section kinetic-section-compact" id="ecosystem">
+      <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:items-start">
+        <SectionHeading
+          kicker={content.sectionHeadings.ecosystem.kicker}
+          title={
+            <>
+              {content.sectionHeadings.ecosystem.titlePrefix}{" "}
+              <span className="theme-accent">
+                {content.sectionHeadings.ecosystem.titleAccent}
+              </span>
+            </>
+          }
+          description={content.sectionHeadings.ecosystem.description}
+          index="03"
+          delay={DELAY.HERO_PROFILE}
+        />
+
+        <Reveal
+          className="skills-support-panel rounded-2xl border p-4 sm:p-5"
+          delay={DELAY.HERO_PROFILE}
+        >
+          <div className="grid gap-3">
+            {content.ecosystem.map((category, index) => (
+              <motion.article
+                key={category.title}
+                variants={cardMotion}
+                custom={index * DELAY.METRICS_INCREMENT}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: VIEWPORT.ONCE, amount: VIEWPORT.CARD_AMOUNT }}
+                className="skills-support-row grid gap-4 rounded-xl border p-4 sm:grid-cols-[12rem_1fr] sm:items-start"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="skill-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border">
+                    {ecosystemIcons[index]}
+                  </span>
+                  <h3 className="font-display text-base font-bold leading-tight tracking-normal theme-primary">
+                    {category.title}
+                  </h3>
+                </div>
+                <ul className="flex flex-wrap gap-2">
+                  {category.tools.map((tool) => (
+                    <li
+                      key={tool}
+                      className="kinetic-chip font-mono-label tracking-normal"
+                    >
+                      {tool}
+                    </li>
+                  ))}
+                </ul>
+              </motion.article>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function TimelineSection({ content }) {
+  return (
+    <section className="kinetic-section kinetic-section-secondary" id="timeline">
+      <SectionHeading
+        kicker={content.sectionHeadings.timeline.kicker}
+        title={content.sectionHeadings.timeline.title}
+        description={content.sectionHeadings.timeline.description}
+        index="04"
+        delay={DELAY.HERO_PROFILE}
+      />
+
+      <div className="timeline-quiet relative mt-10 rounded-2xl border p-4 sm:p-6">
+        <div
+          className="timeline-line absolute bottom-8 left-8 top-8 w-px md:left-[11rem]"
+          aria-hidden="true"
+        />
+        <div className="grid gap-3">
+          {content.timeline.map((item, index) => (
+            <motion.article
+              key={`${item.date}-${item.title}`}
+              variants={cardMotion}
+              custom={index * DELAY.METRICS_INCREMENT}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: VIEWPORT.ONCE, amount: VIEWPORT.CARD_AMOUNT }}
+              className="relative grid gap-3 pl-10 md:grid-cols-[9rem_1fr] md:gap-8 md:pl-0"
+            >
+              <div className="font-mono-label pt-4 text-sm font-semibold tracking-normal theme-accent md:text-right">
+                {item.date}
+              </div>
+              <div className="timeline-item relative rounded-xl border p-4 sm:p-5">
+                <span className="timeline-dot absolute -left-[2.2rem] top-5 h-3 w-3 rounded-full border-2 md:-left-[2.57rem]" />
+                <h3 className="font-display text-lg font-bold leading-snug tracking-normal theme-primary sm:text-xl">
+                  {item.title}
+                </h3>
+                <p className="type-body-small mt-3 max-w-[66ch]">
+                  {item.description}
+                </p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeFilter, setActiveFilter] = useState("All");
-  const [language, setLanguage] = useState("id");
+  const [activeSection, setActiveSection] = useState("about");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [language, setLanguage] = useState("en");
   const content = translations[language];
   const intervalRef = useRef(null);
+  const pageTopRef = useRef(null);
+  const navRef = useRef(null);
+  const mobileNavRef = useRef(null);
+  const scrollFrameRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
 
   // Memoize localized projects to avoid recalculation
@@ -619,7 +963,7 @@ function App() {
     () =>
       content.projects.map((project, index) => ({
         ...project,
-        visual: projectVisuals[index],
+        visual: projectVisuals[project.visualIndex ?? index],
       })),
     [content.projects]
   );
@@ -634,17 +978,136 @@ function App() {
           ),
     [activeFilter, localizedProjects]
   );
+  const featuredProject = filteredProjects.find((project) => project.featured);
+  const supportingProjects = featuredProject
+    ? filteredProjects.filter((project) => !project.featured)
+    : filteredProjects;
 
   useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > SCROLL_OFFSET_PX);
+    const sectionIds = content.navLinks.map((link) => link.href.slice(1));
+
+    const updateNavigationState = () => {
+      scrollFrameRef.current = null;
+
+      const navHeight = navRef.current?.offsetHeight ?? 0;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop || 0;
+      const maxScroll = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1
+      );
+      const nextProgress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+
+      setScrollProgress((current) =>
+        Math.abs(current - nextProgress) < 0.003 ? current : nextProgress
+      );
+
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      if (!sections.length) return;
+
+      const viewportTop = navHeight + 12;
+      const viewportBottom = window.innerHeight;
+      const viewportHeight = Math.max(viewportBottom - viewportTop, 1);
+      const activationLine =
+        viewportTop + Math.min(viewportHeight * 0.36, 280);
+
+      if (scrollTop + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+        setActiveSection((current) =>
+          current === sections.at(-1).id ? current : sections.at(-1).id
+        );
+        return;
+      }
+
+      const bestSection = sections.reduce(
+        (best, section) => {
+          const rect = section.getBoundingClientRect();
+          const visibleHeight = Math.max(
+            0,
+            Math.min(rect.bottom, viewportBottom) - Math.max(rect.top, viewportTop)
+          );
+
+          if (visibleHeight <= 0) return best;
+
+          const containsActivationLine =
+            rect.top <= activationLine && rect.bottom >= activationLine;
+          const distanceToActivationLine = containsActivationLine
+            ? 0
+            : Math.min(
+                Math.abs(rect.top - activationLine),
+                Math.abs(rect.bottom - activationLine)
+              );
+          const visibleRatio =
+            visibleHeight / Math.max(Math.min(rect.height, viewportHeight), 1);
+          const distanceScore =
+            1 - Math.min(distanceToActivationLine / viewportHeight, 1);
+          const score =
+            (containsActivationLine ? 3 : 0) + visibleRatio * 2 + distanceScore;
+
+          return score > best.score ? { id: section.id, score } : best;
+        },
+        { id: sections[0]?.id ?? "about", score: Number.NEGATIVE_INFINITY }
+      );
+
+      if (bestSection.id) {
+        setActiveSection((current) =>
+          current === bestSection.id ? current : bestSection.id
+        );
+      }
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const requestNavigationUpdate = () => {
+      if (scrollFrameRef.current !== null) return;
+      scrollFrameRef.current = window.requestAnimationFrame(updateNavigationState);
+    };
 
-    return () => window.removeEventListener("scroll", onScroll);
+    updateNavigationState();
+    window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
+    window.addEventListener("resize", requestNavigationUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestNavigationUpdate);
+      window.removeEventListener("resize", requestNavigationUpdate);
+
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+    };
+  }, [content.navLinks]);
+
+  useEffect(() => {
+    const pageTop = pageTopRef.current;
+
+    if (!pageTop) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsScrolled(!entry.isIntersecting);
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(pageTop);
+
+    return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const activeMobileLink = mobileNavRef.current?.querySelector(
+      `[data-section="${activeSection}"]`
+    );
+
+    activeMobileLink?.scrollIntoView({
+      behavior: SCROLL_BEHAVIOR,
+      block: "nearest",
+      inline: "center",
+    });
+  }, [activeSection, language]);
 
   useEffect(() => {
     intervalRef.current = window.setInterval(() => {
@@ -679,15 +1142,49 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const scrollToCurrentHash = (behavior = SCROLL_BEHAVIOR) => {
+      const hash = window.location.hash;
+
+      if (!hash) return;
+
+      const target = document.querySelector(hash);
+      const nav = navRef.current;
+
+      if (!target || !nav) return;
+
+      const offset = nav.offsetHeight + SCROLL_OFFSET_PX;
+      const targetTop =
+        target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+      setActiveSection(target.id);
+      window.scrollTo({ top: targetTop, behavior });
+    };
+
+    const initialHashScroll = window.setTimeout(
+      () => scrollToCurrentHash("auto"),
+      0
+    );
+    const handleHashChange = () => scrollToCurrentHash();
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.clearTimeout(initialHashScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   const handleNavClick = (event, href) => {
     if (!href.startsWith("#")) return;
 
     const target = document.querySelector(href);
-    const nav = document.querySelector("nav");
+    const nav = navRef.current;
 
     if (!target || !nav) return;
 
     event.preventDefault();
+    setActiveSection(target.id);
     const offset = nav.offsetHeight + SCROLL_OFFSET_PX;
     const targetTop =
       target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -696,47 +1193,75 @@ function App() {
   };
 
   return (
-    <div className="portfolio-shell min-h-screen overflow-x-hidden bg-transparent text-slate-900 transition-colors duration-500 dark:text-slate-100">
+    <div className="portfolio-shell theme-shell min-h-screen overflow-x-hidden bg-transparent transition-colors duration-500">
+      <span
+        ref={pageTopRef}
+        className="absolute left-0 top-0 h-px w-px"
+        aria-hidden="true"
+      />
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 px-3 py-3 transition-all duration-300 ${
+        ref={navRef}
+        className={`fixed left-0 right-0 top-0 z-50 px-3 py-4 transition-all duration-300 ${
           isScrolled ? "translate-y-0" : ""
         }`}
       >
         <div
-          className={`mx-auto flex w-[min(94%,1180px)] items-center justify-between gap-3 rounded-[1.4rem] border px-3 py-3 shadow-[0_24px_80px_-52px_rgba(15,23,42,0.38)] backdrop-blur-xl transition-all duration-300 md:px-5 ${
-            isScrolled
-              ? "border-slate-300/90 bg-white/[0.88] dark:border-slate-700/70 dark:bg-slate-950/[0.88]"
-              : "border-white/60 bg-white/[0.62] dark:border-slate-800/70 dark:bg-slate-950/[0.52]"
+          className={`theme-nav-shell mx-auto flex w-[calc(100%_-_1rem)] max-w-[1200px] items-center justify-between gap-3 rounded-2xl border px-3 py-3 backdrop-blur-xl transition-all duration-300 md:px-4 ${
+            isScrolled ? "theme-nav-shell-scrolled" : ""
           }`}
         >
-          <div className="min-w-0">
-            <p className="truncate font-display text-base font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-lg">
-              Michael Garets Kon
+          <div className="flex min-w-0 items-center gap-3">
+            <p className="brand-mark flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border font-display text-sm font-bold tracking-normal">
+              MGK
             </p>
-            <p className="hidden text-xs text-slate-600 dark:text-slate-400 sm:block">
-              {content.navSubtitle}
-            </p>
+            <div className="hidden min-w-0 lg:block">
+              <p className="theme-primary truncate font-display text-sm font-bold tracking-normal">
+                Michael Garets Kon
+              </p>
+              <p className="theme-muted text-xs">{content.navSubtitle}</p>
+            </div>
           </div>
 
-          <div className="flex shrink-0 items-center gap-2 md:gap-3">
-            <ul className="hidden items-center gap-1 rounded-full border border-slate-300/90 bg-white/[0.82] p-1 shadow-sm md:flex dark:border-slate-700/70 dark:bg-slate-900/[0.82]">
-              {content.navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(event) => handleNavClick(event, link.href)}
-                    className="inline-flex rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-950 hover:text-white dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-sky-200"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+          <div className="flex shrink-0 items-center gap-2 max-[639px]:-translate-x-14 md:gap-3">
+            <ul className="theme-nav-cluster hidden items-center gap-1 rounded-xl border p-1 shadow-sm xl:flex">
+              {content.navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1);
+
+                return (
+                  <li className="relative" key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={(event) => handleNavClick(event, link.href)}
+                      aria-current={isActive ? "page" : undefined}
+                      data-section={link.href.slice(1)}
+                      className={`relative inline-flex rounded-lg px-3 py-2 text-xs font-semibold outline-none transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 md:px-4 ${
+                        isActive
+                          ? "theme-text-on-accent"
+                          : "theme-muted theme-hover-soft"
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="active-desktop-nav"
+                          className="theme-active-pill absolute inset-0 rounded-lg"
+                          transition={{
+                            type: "spring",
+                            stiffness: 220,
+                            damping: 28,
+                          }}
+                        />
+                      )}
+                      <span className="relative z-10">{link.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
 
             <a
               href={cvFile}
               download="CV-MichaelGaretsKon.pdf"
-              className="hidden h-11 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/90 px-4 text-sm font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-teal-400/30 dark:bg-teal-500/15 dark:text-teal-100 dark:hover:border-teal-400/50 dark:hover:bg-teal-500/25 dark:hover:text-teal-50 sm:inline-flex"
+              className="kinetic-button-primary hidden h-11 items-center justify-center gap-2 px-4 sm:inline-flex"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -760,7 +1285,7 @@ function App() {
               onClick={() =>
                 setLanguage((current) => (current === "id" ? "en" : "id"))
               }
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white/90 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-slate-700/70 dark:bg-slate-900/[0.82] dark:text-slate-100 dark:hover:border-sky-400/50 dark:hover:bg-slate-800/70"
+              className="theme-control inline-flex h-11 w-11 items-center justify-center rounded-lg border text-sm font-bold shadow-sm transition hover:-translate-y-0.5"
               aria-label={`Switch language to ${language === "id" ? "English" : "Bahasa Indonesia"}`}
             >
               {language === "id" ? "EN" : "ID"}
@@ -769,28 +1294,31 @@ function App() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="group relative inline-flex h-11 w-[4.75rem] items-center rounded-full border border-slate-300 bg-white/90 px-1.5 text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-slate-700/70 dark:bg-slate-900/[0.82] dark:text-slate-100 dark:hover:border-sky-400/50 dark:hover:bg-slate-800/70"
+              className="theme-control group relative inline-flex h-11 w-11 items-center justify-center rounded-lg border px-1.5 shadow-sm backdrop-blur transition hover:-translate-y-0.5 sm:w-[4.75rem] sm:justify-start"
               aria-label={`Aktifkan mode ${theme === "dark" ? "terang" : "gelap"}`}
             >
               <motion.span
-                className="absolute h-8 w-8 rounded-full bg-slate-950 shadow-[0_12px_28px_-16px_rgba(15,23,42,0.85)] dark:bg-sky-300"
+                className="theme-active-pill absolute hidden h-8 w-8 rounded-md sm:block"
                 animate={{ x: theme === "dark" ? 32 : 0 }}
                 transition={{ type: "spring", stiffness: ANIMATION.THEME_SPRING_STIFFNESS, damping: ANIMATION.THEME_SPRING_DAMPING }}
               />
+              <span className="theme-accent relative z-10 flex h-8 w-8 items-center justify-center sm:hidden">
+                {theme === "dark" ? themeIcons.dark : themeIcons.light}
+              </span>
               <span
-                className={`relative z-10 flex h-8 w-8 items-center justify-center transition-colors ${
+                className={`relative z-10 hidden h-8 w-8 items-center justify-center transition-colors sm:flex ${
                   theme === "light"
-                    ? "text-white"
-                    : "text-slate-400 dark:text-slate-500"
+                    ? "theme-text-on-accent"
+                    : "theme-muted"
                 }`}
               >
                 {themeIcons.light}
               </span>
               <span
-                className={`relative z-10 flex h-8 w-8 items-center justify-center transition-colors ${
+                className={`relative z-10 hidden h-8 w-8 items-center justify-center transition-colors sm:flex ${
                   theme === "dark"
-                    ? "text-slate-950"
-                    : "text-slate-400 dark:text-slate-300"
+                    ? "theme-text-on-accent"
+                    : "theme-muted"
                 }`}
               >
                 {themeIcons.dark}
@@ -798,40 +1326,89 @@ function App() {
             </button>
           </div>
         </div>
-        <ul className="mx-auto mt-2 flex w-[min(94%,1180px)] gap-2 overflow-x-auto rounded-full border border-slate-300/90 bg-white/[0.86] p-1 shadow-sm backdrop-blur md:hidden dark:border-slate-700/70 dark:bg-slate-900/[0.82]">
-          {content.navLinks.map((link) => (
-            <li className="min-w-fit flex-1" key={link.href}>
-              <a
-                href={link.href}
-                onClick={(event) => handleNavClick(event, link.href)}
-                className="flex justify-center rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-950 hover:text-white dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-sky-200"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+        <ul
+          ref={mobileNavRef}
+          className="theme-nav-shell mx-auto mt-2 flex w-[calc(100%_-_1rem)] max-w-[1200px] gap-2 overflow-x-auto rounded-xl border p-1 shadow-sm backdrop-blur xl:hidden"
+        >
+          {content.navLinks.map((link) => {
+            const isActive = activeSection === link.href.slice(1);
+
+            return (
+              <li className="relative min-w-fit flex-1" key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={(event) => handleNavClick(event, link.href)}
+                  aria-current={isActive ? "page" : undefined}
+                  data-section={link.href.slice(1)}
+                  className={`relative flex justify-center rounded-lg px-4 py-2 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 ${
+                    isActive
+                      ? "theme-text-on-accent"
+                      : "theme-muted theme-hover-soft"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-mobile-nav"
+                      className="theme-active-pill absolute inset-0 rounded-lg"
+                      transition={{
+                        type: "spring",
+                        stiffness: 220,
+                        damping: 28,
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10 whitespace-nowrap">
+                    {link.label}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
+        <div
+          className="scroll-progress-track pointer-events-none mx-auto mt-2 h-1 w-[calc(100%_-_1rem)] max-w-[1200px] overflow-hidden rounded-full"
+          aria-hidden="true"
+        >
+          <motion.div
+            className="scroll-progress-bar h-full origin-left rounded-full"
+            animate={{ scaleX: scrollProgress }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          />
+        </div>
       </nav>
 
       <main>
-        <section className="relative mx-auto grid min-h-[100svh] w-[min(94%,1180px)] items-center gap-10 pb-16 pt-28 md:pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:pb-20">
-          <Reveal className="space-y-7 md:space-y-8" delay={DELAY.HERO_CONTENT}>
+        <section className="hero-section relative ml-4 mr-auto grid min-h-[100svh] w-[min(21.5rem,calc(100%-2rem))] min-w-0 items-center gap-10 overflow-hidden pb-20 pt-40 sm:mx-auto sm:w-[min(94%,1200px)] md:pt-44 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pb-28">
+          <div
+            className="hero-grid absolute inset-0 -z-10"
+            aria-hidden="true"
+          />
+          <Reveal className="min-w-0 space-y-7 md:space-y-8" delay={DELAY.HERO_CONTENT}>
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white/82 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm backdrop-blur dark:border-sky-300/20 dark:bg-sky-300/10 dark:text-sky-100">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-300" />
+              <div className="theme-badge inline-flex items-center gap-3 rounded-lg border px-4 py-2 text-xs font-semibold uppercase tracking-normal shadow-sm backdrop-blur">
+                <span className="status-dot h-2.5 w-2.5 rounded-full" />
                 {content.topBadge}
               </div>
-              <div className="hidden h-px flex-1 bg-slate-300 dark:bg-slate-700 sm:block" />
-              <p className="font-display text-sm font-bold uppercase tracking-[0.22em] text-slate-400 dark:text-slate-600">
+              <div className="theme-hairline hidden h-px flex-1 sm:block" />
+              <p className="font-mono-label theme-accent hidden text-sm font-bold uppercase tracking-normal sm:block">
                 2026
               </p>
             </div>
 
-            <div className="space-y-5">
-              <h1 className="max-w-4xl break-words font-display text-4xl font-bold leading-[0.98] tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl dark:text-slate-50">
-                {content.hero.heading}
+            <div className="space-y-6">
+              <p className="type-label">
+                {content.hero.name}
+              </p>
+              <h1 className="type-hero-title max-w-4xl break-words">
+                <HighlightPhrase
+                  text={content.hero.heading}
+                  phrase={language === "id" ? "jelas" : "clear"}
+                />
               </h1>
-              <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+              <p className="type-lead">
+                {content.hero.positioning}
+              </p>
+              <p className="theme-soft max-w-[58ch] text-base leading-8 sm:text-lg">
                 {content.hero.subheading}
               </p>
             </div>
@@ -840,21 +1417,21 @@ function App() {
               <a
                 href="#projects"
                 onClick={(event) => handleNavClick(event, "#projects")}
-                className="inline-flex w-full justify-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_22px_60px_-26px_rgba(15,23,42,0.9)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-sky-300 dark:text-slate-950 dark:hover:bg-sky-400 dark:hover:text-slate-900 sm:w-auto"
+                className="kinetic-button-primary w-full sm:w-auto"
               >
                 {content.hero.ctaProjects}
               </a>
               <a
                 href="#contact"
                 onClick={(event) => handleNavClick(event, "#contact")}
-                className="inline-flex w-full justify-center rounded-full border border-slate-300 bg-white/[0.9] px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:border-sky-400/50 dark:hover:bg-slate-800/50 dark:hover:text-sky-200 sm:w-auto"
+                className="kinetic-button-secondary w-full sm:w-auto"
               >
                 {content.hero.ctaContact}
               </a>
               <a
                 href={cvFile}
                 download="CV-MichaelGaretsKon.pdf"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-indigo-400/40 dark:bg-indigo-500/20 dark:text-indigo-100 dark:hover:border-indigo-400/60 dark:hover:bg-indigo-500/30 dark:hover:text-indigo-50 sm:w-auto"
+                className="kinetic-button-secondary w-full gap-2 sm:w-auto"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -874,39 +1451,44 @@ function App() {
               </a>
             </div>
 
-            <div className="grid overflow-hidden rounded-[1.35rem] border border-slate-300 bg-white/70 shadow-[0_24px_80px_-58px_rgba(15,23,42,0.45)] backdrop-blur md:grid-cols-3 dark:border-slate-700/70 dark:bg-slate-950/45">
-              {content.metrics.map((metric, index) => (
+            <div className="recruiter-snapshot grid overflow-hidden rounded-2xl border backdrop-blur-xl sm:grid-cols-2 xl:grid-cols-4">
+              {content.hero.snapshot.map((metric, index) => (
                 <motion.div
-                  key={metric.value}
+                  key={metric.label}
                   variants={cardMotion}
                   custom={DELAY.HERO_METRICS_START + index * DELAY.METRICS_INCREMENT}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: VIEWPORT.ONCE, amount: VIEWPORT.CARD_AMOUNT }}
-                  className="border-b border-slate-200 p-5 transition duration-300 hover:bg-white md:border-b-0 md:border-r md:last:border-r-0 dark:border-slate-800 dark:hover:bg-slate-800/50"
+                  className="snapshot-cell border-b p-4 transition duration-300 sm:p-5 xl:border-b-0 xl:border-r xl:last:border-r-0"
                 >
-                  <p className="font-display text-xl font-bold text-slate-950 dark:text-slate-50">
-                    {metric.value}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  <p className="type-label">
                     {metric.label}
+                  </p>
+                  <p className="theme-primary mt-3 font-display text-lg font-bold leading-tight tracking-normal">
+                    {metric.value}
                   </p>
                 </motion.div>
               ))}
             </div>
           </Reveal>
 
-          <Reveal delay={DELAY.HERO_PROFILE}>
-            <div className="relative mx-auto w-full max-w-[30rem] overflow-hidden rounded-[2rem] border border-slate-300 bg-white p-3 shadow-[0_34px_120px_-62px_rgba(15,23,42,0.55)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/[0.72]">
-              <div className="absolute right-5 top-5 z-30 rounded-full border border-white/30 bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur">
+          <Reveal className="min-w-0" delay={DELAY.HERO_PROFILE}>
+            <div className="relative mx-auto w-full max-w-[30rem]">
+              <div
+                className="absolute -inset-10 -z-10 rounded-full bg-sky-300/12 blur-3xl"
+                aria-hidden="true"
+              />
+              <div className="profile-shell kinetic-glass relative overflow-hidden rounded-2xl p-3">
+              <div className="profile-badge absolute right-5 top-5 z-30 rounded-lg border px-3 py-1 text-xs font-bold uppercase tracking-normal backdrop-blur">
                 React
               </div>
               <div
-                className="relative overflow-hidden rounded-[1.55rem] bg-[#EEF4FF] dark:bg-slate-900"
+                className="profile-stage relative overflow-hidden rounded-xl"
                 onMouseEnter={stopAutoSlide}
                 onMouseLeave={resetAutoSlide}
               >
-                <div className="absolute left-4 top-4 z-20 rounded-full bg-slate-950/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
+                <div className="profile-badge absolute left-4 top-4 z-20 rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-normal backdrop-blur">
                   {content.profileCard.label}
                 </div>
                 <div className="relative aspect-[4/5] min-h-[28rem]">
@@ -928,21 +1510,21 @@ function App() {
                   ))}
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-950/82 via-slate-950/24 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5 z-20">
-                    <p className="font-display text-3xl font-bold text-white">
+                    <p className="type-card-title-lg">
                       Michael Garets Kon
                     </p>
-                    <p className="mt-2 max-w-xs text-sm leading-6 text-white/78">
+                    <p className="mt-3 max-w-[34ch] text-sm leading-6 text-white/80">
                       {content.profileCard.description}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="relative mt-3 rounded-[1.35rem] border border-slate-300 bg-white p-4 dark:border-slate-700/70 dark:bg-slate-950/[0.72]">
+              <div className="profile-control-panel relative mt-3 rounded-xl border p-4">
                 <div className="flex items-center justify-between gap-3">
                   <button
                     type="button"
-                    className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-slate-700/70 dark:bg-slate-900/80 dark:text-slate-100 dark:hover:border-sky-400/50 dark:hover:bg-slate-800/70 dark:hover:text-sky-200"
+                    className="profile-button rounded-lg border px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5"
                     onClick={() => goToSlide(activeSlide - 1)}
                   >
                     {content.profileCard.previous}
@@ -956,24 +1538,24 @@ function App() {
                         onClick={() => goToSlide(index)}
                         className={`h-2.5 rounded-full transition-all ${
                           index === activeSlide
-                            ? "w-8 bg-blue-900 dark:bg-sky-300"
-                            : "w-2.5 bg-slate-300 hover:bg-blue-500 dark:bg-slate-700 dark:hover:bg-sky-300/55"
+                            ? "active-slide-dot w-8"
+                            : "inactive-slide-dot w-2.5"
                         }`}
                       />
                     ))}
                   </div>
                   <button
                     type="button"
-                    className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-50 dark:border-slate-700/70 dark:bg-slate-900/80 dark:text-slate-100 dark:hover:border-sky-400/50 dark:hover:bg-slate-800/70 dark:hover:text-sky-200"
+                    className="profile-button rounded-lg border px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5"
                     onClick={() => goToSlide(activeSlide + 1)}
                   >
                     {content.profileCard.next}
                   </button>
                 </div>
-                <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                <div className="font-mono-label mt-4 grid grid-cols-3 gap-2 text-center text-xs font-semibold uppercase tracking-normal">
                   {content.profileCard.traits.map((trait) => (
                     <span
-                      className="rounded-full bg-slate-100 px-3 py-2 dark:bg-slate-900"
+                      className="profile-trait rounded-full px-3 py-2"
                       key={trait}
                     >
                       {trait}
@@ -981,12 +1563,13 @@ function App() {
                   ))}
                 </div>
               </div>
+              </div>
             </div>
           </Reveal>
         </section>
 
         <section
-          className="relative mx-auto w-[min(94%,1180px)] py-18 md:py-24"
+          className="kinetic-section section-flow-about"
           id="about"
         >
           <SectionHeading
@@ -997,34 +1580,38 @@ function App() {
             delay={DELAY.ABOUT_SECTION}
           />
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
             <Reveal
-              className="relative overflow-hidden rounded-[1.7rem] border border-slate-300 bg-white/82 p-6 shadow-[0_28px_90px_-62px_rgba(15,23,42,0.42)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/[0.72] sm:p-8"
+              className="about-thesis relative overflow-hidden rounded-2xl border p-6 sm:p-8"
               delay={DELAY.HERO_PROFILE}
             >
-              <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-emerald-400 via-blue-600 to-slate-950 dark:from-emerald-300 dark:via-sky-300 dark:to-slate-600" />
+              <div className="flow-accent-bar absolute left-0 top-0 h-full w-1" />
+              <div
+                className="soft-light absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl"
+                aria-hidden="true"
+              />
               <div className="space-y-5">
-                <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
+                <p className="type-lead">
                   {content.about.paragraphs[0]}
                 </p>
-                <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
+                <p className="type-body max-w-[64ch]">
                   {content.about.paragraphs[1]}
                 </p>
               </div>
-              <div className="mt-8 grid gap-4 border-t border-slate-200 pt-6 dark:border-slate-800 sm:grid-cols-2">
+              <div className="theme-divider mt-8 grid gap-4 border-t pt-6 sm:grid-cols-2">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  <p className="type-label">
                     {content.about.focusLabel}
                   </p>
-                  <p className="mt-3 font-display text-2xl font-bold leading-tight text-slate-950 dark:text-slate-50">
+                  <p className="type-card-title mt-3">
                     {content.about.focusTitle}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  <p className="type-label">
                     {content.about.workflowLabel}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-700 dark:text-slate-300">
+                  <p className="type-body-small mt-3">
                     {content.about.workflowText}
                   </p>
                 </div>
@@ -1040,17 +1627,17 @@ function App() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: VIEWPORT.ONCE, amount: VIEWPORT.CARD_AMOUNT }}
-                  className="group rounded-[1.35rem] border border-slate-300 bg-white/72 p-5 shadow-[0_20px_70px_-58px_rgba(15,23,42,0.42)] backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-500 hover:bg-white dark:border-slate-700/70 dark:bg-slate-900/60 dark:hover:border-sky-300/30"
+                  className="about-step group rounded-2xl border p-5"
                 >
                   <div className="flex items-start gap-5">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-slate-950 text-sm font-bold text-white transition group-hover:scale-105 dark:border-slate-700 dark:bg-sky-300 dark:text-slate-950">
+                    <div className="step-number flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border font-display text-sm font-bold tracking-normal transition group-hover:scale-105">
                       {item.number}
                     </div>
                     <div>
-                      <h3 className="font-display text-xl font-bold text-slate-950 dark:text-slate-50">
+                      <h3 className="type-card-title">
                         {item.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                      <p className="type-body-small mt-3 max-w-[62ch]">
                         {item.description}
                       </p>
                     </div>
@@ -1062,7 +1649,7 @@ function App() {
         </section>
 
         <section
-          className="relative mx-auto w-[min(94%,1180px)] py-18 md:py-24"
+          className="kinetic-section projects-stage-section"
           id="projects"
         >
           <SectionHeading
@@ -1074,27 +1661,27 @@ function App() {
           />
 
           <Reveal
-            className="mt-8 flex gap-2 overflow-x-auto rounded-full border border-slate-300 bg-white/82 p-2 shadow-sm backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/[0.72] sm:inline-flex"
+            className="theme-filter mt-10 flex gap-2 overflow-x-auto rounded-xl border p-2 shadow-sm backdrop-blur sm:inline-flex"
             delay={DELAY.PROJECTS_FILTER}
           >
             {projectFilters.map((filter) => {
-              const isActive = activeFilter === filter;
+              const isActive = activeFilter === filter.value;
 
               return (
                 <button
                   type="button"
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`relative shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${
+                  key={filter.value}
+                  onClick={() => setActiveFilter(filter.value)}
+                  className={`relative shrink-0 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${
                     isActive
-                      ? "text-white dark:text-slate-950"
-                      : "text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-sky-100"
+                      ? "theme-text-on-accent"
+                      : "theme-muted"
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="active-project-filter"
-                      className="absolute inset-0 rounded-full bg-slate-950 shadow-[0_16px_35px_-20px_rgba(15,23,42,0.85)] dark:bg-sky-300"
+                      className="theme-active-pill absolute inset-0 rounded-lg"
                       transition={{
                         type: "spring",
                         stiffness: 380,
@@ -1102,140 +1689,239 @@ function App() {
                       }}
                     />  
                   )}
-                  <span className="relative z-10">{filter}</span>
+                  <span className="relative z-10">{filter.label}</span>
                 </button>
               );
             })}
           </Reveal>
 
-          <motion.div layout className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+          <div className="projects-stage mt-10 space-y-8">
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => {
-                const visual = project.visual ?? {};
-                const featuredLayout =
-                  activeFilter === "All"
-                    ? [
-                        "lg:col-span-4",
-                        "lg:col-span-2",
-                        "lg:col-span-3",
-                        "lg:col-span-3",
-                      ][index] ?? "lg:col-span-3"
-                    : "lg:col-span-3";
-                const isFeatured = activeFilter === "All" && index === 0;
-
-                return (
-                  <motion.article
-                    layout
-                    key={`${activeFilter}-${project.title}`}
-                    variants={cardMotion}
-                    custom={index * DELAY.METRICS_INCREMENT}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    whileHover={{ y: -6 }}
-                    className={`group overflow-hidden rounded-[1.55rem] border border-slate-300 bg-white/90 p-3 shadow-[0_30px_90px_-64px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:border-slate-500 hover:bg-white dark:border-slate-700/70 dark:bg-slate-900/[0.72] dark:hover:border-sky-300/30 dark:hover:bg-slate-900/90 ${featuredLayout}`}
-                  >
-                    <div
-                      className={`relative overflow-hidden rounded-[1.25rem] bg-slate-900 p-5 ${
-                        isFeatured
-                          ? "min-h-[22rem] md:min-h-[25rem]"
-                          : "min-h-[15rem]"
-                      } ${visual.image ? "bg-cover bg-center" : `bg-gradient-to-br ${project.palette}`}`}
-                      style={
-                        visual.image
-                          ? { backgroundImage: `url(${visual.image})` }
-                          : undefined
-                      }
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/[0.84] via-slate-950/[0.28] to-slate-950/[0.04]" />
-                      <div className="relative z-10 flex h-full min-h-[inherit] flex-col justify-between">
-                        <span className="inline-flex w-fit rounded-full bg-white/[0.16] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur">
-                          {project.chip}
+              {featuredProject ? (
+                <motion.article
+                  layout
+                  key={`${activeFilter}-${featuredProject.title}-featured`}
+                  variants={cardMotion}
+                  custom={0}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  whileHover={{ y: -6 }}
+                  className="featured-project-stage group overflow-hidden rounded-2xl border p-3 md:p-4"
+                >
+                  <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
+                    <div className="relative min-h-[22rem] overflow-hidden rounded-xl bg-slate-900 lg:min-h-[32rem]">
+                      {featuredProject.visual?.image ? (
+                        <img
+                          src={featuredProject.visual.image}
+                          alt={featuredProject.visual.imageAlt}
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div
+                          className={`absolute inset-0 bg-gradient-to-br ${featuredProject.palette}`}
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/[0.9] via-slate-950/[0.34] to-slate-950/[0.04]" />
+                      <div className="relative z-10 flex h-full min-h-[inherit] flex-col justify-between p-5 sm:p-6">
+                        <span className="font-mono-label inline-flex w-fit rounded-full border border-sky-300/25 bg-sky-300/14 px-4 py-2 text-xs font-semibold uppercase tracking-normal text-sky-100 backdrop-blur">
+                          {content.featuredProjectLabel}
                         </span>
-                        <p
-                          className={`max-w-lg font-display font-bold leading-tight text-white ${
-                            isFeatured ? "text-4xl sm:text-5xl" : "text-2xl"
-                          }`}
-                        >
-                          {project.title}
-                        </p>
+                        <div>
+                          <p className="type-label-muted">
+                            {featuredProject.chip}
+                          </p>
+                          <h3 className="type-project-title mt-4 max-w-xl">
+                            {featuredProject.title}
+                          </h3>
+                        </div>
                       </div>
                     </div>
 
-                    <div className={isFeatured ? "p-3 md:p-5" : "px-2 py-4"}>
-                      {(project.role || project.proof) && (
-                        <dl
-                          className={`grid gap-4 rounded-[1.1rem] border border-slate-200 bg-slate-50 p-4 dark:border-slate-700/70 dark:bg-slate-950/55 ${
-                            isFeatured ? "md:grid-cols-2" : ""
-                          }`}
-                        >
-                          <div className={isFeatured ? "md:col-span-2" : ""}>
-                            <dt className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-sky-300">
-                              {content.projectMetaLabels.problem}
-                            </dt>
-                            <dd
-                              className={`mt-1 text-slate-700 dark:text-slate-300 ${
-                                isFeatured
-                                  ? "text-base leading-8"
-                                  : "text-sm leading-7"
-                              }`}
-                            >
-                              {project.description}
-                            </dd>
+                    <div className="flex flex-col justify-between px-2 py-6 sm:px-5 lg:p-8">
+                      <div>
+                        <p className="type-label">
+                          {content.projectMetaLabels.problem}
+                        </p>
+                        <p className="type-body mt-4 max-w-[64ch]">
+                          {featuredProject.description}
+                        </p>
+
+                        {featuredProject.outcome && (
+                          <div className="outcome-callout mt-6 border-l pl-4">
+                            <p className="type-label">
+                              {content.projectMetaLabels.outcome}
+                            </p>
+                            <p className="type-body-strong mt-3">
+                              {featuredProject.outcome}
+                            </p>
                           </div>
-                          {project.role && (
-                            <div className="border-t border-slate-200 pt-4 dark:border-slate-800 md:border-t-0 md:pt-0">
-                              <dt className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-sky-300">
+                        )}
+
+                        <dl className="theme-divider mt-7 grid gap-5 border-t pt-6">
+                          {featuredProject.role && (
+                            <div>
+                              <dt className="type-label text-[0.68rem]">
                                 {content.projectMetaLabels.role}
                               </dt>
-                              <dd className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-300">
-                                {project.role}
+                              <dd className="type-body-small mt-2 max-w-[62ch]">
+                                {featuredProject.role}
                               </dd>
                             </div>
                           )}
-                          {project.proof && (
-                            <div className="border-t border-slate-200 pt-4 dark:border-slate-800 md:border-t-0 md:pt-0">
-                              <dt className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-sky-300">
+                          {featuredProject.proof && (
+                            <div>
+                              <dt className="type-label text-[0.68rem]">
                                 {content.projectMetaLabels.proof}
                               </dt>
-                              <dd className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-300">
-                                {project.proof}
+                              <dd className="type-body-small mt-2 max-w-[62ch]">
+                                {featuredProject.proof}
                               </dd>
                             </div>
                           )}
                         </dl>
-                      )}
-                      <ul className="mt-5 flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <li
-                            key={tag}
-                            className="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold tracking-wide text-slate-700 transition group-hover:border-slate-500 dark:border-slate-700/70 dark:bg-slate-800/70 dark:text-slate-300 dark:group-hover:border-sky-400/40 dark:group-hover:bg-slate-700/70 dark:group-hover:text-sky-200"
+                      </div>
+
+                      <div className="mt-7">
+                        <ul className="flex flex-wrap gap-2">
+                          {featuredProject.tags.map((tag) => (
+                            <li
+                              key={tag}
+                              className="kinetic-chip font-mono-label tracking-normal transition"
+                            >
+                              {tag}
+                            </li>
+                          ))}
+                        </ul>
+                        {featuredProject.link && (
+                          <a
+                            href={featuredProject.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="kinetic-button-primary mt-6 w-full sm:w-auto"
                           >
-                            {tag}
-                          </li>
-                        ))}
-                      </ul>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-sky-300 dark:text-slate-950 dark:hover:bg-sky-400 dark:hover:text-slate-900"
-                        >
-                          {content.projectLinkLabel}
-                        </a>
-                      )}
+                            {content.projectLinkLabel}
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </motion.article>
-                );
-              })}
+                  </div>
+                </motion.article>
+              ) : null}
             </AnimatePresence>
-          </motion.div>
+
+            {supportingProjects.length > 0 && (
+              <div>
+                {featuredProject && (
+                  <p className="font-mono-label theme-accent mb-4 text-xs font-bold uppercase tracking-normal">
+                    {content.supportingProjectLabel}
+                  </p>
+                )}
+                <motion.div layout className="grid gap-4">
+                  <AnimatePresence mode="popLayout">
+                    {supportingProjects.map((project, index) => {
+                      const visual = project.visual ?? {};
+
+                      return (
+                        <motion.article
+                          layout
+                          key={`${activeFilter}-${project.title}`}
+                          variants={cardMotion}
+                          custom={(index + 1) * DELAY.METRICS_INCREMENT}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          whileHover={{ y: -4 }}
+                          className="supporting-project-row group grid overflow-hidden rounded-2xl border p-3 md:grid-cols-[16rem_1fr_auto] md:items-stretch"
+                        >
+                          <div className="relative min-h-[13rem] overflow-hidden rounded-xl bg-slate-900 md:min-h-full">
+                            {visual.image ? (
+                              <img
+                                src={visual.image}
+                                alt={visual.imageAlt}
+                                className="absolute inset-0 h-full w-full object-cover"
+                              />
+                            ) : (
+                              <div
+                                className={`absolute inset-0 bg-gradient-to-br ${project.palette}`}
+                              />
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/[0.86] via-slate-950/[0.26] to-slate-950/[0.05]" />
+                            <div className="relative z-10 flex h-full min-h-[inherit] flex-col justify-between p-5">
+                              <span className="font-mono-label inline-flex w-fit rounded-full bg-sky-300/12 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-normal text-sky-100 backdrop-blur">
+                                {project.chip}
+                              </span>
+                              <h3 className="font-display text-2xl font-extrabold leading-tight tracking-normal text-white">
+                                {project.title}
+                              </h3>
+                            </div>
+                          </div>
+
+                          <div className="flex min-w-0 flex-1 flex-col px-2 py-5 md:px-5">
+                            <p className="type-body-small max-w-[64ch]">
+                              {project.description}
+                            </p>
+
+                            <dl className="theme-divider mt-5 grid gap-4 border-t pt-5 sm:grid-cols-2">
+                              {project.outcome && (
+                                <div>
+                                  <dt className="type-label text-[0.68rem]">
+                                    {content.projectMetaLabels.outcome}
+                                  </dt>
+                                  <dd className="type-body-small mt-2">
+                                    {project.outcome}
+                                  </dd>
+                                </div>
+                              )}
+                              {project.proof && (
+                                <div>
+                                  <dt className="type-label text-[0.68rem]">
+                                    {content.projectMetaLabels.proof}
+                                  </dt>
+                                  <dd className="type-body-small mt-2">
+                                    {project.proof}
+                                  </dd>
+                                </div>
+                              )}
+                            </dl>
+
+                            <ul className="mt-5 flex flex-wrap gap-2">
+                              {project.tags.map((tag) => (
+                                <li
+                                  key={tag}
+                                  className="kinetic-chip font-mono-label tracking-normal transition"
+                                >
+                                  {tag}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="flex items-end px-2 pb-5 md:px-4 md:py-5">
+                            {project.link ? (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="kinetic-button-secondary w-full whitespace-nowrap md:w-auto"
+                              >
+                                {content.projectLinkLabel}
+                              </a>
+                            ) : null}
+                          </div>
+                        </motion.article>
+                      );
+                    })}
+                  </AnimatePresence>
+                </motion.div>
+              </div>
+            )}
+          </div>
 
           <AnimatePresence>
             {filteredProjects.length === 0 && (
               <motion.div
-                className="mt-8 rounded-lg border border-dashed border-slate-300 bg-white/80 p-8 text-center text-sm leading-7 text-slate-600 backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/60 dark:text-slate-400"
+                className="empty-state mt-8 rounded-lg border border-dashed p-8 text-center text-sm leading-7 backdrop-blur"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
@@ -1247,65 +1933,116 @@ function App() {
           </AnimatePresence>
         </section>
 
+        <TechnicalEcosystemSection content={content} />
+
+        <TimelineSection content={content} />
+
         <section
-          className="relative mx-auto w-[min(94%,1180px)] py-18 md:py-24"
+          className="contact-conclusion relative mx-auto w-[min(94%,1180px)] py-18 md:py-24"
           id="contact"
         >
-          <SectionHeading
-            kicker={content.sectionHeadings.contact.kicker}
-            title={content.sectionHeadings.contact.title}
-            description={content.sectionHeadings.contact.description}
-            index="03"
-            delay={DELAY.HERO_PROFILE}
-          />
+          <motion.div
+            variants={cardMotion}
+            custom={DELAY.HERO_PROFILE}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: VIEWPORT.ONCE,
+              amount: VIEWPORT.REVEAL_AMOUNT,
+            }}
+            className="theme-contact-card relative mx-auto overflow-hidden rounded-2xl border px-5 py-14 text-center backdrop-blur-xl sm:px-8 sm:py-16 lg:px-12"
+          >
+            <div
+              className="absolute inset-0 opacity-[0.18]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(56,189,248,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.2) 1px, transparent 1px)",
+                backgroundSize: "36px 36px",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sky-300/70 to-transparent"
+              aria-hidden="true"
+            />
+            <div
+              className="soft-light absolute -top-28 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
+              aria-hidden="true"
+            />
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {content.contacts.map((contactText, index) => {
-              const contact = contactItems[index];
-              return (
-                <motion.div
-                  key={contact.title}
-                  variants={cardMotion}
-                  custom={DELAY.CONTACT_START + index * DELAY.CONTACT_INCREMENT}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: VIEWPORT.ONCE,
-                    amount: VIEWPORT.CARD_AMOUNT,
-                  }}
-                  whileHover={{ y: -5 }}
-                  className={`flex h-full flex-col rounded-[1.45rem] border border-slate-300 bg-white/82 p-6 shadow-[0_28px_90px_-66px_rgba(15,23,42,0.48)] backdrop-blur transition duration-300 hover:border-slate-500 hover:bg-white dark:border-slate-700/70 dark:bg-slate-900/[0.72] dark:hover:border-sky-400/40 dark:hover:bg-slate-800/40 ${
+            <div className="relative z-10 mx-auto max-w-4xl">
+              <h2 className="type-section-title mx-auto max-w-3xl">
+                {content.contactCta.headingPrefix}{" "}
+                <span className="theme-accent">
+                  {content.contactCta.headingAccent}
+                </span>
+              </h2>
+              <p className="type-section-copy mx-auto mt-6">
+                {content.contactCta.subheading}
+              </p>
 
-                    index === 0 ? "md:col-span-1 md:scale-[1.02]" : ""
-                  }`}
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] dark:bg-sky-300 dark:text-slate-950">
-                    {contact.icon}
-                  </div>
-                  <h3 className="mt-6 font-display text-2xl font-bold text-slate-950 dark:text-slate-50">
-                    {contact.title}
-                  </h3>
-                  <p className="mt-3 min-h-[5.25rem] text-sm leading-7 text-slate-600 dark:text-slate-300">
-                    {contactText.text}
-                  </p>
-                  <a
-                    className="mt-auto inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-sky-300 dark:text-slate-950 dark:hover:bg-sky-400 dark:hover:text-slate-900"
+              <div className="mt-10 flex items-start justify-center gap-4 min-[420px]:gap-6 sm:gap-8">
+                {contactItems.map((contact, index) => (
+                  <motion.a
+                    key={contact.title}
                     href={contact.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={contact.title}
+                    className="group flex w-20 flex-col items-center gap-3 sm:w-24"
+                    custom={DELAY.CONTACT_START + index * DELAY.CONTACT_INCREMENT}
+                    variants={cardMotion}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{
+                      once: VIEWPORT.ONCE,
+                      amount: VIEWPORT.CARD_AMOUNT,
+                    }}
+                    whileHover={{ y: -4 }}
+                    whileTap={{ scale: 0.97 }}
                   >
-                    {contactText.label}
-                  </a>
-                </motion.div>
-              );
-            })}
-          </div>
+                    <span className="theme-contact-icon flex h-14 w-14 items-center justify-center rounded-xl border transition duration-300 group-hover:scale-105 sm:h-16 sm:w-16 sm:rounded-2xl">
+                      {contact.icon}
+                    </span>
+                    <span className="theme-primary text-sm font-semibold transition duration-300">
+                      {contact.title}
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </section>
       </main>
 
       <footer className="mx-auto w-[min(94%,1180px)] pb-10 pt-2">
-        <div className="rounded-[1.25rem] border border-slate-300 bg-white/78 px-6 py-5 text-center text-sm text-slate-600 backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-400">
-          {content.footer}
+        <div className="theme-footer flex flex-col items-center justify-between gap-5 border-t py-6 text-center text-sm md:flex-row md:text-left">
+          <div className="flex flex-col items-center gap-3 md:flex-row md:gap-4">
+            <p className="theme-primary font-display text-lg font-bold tracking-normal">
+              MGK
+            </p>
+            <p>{content.footer}</p>
+          </div>
+          <nav
+            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 md:justify-end"
+            aria-label="Footer links"
+          >
+            {footerLinks.map((link, index) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`theme-footer-link text-sm font-medium transition duration-300 hover:-translate-y-0.5 ${
+                  index > 0
+                    ? "footer-separator before:mr-4 before:content-['/']"
+                    : ""
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </footer>
       <SpeedInsights />
