@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import PortfolioAssistant from "./components/PortfolioAssistant";
@@ -734,6 +734,54 @@ const cardMotion = {
   },
 };
 
+const avatarOuterMotion = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      delay: DELAY.HERO_PROFILE,
+    },
+  },
+};
+
+const avatarShellMotion = {
+  hidden: {
+    opacity: 0,
+    scale: 0.85,
+    rotate: -4,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      type: "spring",
+      stiffness: 110,
+      damping: 14,
+      mass: 1.2,
+      delay: DELAY.HERO_PROFILE + 0.05,
+    },
+  },
+};
+
+const avatarChildMotion = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 16,
+      delay: DELAY.HERO_PROFILE + 0.2 + index * 0.15,
+    },
+  }),
+};
+
 function Reveal({ children, className = "", delay = 0, as = motion.div }) {
   const Component = as;
 
@@ -939,6 +987,9 @@ function TimelineSection({ content }) {
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeFilter, setActiveFilter] = useState("All");
   const [activeSection, setActiveSection] = useState("about");
@@ -987,6 +1038,15 @@ function App() {
       const navHeight = navRef.current?.offsetHeight ?? 0;
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop || 0;
+
+      // Auto-hide navigation bar based on scroll direction
+      if (scrollTop > lastScrollY.current && scrollTop > 100) {
+        setIsNavVisible(false);
+        setIsMenuOpen(false);
+      } else if (scrollTop < lastScrollY.current || scrollTop <= 100) {
+        setIsNavVisible(true);
+      }
+      lastScrollY.current = scrollTop;
       const maxScroll = Math.max(
         document.documentElement.scrollHeight - window.innerHeight,
         1
@@ -1082,6 +1142,25 @@ function App() {
       }
     };
   }, [content.navLinks]);
+
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (navRef.current) {
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          `${navRef.current.offsetHeight}px`
+        );
+      }
+    };
+    
+    const rafId = requestAnimationFrame(updateNavHeight);
+    window.addEventListener("resize", updateNavHeight);
+    
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", updateNavHeight);
+    };
+  }, [language, isMenuOpen, theme]);
 
   useEffect(() => {
     const pageTop = pageTopRef.current;
@@ -1207,10 +1286,22 @@ function App() {
         className="absolute left-0 top-0 h-px w-px"
         aria-hidden="true"
       />
+      {/* Scroll Progress Bar at the very top of viewport */}
+      <div
+        className="pointer-events-none fixed left-0 right-0 top-0 z-[100] h-[2px] w-full overflow-hidden"
+        aria-hidden="true"
+      >
+        <motion.div
+          className="scroll-progress-bar h-full origin-left"
+          animate={{ scaleX: scrollProgress }}
+          transition={{ duration: 0.18, ease: "easeOut" }}
+        />
+      </div>
+
       <nav
         ref={navRef}
-        className={`fixed left-0 right-0 top-0 z-50 px-3 py-4 transition-all duration-300 ${
-          isScrolled ? "translate-y-0" : ""
+        className={`fixed left-0 right-0 top-0 z-50 px-3 py-4 transition-transform duration-300 ${
+          isNavVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         <div
@@ -1333,62 +1424,72 @@ function App() {
                 {themeIcons.dark}
               </span>
             </button>
+
+            {/* Hamburger Button (visible under xl) */}
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="theme-control inline-flex h-11 w-11 items-center justify-center rounded-lg border text-sm font-bold shadow-sm transition hover:-translate-y-0.5 xl:hidden"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? (
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
-        <ul
-          ref={mobileNavRef}
-          className="theme-nav-shell mx-auto mt-2 flex w-[calc(100%_-_1rem)] max-w-[1200px] gap-2 overflow-x-auto rounded-xl border p-1 shadow-sm backdrop-blur xl:hidden"
-        >
-          {content.navLinks.map((link) => {
-            const isActive = activeSection === link.href.slice(1);
 
-            return (
-              <li className="relative min-w-fit flex-1" key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(event) => handleNavClick(event, link.href)}
-                  aria-current={isActive ? "page" : undefined}
-                  data-section={link.href.slice(1)}
-                  className={`relative flex justify-center rounded-lg px-4 py-2 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 ${
-                    isActive
-                      ? "theme-text-on-accent"
-                      : "theme-muted theme-hover-soft"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-mobile-nav"
-                      className="theme-active-pill absolute inset-0 rounded-lg"
-                      transition={{
-                        type: "spring",
-                        stiffness: 520,
-                        damping: 42,
-                        mass: 0.65,
-                      }}
-                    />
-                  )}
-                  <span className="relative z-10 whitespace-nowrap">
-                    {link.label}
-                  </span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-        <div
-          className="scroll-progress-track pointer-events-none mx-auto mt-2 h-1 w-[calc(100%_-_1rem)] max-w-[1200px] overflow-hidden rounded-full"
-          aria-hidden="true"
-        >
-          <motion.div
-            className="scroll-progress-bar h-full origin-left rounded-full"
-            animate={{ scaleX: scrollProgress }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-          />
-        </div>
+        {/* Dropdown Menu (visible under xl) */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, scale: 0.95 }}
+              animate={{ opacity: 1, height: "auto", scale: 1 }}
+              exit={{ opacity: 0, height: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="theme-nav-shell absolute left-3 right-3 mt-2 overflow-hidden rounded-xl border p-2 shadow-lg backdrop-blur-xl xl:hidden"
+            >
+              <ul className="flex flex-col gap-1">
+                {content.navLinks.map((link) => {
+                  const isActive = activeSection === link.href.slice(1);
+
+                  return (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        onClick={(event) => {
+                          handleNavClick(event, link.href);
+                          setIsMenuOpen(false);
+                        }}
+                        className={`block rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors ${
+                          isActive
+                            ? "theme-text-on-accent bg-sky-500/10 text-sky-400"
+                            : "theme-muted theme-hover-soft"
+                        }`}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <main>
-        <section className="hero-section relative ml-4 mr-auto grid min-h-[100svh] w-[min(21.5rem,calc(100%-2rem))] min-w-0 items-center gap-10 overflow-hidden pb-20 pt-40 sm:mx-auto sm:w-[min(94%,1200px)] md:pt-44 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pb-28">
+        <section
+          className="hero-section relative ml-4 mr-auto grid min-h-[100svh] w-[min(21.5rem,calc(100%-2rem))] min-w-0 items-center gap-10 overflow-hidden pb-20 sm:mx-auto sm:w-[min(94%,1200px)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pb-28"
+          style={{ paddingTop: "calc(var(--nav-height, 160px) + 5.5rem)" }}
+        >
           <div
             className="hero-grid absolute inset-0 -z-10"
             aria-hidden="true"
@@ -1405,7 +1506,7 @@ function App() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-7 sm:space-y-8">
               <p className="type-label">
                 {content.hero.name}
               </p>
@@ -1483,99 +1584,117 @@ function App() {
             </div>
           </Reveal>
 
-          <Reveal className="min-w-0" delay={DELAY.HERO_PROFILE}>
+          <motion.div
+            className="min-w-0"
+            variants={avatarOuterMotion}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="relative mx-auto w-full max-w-[30rem]">
               <div
                 className="absolute -inset-10 -z-10 rounded-full bg-sky-300/12 blur-3xl"
                 aria-hidden="true"
               />
-              <div className="profile-shell kinetic-glass relative overflow-hidden rounded-2xl p-3">
-              <div className="profile-badge absolute right-5 top-5 z-30 rounded-lg border px-3 py-1 text-xs font-bold uppercase tracking-normal backdrop-blur">
-                React
-              </div>
-              <div
-                className="profile-stage relative overflow-hidden rounded-xl"
-                onMouseEnter={stopAutoSlide}
-                onMouseLeave={resetAutoSlide}
+              <motion.div
+                className="profile-shell kinetic-glass relative overflow-hidden rounded-2xl p-3"
+                variants={avatarShellMotion}
               >
-                <div className="profile-badge absolute left-4 top-4 z-20 rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-normal backdrop-blur">
-                  {content.profileCard.label}
-                </div>
-                <div className="relative aspect-[4/5] min-h-[28rem]">
-                  {photos.map((photo, index) => (
-                    <figure
-                      className={`absolute inset-0 transition-all duration-700 ${
-                        index === activeSlide
-                          ? "scale-100 opacity-100"
-                          : "pointer-events-none scale-105 opacity-0"
-                      }`}
-                      key={photo.alt}
-                    >
-                      <img
-                        src={photo.src}
-                        alt={photo.alt}
-                        className="h-full w-full object-cover"
-                      />
-                    </figure>
-                  ))}
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-950/82 via-slate-950/24 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 z-20">
-                    <p className="type-card-title-lg">
-                      Michael Garets Kon
-                    </p>
-                    <p className="mt-3 max-w-[34ch] text-sm leading-6 text-white/80">
-                      {content.profileCard.description}
-                    </p>
+                <motion.div
+                  className="profile-badge absolute right-5 top-5 z-30 rounded-lg border px-3 py-1 text-xs font-bold uppercase tracking-normal backdrop-blur"
+                  variants={avatarChildMotion}
+                  custom={0}
+                >
+                  React
+                </motion.div>
+                <motion.div
+                  className="profile-stage relative overflow-hidden rounded-xl"
+                  onMouseEnter={stopAutoSlide}
+                  onMouseLeave={resetAutoSlide}
+                  variants={avatarChildMotion}
+                  custom={1}
+                >
+                  <div className="profile-badge absolute left-4 top-4 z-20 rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-normal backdrop-blur">
+                    {content.profileCard.label}
                   </div>
-                </div>
-              </div>
-
-              <div className="profile-control-panel relative mt-3 rounded-xl border p-4">
-                <div className="flex items-center justify-between gap-3">
-                  <button
-                    type="button"
-                    className="profile-button rounded-lg border px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5"
-                    onClick={() => goToSlide(activeSlide - 1)}
-                  >
-                    {content.profileCard.previous}
-                  </button>
-                  <div className="flex items-center gap-2">
+                  <div className="relative aspect-[4/5] min-h-[28rem]">
                     {photos.map((photo, index) => (
-                      <button
-                        type="button"
-                        key={photo.alt}
-                        aria-label={`${content.profileCard.photoAria} ${index + 1}`}
-                        onClick={() => goToSlide(index)}
-                        className={`h-2.5 rounded-full transition-all ${
+                      <figure
+                        className={`absolute inset-0 transition-all duration-700 ${
                           index === activeSlide
-                            ? "active-slide-dot w-8"
-                            : "inactive-slide-dot w-2.5"
+                            ? "scale-100 opacity-100"
+                            : "pointer-events-none scale-105 opacity-0"
                         }`}
-                      />
+                        key={photo.alt}
+                      >
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="h-full w-full object-cover"
+                        />
+                      </figure>
+                    ))}
+                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-950/82 via-slate-950/24 to-transparent" />
+                    <div className="absolute bottom-5 left-5 right-5 z-20">
+                      <p className="type-card-title-lg">
+                        Michael Garets Kon
+                      </p>
+                      <p className="mt-3 max-w-[34ch] text-sm leading-6 text-white/80">
+                        {content.profileCard.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="profile-control-panel relative mt-3 rounded-xl border p-4"
+                  variants={avatarChildMotion}
+                  custom={2}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      className="profile-button rounded-lg border px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5"
+                      onClick={() => goToSlide(activeSlide - 1)}
+                    >
+                      {content.profileCard.previous}
+                    </button>
+                    <div className="flex items-center gap-2">
+                      {photos.map((photo, index) => (
+                        <button
+                          type="button"
+                          key={photo.alt}
+                          aria-label={`${content.profileCard.photoAria} ${index + 1}`}
+                          onClick={() => goToSlide(index)}
+                          className={`h-2.5 rounded-full transition-all ${
+                            index === activeSlide
+                              ? "active-slide-dot w-8"
+                              : "inactive-slide-dot w-2.5"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      className="profile-button rounded-lg border px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5"
+                      onClick={() => goToSlide(activeSlide + 1)}
+                    >
+                      {content.profileCard.next}
+                    </button>
+                  </div>
+                  <div className="font-mono-label mt-4 grid grid-cols-3 gap-2 text-center text-xs font-semibold uppercase tracking-normal">
+                    {content.profileCard.traits.map((trait) => (
+                      <span
+                        className="profile-trait rounded-full px-3 py-2"
+                        key={trait}
+                      >
+                        {trait}
+                      </span>
                     ))}
                   </div>
-                  <button
-                    type="button"
-                    className="profile-button rounded-lg border px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5"
-                    onClick={() => goToSlide(activeSlide + 1)}
-                  >
-                    {content.profileCard.next}
-                  </button>
-                </div>
-                <div className="font-mono-label mt-4 grid grid-cols-3 gap-2 text-center text-xs font-semibold uppercase tracking-normal">
-                  {content.profileCard.traits.map((trait) => (
-                    <span
-                      className="profile-trait rounded-full px-3 py-2"
-                      key={trait}
-                    >
-                      {trait}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
-          </Reveal>
+          </motion.div>
         </section>
 
         <section

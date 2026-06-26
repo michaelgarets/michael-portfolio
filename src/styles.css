@@ -179,7 +179,7 @@
   }
 
   .type-hero-title {
-    @apply text-[2.35rem] font-extrabold leading-[1.04] tracking-normal sm:text-6xl sm:leading-[0.98] md:text-7xl lg:text-[5.5rem];
+    @apply text-[2.15rem] font-extrabold leading-[1.1] tracking-normal sm:text-[3.15rem] sm:leading-[1.08] md:text-[3.8rem] md:leading-[1.04] lg:text-[4.75rem] lg:leading-[1.02];
     font-family: "Geist", "Inter", sans-serif;
     color: var(--text-primary);
     text-wrap: balance;
