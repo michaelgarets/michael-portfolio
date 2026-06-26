@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import PortfolioAssistant from "./components/PortfolioAssistant";
 import foto1 from "../assets/foto-1.jpeg";
 import foto2 from "../assets/foto-2.jpeg";
 import foto3 from "../assets/foto-3.jpeg";
@@ -73,125 +74,122 @@ const translations = {
       { href: "#timeline", label: "Timeline" },
       { href: "#contact", label: "Kontak" },
     ],
-    topBadge: "CS Student -> Frontend Engineer | Product thinker | AI curious",
-    navSubtitle: "React interfaces, product flow, AI experiments",
+    topBadge: "Computer Science at UMN · Frontend development",
+    navSubtitle: "React, interface states, and practical QA",
     navCv: "CV",
     hero: {
       name: "Michael Garets Kon",
-      heading: "Frontend engineer muda yang membangun flow produk yang bisa diklik.",
+      heading: "Saya membangun aplikasi web dengan React, dari alur pengguna sampai detail interaksi.",
       positioning:
-        "Saya Michael, mahasiswa Computer Science yang bergerak di frontend, product thinking, dan eksperimen AI yang praktis.",
+        "Saya Michael, mahasiswa Computer Science di UMN yang berfokus pada frontend development.",
       subheading:
-        "Saya mencari magang atau project kecil di mana React, UX flow, validasi, data, dan detail interface harus bekerja sebagai satu pengalaman.",
+        "Saya mencari magang frontend untuk mengerjakan interface nyata, belajar dari code review, dan memahami cara tim membawa fitur dari requirement ke production.",
       ctaProjects: "Lihat Karya Pilihan",
       ctaContact: "Hubungi Saya",
       ctaDownload: "Download CV",
       snapshot: [
-        { label: "Saya", value: "CS student di UMN" },
-        { label: "Membangun", value: "React apps dan flow produk" },
-        { label: "Mencari", value: "Frontend internship dan small builds" },
-        { label: "Showcase", value: "Birthday Invitation dengan RSVP Firebase" },
+        { label: "Saat ini", value: "Mahasiswa Computer Science di UMN" },
+        { label: "Saya membuat", value: "Interface React dan form berbasis data" },
+        { label: "Saya mencari", value: "Magang frontend" },
+        { label: "Project utama", value: "Undangan digital dengan RSVP Firebase" },
       ],
     },
     profileCard: {
       label: "Tentang Michael",
-      description: "CS student yang mengubah ide produk menjadi interface React yang jelas, ringan, dan bisa diuji.",
+      description: "Mahasiswa Computer Science yang membangun interface React, menghubungkan data, dan menguji alur sebelum dianggap selesai.",
       previous: "Sebelumnya",
       next: "Berikutnya",
       photoAria: "Tampilkan foto",
-      traits: ["Product sense", "React craft", "QA habits"],
+      traits: ["React", "Interface design", "Functional testing"],
     },
     metrics: [
       {
-        value: "Product sense",
-        label: "Saya mulai dari jalur pengguna, lalu membentuk interface di sekitar keputusan yang paling penting.",
+        value: "Alur pengguna",
+        label: "Saya menentukan apa yang perlu dilihat dan dilakukan pengguna sebelum mulai menyusun layar.",
       },
       {
-        value: "Interface craft",
+        value: "Implementasi frontend",
         label:
-          "Saya membangun layar React dengan struktur bersih, responsif, dan state yang disengaja.",
+          "Saya memecah layar menjadi komponen React dan menangani loading, input, error, serta empty state secara eksplisit.",
       },
       {
-        value: "AI curiosity",
+        value: "Eksperimen AI",
         label:
-          "Saya mengeksplorasi bagaimana AI bisa membantu workflow tanpa membuat produk terasa ramai.",
+          "Saya sedang mempelajari penggunaan AI untuk membantu pencarian informasi dan tugas berulang di aplikasi web.",
       },
     ],
     sectionHeadings: {
       about: {
         kicker: "Tentang Saya",
-        title:
-          "Saya belajar software lewat layar yang benar-benar dipakai.",
+        title: "Saya belajar frontend dengan membangun dan menguji alur lengkap.",
         description:
-          "Arah saya sederhana: menjadi frontend engineer yang punya rasa produk. Saya ingin bisa melihat flow, memilih informasi penting, lalu membangun interface yang terasa siap dipakai.",
+          "Project saya mencakup navigasi, form, validasi, penyimpanan data, responsive layout, dan pengujian fungsional. Saya ingin memahami seluruh jalur antara tindakan pengguna dan respons aplikasi.",
       },
       projects: {
         kicker: "Karya Pilihan",
-        title:
-          "Mulai dari showcase utama, lalu bukti pendukung.",
+        title: "Project yang menunjukkan cara saya menyusun interface dan alur data.",
         description:
-          "Birthday Invitation menjadi project paling penting karena menggabungkan React, Firebase, RSVP, mobile flow, dan pengalaman nyata untuk tamu.",
+          "Project utama saya adalah undangan digital dengan React dan Firebase. Project lain menunjukkan pekerjaan saya pada struktur informasi, responsive UI, dan dokumentasi QA.",
       },
       ecosystem: {
         kicker: "Skills",
-        titlePrefix: "Skills yang",
-        titleAccent: "mendukung karya",
+        titlePrefix: "Teknologi yang",
+        titleAccent: "saya gunakan",
         description:
-          "Skills di sini bukan koleksi logo. Ini alat yang saya pakai untuk membuat project lebih jelas, lebih responsif, dan lebih bisa dipercaya.",
+          "Saya menggunakan React dan JavaScript untuk interface, Firebase untuk data, serta Git, Vercel, dan pengujian fungsional untuk menyelesaikan dan mengecek project.",
       },
       timeline: {
         kicker: "Timeline",
-        title: "Jalur belajar yang masih bergerak.",
+        title: "Dari dasar Computer Science ke project frontend.",
         description:
-          "Timeline dibuat ringkas karena karya adalah pusatnya. Bagian ini memberi konteks pendidikan dan arah pertumbuhan.",
+          "Saya mulai kuliah pada 2023, memilih web sebagai fokus praktik, lalu membangun project React dengan interaksi dan penyimpanan data yang lebih lengkap.",
       },
       contact: {
         kicker: "Kontak",
-        title:
-          "Terbuka untuk magang, project kecil, dan diskusi produk web.",
+        title: "Saya sedang mencari kesempatan magang frontend.",
         description:
-          "Email paling tepat untuk pesan langsung. GitHub menunjukkan cara saya membangun. LinkedIn memberi konteks profesional singkat.",
+          "Hubungi saya melalui email untuk peluang magang atau project web. Kode dan riwayat project tersedia di GitHub.",
       },
     },
     about: {
       paragraphs: [
-        "Saya sedang menempuh Computer Science di Universitas Multimedia Nusantara dan memakai project web sebagai laboratorium produk kecil.",
-        "Saya tertarik pada momen ketika struktur data, copy, state, dan layout bertemu menjadi pengalaman yang mudah dimengerti.",
+        "Saya sedang menempuh Computer Science di Universitas Multimedia Nusantara. Di luar materi kuliah, saya membangun aplikasi web untuk melatih React, JavaScript, integrasi data, dan pengujian.",
+        "Saat mengerjakan interface, saya mulai dari tugas pengguna. Setelah itu saya menyusun informasi, komponen, state, dan validasi yang dibutuhkan agar tugas tersebut dapat diselesaikan tanpa kebingungan.",
       ],
       focusLabel: "Fokus",
-      focusTitle: "Frontend craft, product flow, AI curiosity",
+      focusTitle: "React, alur form, state interface, dan integrasi Firebase",
       workflowLabel: "Cara Kerja",
       workflowText:
-        "Saya mulai dari keputusan yang harus dibuat pengguna, lalu menyusun informasi, komponen, state, validasi, dan QA dasar di sekitar keputusan itu.",
+        "Saya memetakan alur utama, membagi layar menjadi komponen, menghubungkan data, lalu memeriksa input kosong, error, dan jalur penggunaan utama.",
     },
     highlights: [
       {
         number: "01",
-        title: "Membaca arah produk",
+        title: "Petakan alur utama",
         description:
-          "Saya mencari apa yang sebenarnya perlu dilakukan pengguna, lalu menjaga layar tetap fokus pada tindakan itu.",
+          "Saya menuliskan langkah yang perlu dilakukan pengguna dan data yang dibutuhkan pada setiap langkah.",
       },
       {
         number: "02",
-        title: "Membangun interface yang jelas",
+        title: "Bangun komponen dan state",
         description:
-          "Saya memecah kebutuhan menjadi komponen, state, validasi, dan pola responsif yang mudah dirawat.",
+          "Saya menerjemahkan alur tersebut menjadi komponen React, validasi form, dan state untuk loading, berhasil, kosong, atau gagal.",
       },
       {
         number: "03",
-        title: "Menguji sebelum percaya",
+        title: "Uji alur penting",
         description:
-          "Saya menjalankan ulang flow penting dan menulis temuan dengan langkah yang jelas, bukan hanya menyebut ada error.",
+          "Saya menjalankan ulang skenario utama dan mendokumentasikan bug dengan langkah reproduksi, hasil yang diharapkan, dan hasil aktual.",
       },
     ],
     projects: [
       {
         title: "Web Destinasi Wisata",
         description:
-          "Situs destinasi responsif yang mengubah informasi wisata yang tersebar menjadi flow browsing yang sederhana.",
-        role: "Saya menyusun struktur halaman, memprioritaskan gambar dan arah navigasi, lalu menyesuaikan layout untuk layar kecil.",
-        proof: "Live site memperlihatkan hierarchy informasi, navigasi, dan perilaku responsif.",
-        outcome: "Informasi wisata terasa lebih mudah dipindai dan dibuka dari layar kecil.",
+          "Website destinasi wisata yang mengelompokkan gambar, ringkasan tempat, dan navigasi dalam halaman yang mudah dipindai.",
+        role: "Saya menyusun hierarchy halaman, membuat navigasi antarbagian, dan menerapkan layout responsif untuk ukuran layar yang berbeda.",
+        proof: "Versi live menampilkan struktur konten, navigasi, dan perubahan layout secara langsung.",
+        outcome: "Pengguna dapat membandingkan destinasi dan menemukan informasi utama tanpa membuka banyak halaman.",
         tags: ["Information Flow", "Responsive UI", "Live Site"],
         chip: "Project kampus",
         categories: ["Frontend"],
@@ -203,10 +201,10 @@ const translations = {
       {
         title: "QA Testing Portfolio",
         description:
-          "Portfolio testing untuk flow LMS. Isinya mencatat apa yang diuji, di mana flow gagal, dan cara mengulang masalahnya.",
-        role: "Saya menulis test case, menjalankan functional testing, dan membuat bug report yang bisa diikuti orang lain.",
-        proof: "Catatan berisi kondisi uji, langkah reproduksi, expected result, dan actual result.",
-        outcome: "Temuan QA menjadi lebih mudah direproduksi oleh developer atau evaluator.",
+          "Dokumentasi pengujian untuk alur LMS, termasuk skenario login, navigasi kelas, dan fungsi utama lainnya.",
+        role: "Saya menulis test case, menjalankan pengujian fungsional, dan mencatat bug dengan langkah yang dapat diulang.",
+        proof: "Setiap temuan memuat kondisi pengujian, langkah reproduksi, expected result, dan actual result.",
+        outcome: "Developer atau evaluator dapat mengulang masalah tanpa harus menebak kondisi awalnya.",
         tags: ["Test Cases", "Bug Reports", "LMS Flow"],
         chip: "Catatan QA",
         categories: ["QA", "UI/UX"],
@@ -215,12 +213,12 @@ const translations = {
           "from-slate-900 via-blue-900 to-blue-600 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
       },
       {
-        title: "Personal Web Repo",
+        title: "Portfolio Website",
         description:
-          "Portfolio ini dibangun sebagai permukaan produk, bukan profil statis. Tujuannya menjelaskan posisi, karya, skills, dan kontak dalam satu flow.",
-        role: "Saya membangun konten bilingual, theme switching, project filters, active navigation, dan kartu case study yang mudah dipindai.",
-        proof: "Halaman ini menjadi bukti iterasi pada copy, hierarchy, React state, dan responsive UI.",
-        outcome: "Recruiter bisa membaca posisi, karya utama, skills, dan kontak dalam satu jalur scroll.",
+          "Website React bilingual untuk menampilkan project, kemampuan teknis, riwayat belajar, dan informasi kontak.",
+        role: "Saya membuat pergantian bahasa dan tema, filter project, navigasi aktif, serta struktur data terpusat untuk seluruh konten.",
+        proof: "Repository menunjukkan implementasi state React, komponen reusable, dan pengelolaan konten bilingual.",
+        outcome: "Informasi utama tersedia dalam satu halaman dan dapat dibaca dalam bahasa Indonesia atau Inggris.",
         tags: ["React", "Bilingual UI", "Navigation UX"],
         chip: "Website pribadi",
         categories: ["Frontend", "UI/UX"],
@@ -231,12 +229,12 @@ const translations = {
       {
         title: "Birthday Party Invitation",
         description:
-          "Aplikasi undangan yang benar-benar dipakai untuk membaca detail acara, mengirim RSVP, dan meninggalkan ucapan tanpa form yang berat.",
-        role: "Saya merancang flow dari landing ke RSVP, menulis validasi, menyimpan data dengan Firebase, dan menjaga pengalaman tetap ringan di mobile.",
-        proof: "Live project memiliki RSVP, ucapan tamu, dan penyimpanan real-time yang bisa diuji langsung.",
-        outcome: "Tamu mendapat jalur singkat dari undangan ke respons; host mendapat data RSVP yang tersimpan.",
+          "Aplikasi undangan digital tempat tamu dapat membaca detail acara, mengirim RSVP, dan meninggalkan ucapan.",
+        role: "Saya membangun form RSVP dengan validasi, menyimpan respons dan ucapan di Firebase, serta menampilkan status setelah data dikirim.",
+        proof: "Versi live menerima input tamu dan menyimpannya ke Firebase secara real time.",
+        outcome: "Tamu dapat mengonfirmasi kehadiran dari satu halaman, sementara host menerima daftar respons yang tersimpan.",
         tags: ["Featured", "React", "Firebase", "RSVP Flow"],
-        chip: "Showcase utama",
+        chip: "Aplikasi React + Firebase",
         categories: ["Frontend", "Backend", "UI/UX"],
         featured: true,
         visualIndex: 3,
@@ -247,35 +245,35 @@ const translations = {
     ],
     contacts: [
       {
-        text: "Untuk peluang magang, brief project kecil, atau pesan yang perlu respons langsung.",
+        text: "Untuk peluang magang frontend, project web, atau pertanyaan tentang pekerjaan saya.",
         label: "Email Michael",
       },
       {
-        text: "Tempat melihat code, latihan, dan proses merapikan project dari waktu ke waktu.",
+        text: "Lihat source code, struktur project, dan perubahan yang saya kerjakan.",
         label: "Buka GitHub",
       },
       {
-        text: "Konteks profesional singkat dan cara mudah untuk terhubung.",
+        text: "Lihat latar pendidikan dan riwayat profesional saya.",
         label: "Buka LinkedIn",
       },
     ],
     contactCta: {
-      headingPrefix: "Mulai dengan",
-      headingAccent: "pesan yang jelas.",
+      headingPrefix: "Punya kesempatan",
+      headingAccent: "yang relevan?",
       subheading:
-        "Kirim peluang magang, brief project kecil, atau ide produk web. Saya akan membalas dengan konteks, langkah berikutnya, atau kecocokan yang jujur.",
+        "Kirim detail posisi, project, atau hal yang ingin didiskusikan melalui email. Saya akan membalas dengan informasi yang dibutuhkan.",
     },
     projectMetaLabels: {
-      problem: "Tantangan",
+      problem: "Project",
       role: "Yang saya bangun",
-      proof: "Bukti",
+      proof: "Yang dapat diperiksa",
       outcome: "Hasil",
     },
-    featuredProjectLabel: "Showcase utama",
-    supportingProjectLabel: "Karya lainnya",
-    projectLinkLabel: "Buka Live Project",
+    featuredProjectLabel: "Project utama",
+    supportingProjectLabel: "Project lainnya",
+    projectLinkLabel: "Lihat project",
     emptyProjectMessage:
-      "Belum ada karya di kategori ini. Saya akan menambahkannya saat hasilnya sudah layak dibuka.",
+      "Belum ada project dalam kategori ini.",
     ecosystem: [
       {
         title: "Interface Engineering",
@@ -295,28 +293,28 @@ const translations = {
         date: "2023",
         title: "Masuk Computer Science di UMN",
         description:
-          "Saya mulai membangun dasar pemrograman, struktur data, dan cara berpikir yang lebih sistematis.",
+          "Saya mempelajari dasar pemrograman, algoritma, struktur data, dan pengembangan software.",
       },
       {
         date: "2024",
-        title: "Menemukan web sebagai medium utama",
+        title: "Mulai berfokus pada web",
         description:
-          "Project kampus membuat saya tertarik pada layout, konten, responsif, dan flow yang mudah diikuti.",
+          "Project kuliah memberi saya pengalaman menyusun halaman, navigasi, dan layout responsif dengan HTML, CSS, dan JavaScript.",
       },
       {
         date: "2025",
-        title: "Mengubah portfolio menjadi produk",
+        title: "Membangun project dengan React",
         description:
-          "Saya membangun ulang website ini dengan React, konten bilingual, theme switching, filter, dan navigasi aktif.",
+          "Saya membangun ulang portfolio ini dan mengembangkan undangan digital dengan form RSVP serta penyimpanan Firebase.",
       },
       {
         date: "2027",
-        title: "Expected graduation",
+        title: "Target kelulusan",
         description:
-          "Target lulus dari program Computer Science di Universitas Multimedia Nusantara.",
+          "Target lulus dari program Computer Science Universitas Multimedia Nusantara.",
       },
     ],
-    footer: "Designed and built by Michael Garets Kon. 2026.",
+    footer: "Dibuat dengan React oleh Michael Garets Kon. 2026.",
   },
   en: {
     navLinks: [
@@ -326,126 +324,123 @@ const translations = {
       { href: "#timeline", label: "Timeline" },
       { href: "#contact", label: "Contact" },
     ],
-    topBadge: "CS Student -> Frontend Engineer | Product thinker | AI curious",
-    navSubtitle: "React interfaces, product flow, AI experiments",
+    topBadge: "Computer Science at UMN · Frontend development",
+    navSubtitle: "React, interface states, and practical QA",
     navCv: "CV",
     hero: {
       name: "Michael Garets Kon",
-      heading: "A junior frontend engineer shaping product flows people can click through.",
+      heading: "I build React applications, from user flows to interaction details.",
       positioning:
-        "I am Michael, a Computer Science student growing across frontend engineering, product thinking, and practical AI experiments.",
+        "I’m Michael, a Computer Science student at UMN focused on frontend development.",
       subheading:
-        "I am looking for frontend internships or small builds where React, UX flow, validation, data, and interface detail need to work as one experience.",
+        "I’m looking for a frontend internship where I can work on real interfaces, learn through code review, and see how a team takes features from requirements to production.",
       ctaProjects: "View Selected Work",
       ctaContact: "Contact Me",
       ctaDownload: "Download CV",
       snapshot: [
-        { label: "Who", value: "CS student at UMN" },
-        { label: "Builds", value: "React apps and product flows" },
-        { label: "Looking for", value: "Frontend internship and small builds" },
-        { label: "Main proof", value: "Birthday Invitation with Firebase RSVP" },
+        { label: "Current", value: "Computer Science student at UMN" },
+        { label: "I build", value: "React interfaces and data-backed forms" },
+        { label: "Looking for", value: "Frontend internships" },
+        { label: "Main project", value: "Digital invitation with Firebase RSVP" },
       ],
     },
     profileCard: {
       label: "About Michael",
-      description: "CS student turning product ideas into React interfaces that are clear, lightweight, and testable.",
+      description: "Computer Science student building React interfaces, connecting data, and testing flows before calling them done.",
       previous: "Prev",
       next: "Next",
       photoAria: "Show photo",
-      traits: ["Product sense", "React craft", "QA habits"],
+      traits: ["React", "Interface design", "Functional testing"],
     },
     metrics: [
       {
-        value: "Product sense",
+        value: "User flows",
         label:
-          "I start with the user path, then shape the interface around the decision that matters.",
+          "I define what users need to see and do before deciding how the screen should be structured.",
       },
       {
-        value: "Interface craft",
+        value: "Frontend implementation",
         label:
-          "I build React screens with clean structure, responsive behavior, and deliberate states.",
+          "I split screens into React components and handle loading, input, error, and empty states explicitly.",
       },
       {
-        value: "AI curiosity",
+        value: "AI experiments",
         label:
-          "I explore how AI can support useful workflows without making the product feel noisy.",
+          "I’m learning how AI can support search and repetitive tasks inside practical web applications.",
       },
     ],
     sectionHeadings: {
       about: {
         kicker: "About Me",
-        title:
-          "I learn software through screens people actually use.",
+        title: "I learn frontend development by building and testing complete flows.",
         description:
-          "My direction is simple: become a frontend engineer with product taste. I want to read a flow, choose what matters, then build the interface until it feels ready to use.",
+          "My projects cover navigation, forms, validation, data storage, responsive layouts, and functional testing. I want to understand the full path between a user action and the application’s response.",
       },
       projects: {
         kicker: "Selected Work",
-        title:
-          "Start with the main showcase, then the supporting proof.",
+        title: "Projects that show how I structure interfaces and data flows.",
         description:
-          "Birthday Invitation is the strongest project because it combines React, Firebase, RSVP, mobile flow, and a real guest experience.",
+          "My main project is a digital invitation built with React and Firebase. The other work covers information structure, responsive UI, and QA documentation.",
       },
       ecosystem: {
         kicker: "Skills",
-        titlePrefix: "Skills that",
-        titleAccent: "support the work",
+        titlePrefix: "Tools I",
+        titleAccent: "use in projects",
         description:
-          "This is not a logo shelf. These are the tools I use to make projects clearer, more responsive, and easier to trust.",
+          "I use React and JavaScript for interfaces, Firebase for data, and Git, Vercel, and functional testing to finish and check my work.",
       },
       timeline: {
         kicker: "Timeline",
-        title: "A learning path that is still moving.",
+        title: "From Computer Science fundamentals to frontend projects.",
         description:
-          "The timeline stays secondary because the work is the center. This section gives education context and growth direction.",
+          "I started university in 2023, chose web development as my main area of practice, and moved into React projects with richer interactions and data storage.",
       },
       contact: {
         kicker: "Contact",
-        title:
-          "Open to internships, small builds, and web product conversations.",
+        title: "I’m looking for a frontend internship.",
         description:
-          "Email is best for direct messages. GitHub shows how I build. LinkedIn gives the short professional context.",
+          "Email me about internships or web projects. My code and project history are available on GitHub.",
       },
     },
     about: {
       paragraphs: [
-        "I study Computer Science at Universitas Multimedia Nusantara and use web projects as small product laboratories.",
-        "I am drawn to the point where data structure, copy, state, and layout become an experience someone can understand quickly.",
+        "I study Computer Science at Universitas Multimedia Nusantara. Outside class, I build web applications to practice React, JavaScript, data integration, and testing.",
+        "When I work on an interface, I start with the user’s task. Then I define the information, components, states, and validation needed to complete it without confusion.",
       ],
       focusLabel: "Focus",
-      focusTitle: "Frontend craft, product flow, AI curiosity",
+      focusTitle: "React, form flows, interface states, and Firebase integration",
       workflowLabel: "Working Method",
       workflowText:
-        "I start from the decision a user needs to make, then arrange information, components, state, validation, and basic QA around that decision.",
+        "I map the main flow, split the screen into components, connect the data, and check empty input, errors, and the primary usage paths.",
     },
     highlights: [
       {
         number: "01",
-        title: "Read the product intent",
+        title: "Map the main flow",
         description:
-          "I look for what the user actually needs to do, then keep the screen focused on that action.",
+          "I write down the steps users need to take and the data required at each point.",
       },
       {
         number: "02",
-        title: "Build the interface clearly",
+        title: "Build components and states",
         description:
-          "I turn requirements into components, state, validation, and responsive patterns that can be maintained.",
+          "I turn the flow into React components, form validation, and states for loading, success, empty results, and errors.",
       },
       {
         number: "03",
-        title: "Test before trusting it",
+        title: "Test the important paths",
         description:
-          "I rerun important flows and write findings with clear steps, not just a note that something failed.",
+          "I rerun key scenarios and document bugs with reproduction steps, expected behavior, and actual behavior.",
       },
     ],
     projects: [
       {
         title: "Tourism Destination Website",
         description:
-          "A responsive destination site that turns scattered travel information into a simple browsing flow.",
-        role: "I structured the pages, prioritized imagery and route clarity, and tuned the layout for smaller screens.",
-        proof: "The live site shows the information hierarchy, navigation, and responsive behavior.",
-        outcome: "Travel information becomes easier to scan and open from smaller screens.",
+          "A tourism website that organizes destination images, summaries, and navigation into scannable pages.",
+        role: "I defined the page hierarchy, built navigation between sections, and implemented responsive layouts for different screen sizes.",
+        proof: "The live version shows the content structure, navigation, and layout changes directly.",
+        outcome: "Users can compare destinations and find the main details without opening several pages.",
         tags: ["Information Flow", "Responsive UI", "Live Site"],
         chip: "Campus project",
         categories: ["Frontend"],
@@ -457,10 +452,10 @@ const translations = {
       {
         title: "QA Testing Portfolio",
         description:
-          "A testing portfolio built around an LMS workflow. It documents what was tested, where the flow failed, and how to reproduce it.",
-        role: "I wrote test cases, ran functional testing, and shaped bug reports another person could follow.",
-        proof: "The notes include test conditions, reproduction steps, expected result, and actual result.",
-        outcome: "QA findings become easier for a developer or evaluator to reproduce.",
+          "Test documentation for an LMS, covering login, class navigation, and other core workflows.",
+        role: "I wrote test cases, ran functional tests, and documented bugs with repeatable steps.",
+        proof: "Each finding includes test conditions, reproduction steps, the expected result, and the actual result.",
+        outcome: "A developer or evaluator can reproduce each issue without guessing the starting conditions.",
         tags: ["Test Cases", "Bug Reports", "LMS Flow"],
         chip: "QA notes",
         categories: ["QA", "UI/UX"],
@@ -469,12 +464,12 @@ const translations = {
           "from-slate-900 via-blue-900 to-blue-600 dark:from-slate-100 dark:via-slate-300 dark:to-sky-300",
       },
       {
-        title: "Personal Web Repo",
+        title: "Portfolio Website",
         description:
-          "The portfolio you are viewing, rebuilt as a product surface rather than a static profile.",
-        role: "I built bilingual content, theme switching, project filters, active navigation, and scannable case-study cards.",
-        proof: "This page is the proof: copy, hierarchy, React state, and responsive UI working together.",
-        outcome: "Recruiters can read positioning, main work, skills, and contact in one scroll path.",
+          "A bilingual React website for presenting projects, technical skills, learning history, and contact details.",
+        role: "I built language and theme switching, project filters, active navigation, and a centralized data structure for the site’s content.",
+        proof: "The repository shows React state, reusable components, and bilingual content management.",
+        outcome: "The main information is available on one page in either English or Indonesian.",
         tags: ["React", "Bilingual UI", "Navigation UX"],
         chip: "Personal website",
         categories: ["Frontend", "UI/UX"],
@@ -485,12 +480,12 @@ const translations = {
       {
         title: "Birthday Party Invitation",
         description:
-          "A real-use invitation app for reading event details, sending RSVP responses, and leaving wishes without a heavy form experience.",
-        role: "I designed the flow from landing to RSVP, wrote validation, saved data with Firebase, and kept the mobile experience light.",
-        proof: "The live project includes RSVP, guest wishes, and real-time storage that can be tested directly.",
-        outcome: "Guests get a focused path from invitation to response; the host gets RSVP data saved in Firebase.",
+          "A digital invitation where guests can read event details, submit an RSVP, and leave a message.",
+        role: "I built the RSVP form and validation, stored responses and guest messages in Firebase, and displayed submission status to the user.",
+        proof: "The live version accepts guest input and writes it to Firebase in real time.",
+        outcome: "Guests can confirm attendance from one page, while the host receives a stored list of responses.",
         tags: ["Featured", "React", "Firebase", "RSVP Flow"],
-        chip: "Primary showcase",
+        chip: "React + Firebase app",
         categories: ["Frontend", "Backend", "UI/UX"],
         featured: true,
         visualIndex: 3,
@@ -501,35 +496,35 @@ const translations = {
     ],
     contacts: [
       {
-        text: "For internship notes, small project briefs, or messages that need a direct reply.",
+        text: "For frontend internships, web projects, or questions about my work.",
         label: "Email Michael",
       },
       {
-        text: "Where you can review code, practice work, and how I refine projects over time.",
+        text: "Review my source code, project structure, and development history.",
         label: "Open GitHub",
       },
       {
-        text: "Short professional context and a simple way to connect.",
+        text: "View my education and professional background.",
         label: "Open LinkedIn",
       },
     ],
     contactCta: {
-      headingPrefix: "Start with a",
-      headingAccent: "clear message.",
+      headingPrefix: "Have a relevant",
+      headingAccent: "opportunity?",
       subheading:
-        "Send an internship note, a small project brief, or a web product idea. I will reply with context, next steps, or honest fit.",
+        "Email me with the role, project, or question you have in mind. I’ll reply with the information you need.",
     },
     projectMetaLabels: {
-      problem: "Challenge",
+      problem: "Project",
       role: "What I built",
-      proof: "Evidence",
+      proof: "What you can inspect",
       outcome: "Outcome",
     },
-    featuredProjectLabel: "Primary showcase",
-    supportingProjectLabel: "More work",
-    projectLinkLabel: "Open Live Project",
+    featuredProjectLabel: "Main project",
+    supportingProjectLabel: "Other projects",
+    projectLinkLabel: "View project",
     emptyProjectMessage:
-      "No work is available in this category yet. I will add it when the result is worth opening.",
+      "There are no projects in this category yet.",
     ecosystem: [
       {
         title: "Interface Engineering",
@@ -549,19 +544,19 @@ const translations = {
         date: "2023",
         title: "Entered Computer Science at UMN",
         description:
-          "I started building the foundation: programming fundamentals, data structures, and a more systematic way to think.",
+          "I began studying programming fundamentals, algorithms, data structures, and software development.",
       },
       {
         date: "2024",
-        title: "Found web as my main medium",
+        title: "Started focusing on web development",
         description:
-          "Campus projects pulled me toward layout, content, responsive behavior, and flows people can follow.",
+          "Course projects gave me practical experience with page structure, navigation, and responsive layouts using HTML, CSS, and JavaScript.",
       },
       {
         date: "2025",
-        title: "Turned the portfolio into a product",
+        title: "Built projects with React",
         description:
-          "I rebuilt this site with React, bilingual content, theme switching, filters, and active navigation.",
+          "I rebuilt this portfolio and developed a digital invitation with an RSVP form and Firebase storage.",
       },
       {
         date: "2027",
@@ -570,7 +565,7 @@ const translations = {
           "Expected graduation from the Computer Science program at Universitas Multimedia Nusantara.",
       },
     ],
-    footer: "Designed and built by Michael Garets Kon. 2026.",
+    footer: "Built with React by Michael Garets Kon. 2026.",
   },
 };
 
@@ -927,7 +922,6 @@ function TimelineSection({ content }) {
                 {item.date}
               </div>
               <div className="timeline-item relative rounded-xl border p-4 sm:p-5">
-                <span className="timeline-dot absolute -left-[2.2rem] top-5 h-3 w-3 rounded-full border-2 md:-left-[2.57rem]" />
                 <h3 className="font-display text-lg font-bold leading-snug tracking-normal theme-primary sm:text-xl">
                   {item.title}
                 </h3>
@@ -956,6 +950,7 @@ function App() {
   const navRef = useRef(null);
   const mobileNavRef = useRef(null);
   const scrollFrameRef = useRef(null);
+  const navTargetRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
 
   // Memoize localized projects to avoid recalculation
@@ -1007,6 +1002,17 @@ function App() {
         .filter(Boolean);
 
       if (!sections.length) return;
+
+      if (navTargetRef.current) {
+        const target = document.getElementById(navTargetRef.current);
+        const targetTop = target?.getBoundingClientRect().top ?? 0;
+
+        if (target && Math.abs(targetTop - navHeight - SCROLL_OFFSET_PX) > 10) {
+          return;
+        }
+
+        navTargetRef.current = null;
+      }
 
       const viewportTop = navHeight + 12;
       const viewportBottom = window.innerHeight;
@@ -1158,6 +1164,7 @@ function App() {
         target.getBoundingClientRect().top + window.pageYOffset - offset;
 
       setActiveSection(target.id);
+      navTargetRef.current = target.id;
       window.scrollTo({ top: targetTop, behavior });
     };
 
@@ -1185,6 +1192,7 @@ function App() {
 
     event.preventDefault();
     setActiveSection(target.id);
+    navTargetRef.current = target.id;
     const offset = nav.offsetHeight + SCROLL_OFFSET_PX;
     const targetTop =
       target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -1234,7 +1242,7 @@ function App() {
                       onClick={(event) => handleNavClick(event, link.href)}
                       aria-current={isActive ? "page" : undefined}
                       data-section={link.href.slice(1)}
-                      className={`relative inline-flex rounded-lg px-3 py-2 text-xs font-semibold outline-none transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 md:px-4 ${
+                      className={`relative inline-flex rounded-lg px-3 py-2 text-xs font-semibold outline-none transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 md:px-4 ${
                         isActive
                           ? "theme-text-on-accent"
                           : "theme-muted theme-hover-soft"
@@ -1246,8 +1254,9 @@ function App() {
                           className="theme-active-pill absolute inset-0 rounded-lg"
                           transition={{
                             type: "spring",
-                            stiffness: 220,
-                            damping: 28,
+                            stiffness: 520,
+                            damping: 42,
+                            mass: 0.65,
                           }}
                         />
                       )}
@@ -1340,7 +1349,7 @@ function App() {
                   onClick={(event) => handleNavClick(event, link.href)}
                   aria-current={isActive ? "page" : undefined}
                   data-section={link.href.slice(1)}
-                  className={`relative flex justify-center rounded-lg px-4 py-2 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 ${
+                  className={`relative flex justify-center rounded-lg px-4 py-2 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/70 ${
                     isActive
                       ? "theme-text-on-accent"
                       : "theme-muted theme-hover-soft"
@@ -1352,8 +1361,9 @@ function App() {
                       className="theme-active-pill absolute inset-0 rounded-lg"
                       transition={{
                         type: "spring",
-                        stiffness: 220,
-                        damping: 28,
+                        stiffness: 520,
+                        damping: 42,
+                        mass: 0.65,
                       }}
                     />
                   )}
@@ -1832,14 +1842,14 @@ function App() {
                           animate="visible"
                           exit="exit"
                           whileHover={{ y: -4 }}
-                          className="supporting-project-row group grid overflow-hidden rounded-2xl border p-3 md:grid-cols-[16rem_1fr_auto] md:items-stretch"
+                          className="supporting-project-row group grid overflow-hidden rounded-2xl border p-3 md:grid-cols-[19rem_1fr_auto] md:items-stretch"
                         >
-                          <div className="relative min-h-[13rem] overflow-hidden rounded-xl bg-slate-900 md:min-h-full">
+                          <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-900 md:aspect-auto md:min-h-[16rem]">
                             {visual.image ? (
                               <img
                                 src={visual.image}
                                 alt={visual.imageAlt}
-                                className="absolute inset-0 h-full w-full object-cover"
+                                className="absolute inset-0 h-full w-full object-contain"
                               />
                             ) : (
                               <div
@@ -2045,6 +2055,7 @@ function App() {
           </nav>
         </div>
       </footer>
+      <PortfolioAssistant />
       <SpeedInsights />
     </div>
   );
