@@ -1,13 +1,26 @@
 import { GoogleGenAI } from "@google/genai";
 import { portfolioKnowledgeText } from "../src/data/portfolioKnowledge.js";
 
-const DEFAULT_GEMINI_MODEL = "gemini-2.0-flash";
+// ---------------------------------------------------------------------------
+// Configuration
+// ---------------------------------------------------------------------------
+
+const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
 const MAX_MESSAGE_LENGTH = 600;
 const MAX_HISTORY_MESSAGES = 4;
 const MAX_REQUEST_BYTES = 8_000;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
+
+// ---------------------------------------------------------------------------
+// Rate limiter (in-memory, per Vercel instance)
+// ---------------------------------------------------------------------------
+
 const rateLimitStore = new Map();
+
+// ---------------------------------------------------------------------------
+// System prompt
+// ---------------------------------------------------------------------------
 
 const systemPrompt = `
 You are Michael's portfolio assistant.
@@ -19,18 +32,16 @@ PORTFOLIO_KNOWLEDGE:
 ${portfolioKnowledgeText}
 `.trim();
 
+// ---------------------------------------------------------------------------
+// Helpers – JSON responses
+// ---------------------------------------------------------------------------
+
 function sendJson(res, statusCode, payload) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   return res.status(statusCode).json(payload);
 }
 
-function sendError(
-  res,
-  statusCode,
-  message,
-  error = message,
-  details = undefined,
-) {
+function sendError(res, statusCode, message, error = message, details) {
   return sendJson(res, statusCode, {
     success: false,
     message,
@@ -39,20 +50,37 @@ function sendError(
   });
 }
 
+// ---------------------------------------------------------------------------
+// Helpers – environment
+// ---------------------------------------------------------------------------
+
 function getGeminiModel() {
   return (process.env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL).trim();
 }
 
 function getGeminiApiKey() {
-  return process.env.GEMINI_API_KEY?.trim() || "";
+  const key = process.env.GEMINI_API_KEY?.trim() || "";
+  // Treat the placeholder value as missing
+  if (key === "your_gemini_api_key_here") return "";
+  return key;
 }
+
+function isDevelopment() {
+  return (
+    process.env.NODE_ENV !== "production" &&
+    process.env.VERCEL_ENV !== "production"
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Helpers – request parsing
+// ---------------------------------------------------------------------------
 
 function getClientId(req) {
   const forwardedFor = req.headers["x-forwarded-for"];
   if (typeof forwardedFor === "string" && forwardedFor.length > 0) {
     return forwardedFor.split(",")[0].trim();
   }
-
   return req.socket?.remoteAddress || "unknown";
 }
 
@@ -93,6 +121,10 @@ async function readRequestBody(req) {
   return rawBody ? JSON.parse(rawBody) : {};
 }
 
+// ---------------------------------------------------------------------------
+// Helpers – conversation history
+// ---------------------------------------------------------------------------
+
 function sanitizeHistory(history) {
   if (!Array.isArray(history)) return [];
 
@@ -119,7 +151,7 @@ function formatHistoryForPrompt(history) {
     .join("\n");
 }
 
-function createGeminiInput(message, history) {
+function buildUserContents(message, history) {
   const historyText = formatHistoryForPrompt(history);
 
   if (!historyText) {
@@ -129,37 +161,70 @@ function createGeminiInput(message, history) {
   return `Recent conversation:\n${historyText}\n\nCurrent user question:\n${message}`;
 }
 
-function isDevelopment() {
-  return (
-    process.env.NODE_ENV !== "production" &&
-    process.env.VERCEL_ENV !== "production"
-  );
+// ---------------------------------------------------------------------------
+// Helpers – SDK error classification
+// ---------------------------------------------------------------------------
+
+function classifyGeminiError(error) {
+  const msg = (error.message || "").toLowerCase();
+  const status = error.status || error.httpStatusCode || 0;
+
+  if (status === 401 || status === 403 || msg.includes("api key")) {
+    return {
+      statusCode: 502,
+      message: "The Gemini API key is invalid or unauthorized.",
+    };
+  }
+
+  if (status === 404 || msg.includes("not found") || msg.includes("is not found")) {
+    return {
+      statusCode: 502,
+      message: "The configured Gemini model is not available. Please check the model name.",
+    };
+  }
+
+  if (status === 429 || msg.includes("rate limit") || msg.includes("quota")) {
+    return {
+      statusCode: 429,
+      message: "Gemini API rate limit exceeded. Please try again later.",
+    };
+  }
+
+  return {
+    statusCode: 502,
+    message: "Failed to get a response from Gemini. Please try again.",
+  };
 }
+
+// ---------------------------------------------------------------------------
+// Handler
+// ---------------------------------------------------------------------------
 
 export default async function handler(req, res) {
   const startedAt = Date.now();
+  const model = getGeminiModel();
+  const geminiApiKey = getGeminiApiKey();
 
   try {
     res.setHeader("Cache-Control", "no-store");
-    const geminiApiKey = getGeminiApiKey();
-    console.info("Portfolio chat request received", {
-      method: req.method,
-      url: req.url,
-      contentType: req.headers["content-type"],
-      contentLength: req.headers["content-length"],
-      hasGeminiKey: Boolean(geminiApiKey),
-    });
 
-    if (req.method !== "POST") {
-      res.setHeader("Allow", "POST");
-      return sendError(
-        res,
-        405,
-        "Method not allowed.",
-        "Use POST for this endpoint.",
-      );
+    // -- Development logging: startup context --------------------------------
+    if (isDevelopment()) {
+      console.info("[portfolio-chat] Request received", {
+        method: req.method,
+        contentType: req.headers["content-type"],
+        model,
+        hasApiKey: Boolean(geminiApiKey),
+      });
     }
 
+    // -- Method check --------------------------------------------------------
+    if (req.method !== "POST") {
+      res.setHeader("Allow", "POST");
+      return sendError(res, 405, "Method not allowed.", "Use POST for this endpoint.");
+    }
+
+    // -- Payload size check --------------------------------------------------
     const contentLength = Number(req.headers["content-length"] || 0);
     if (contentLength > MAX_REQUEST_BYTES) {
       return sendError(
@@ -170,6 +235,7 @@ export default async function handler(req, res) {
       );
     }
 
+    // -- Rate limit ----------------------------------------------------------
     const rateLimit = checkRateLimit(getClientId(req));
     if (rateLimit.limited) {
       res.setHeader("Retry-After", String(rateLimit.retryAfterSeconds));
@@ -181,25 +247,20 @@ export default async function handler(req, res) {
       );
     }
 
+    // -- API key validation --------------------------------------------------
     if (!geminiApiKey) {
       if (isDevelopment()) {
-        console.error("Portfolio chat configuration error", {
-          reason: "GEMINI_API_KEY is missing.",
-        });
+        console.error("[portfolio-chat] GEMINI_API_KEY is missing or placeholder.");
       }
       return sendError(res, 500, "Gemini API key is not configured.");
     }
 
+    // -- Parse & validate body -----------------------------------------------
     const body = await readRequestBody(req);
     const message = typeof body.message === "string" ? body.message.trim() : "";
 
     if (!message) {
-      return sendError(
-        res,
-        400,
-        "Message is required.",
-        "The message field was empty.",
-      );
+      return sendError(res, 400, "Message is required.", "The message field was empty.");
     }
 
     if (message.length > MAX_MESSAGE_LENGTH) {
@@ -212,27 +273,29 @@ export default async function handler(req, res) {
     }
 
     const history = sanitizeHistory(body.history);
-    const model = getGeminiModel();
-    console.info("Portfolio chat forwarding request to Gemini", {
-      model,
-      messageLength: message.length,
-      historyLength: history.length,
-    });
 
-    const ai = new GoogleGenAI({
-      apiKey: geminiApiKey,
-    });
+    if (isDevelopment()) {
+      console.info("[portfolio-chat] Sending request to Gemini", {
+        model,
+        messageLength: message.length,
+        historyLength: history.length,
+      });
+    }
+
+    // -- Call Gemini via SDK --------------------------------------------------
+    const ai = new GoogleGenAI({ apiKey: geminiApiKey });
 
     const response = await ai.models.generateContent({
       model,
-      contents: `${systemPrompt}
-
-${createGeminiInput(message, history)}`,
+      contents: buildUserContents(message, history),
+      config: {
+        systemInstruction: systemPrompt,
+      },
     });
 
-    const answer = response.text;
+    const answer = response.text?.trim() || "";
 
-    if (!answer?.trim()) {
+    if (!answer) {
       return sendError(
         res,
         502,
@@ -241,9 +304,13 @@ ${createGeminiInput(message, history)}`,
       );
     }
 
-    console.info("Portfolio chat response generated", {
-      answerLength: answer.length,
-    });
+    // -- Development logging: success ----------------------------------------
+    if (isDevelopment()) {
+      console.info("[portfolio-chat] Response generated", {
+        answerLength: answer.length,
+        durationMs: Date.now() - startedAt,
+      });
+    }
 
     return sendJson(res, 200, {
       success: true,
@@ -253,21 +320,25 @@ ${createGeminiInput(message, history)}`,
       model,
     });
   } catch (error) {
+    // -- Development logging: error ------------------------------------------
     if (isDevelopment()) {
-      console.error("Portfolio chat error", error);
+      console.error("[portfolio-chat] Gemini SDK error", {
+        name: error.name,
+        message: error.message,
+        status: error.status || error.httpStatusCode,
+        durationMs: Date.now() - startedAt,
+      });
     }
 
     if (res.writableEnded) {
       return res;
     }
 
-    const errorMessage =
-      error.message || "Something went wrong while sending your message.";
-    return sendError(res, 500, errorMessage, errorMessage);
+    const classified = classifyGeminiError(error);
+    return sendError(res, classified.statusCode, classified.message, classified.message);
   } finally {
-    console.info("Portfolio chat request completed", {
+    console.info("[portfolio-chat] Request completed", {
       method: req.method,
-      url: req.url,
       statusCode: res.statusCode,
       durationMs: Date.now() - startedAt,
     });
